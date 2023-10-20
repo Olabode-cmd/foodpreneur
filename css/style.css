@@ -44,6 +44,9 @@ section {
     position: relative;
 }
 
+img {
+    max-width: 100%;
+}
 .btn-primary {
     padding: .7rem .9rem;
     background: var(--color-primary);
@@ -72,6 +75,28 @@ section {
 
 .text-primary {
     color: var(--color-primary) !important;
+}
+
+.tag-primary {
+    color: var(--color-primary);
+    background: var(--color-primary-lightbg);
+    padding: .5rem;
+    font-weight: 700;
+    border-radius: 8px;
+}
+.tag-purple {
+    color: var(--color-purple);
+    background: var(--color-purple-lightbg);
+    padding: .5rem;
+    font-weight: 700;
+    border-radius: 8px;
+}
+.tag-orange {
+    color: var(--color-orange);
+    background: var(--color-orange-lightbg);
+    padding: .5rem;
+    font-weight: 700;
+    border-radius: 8px;
 }
 
 /* Banner */
@@ -198,6 +223,7 @@ nav .nav-link.active {
     background: var(--color-orange);
     padding: 1.5rem 0;
     padding-left: 9rem;
+    position: relative;
 }
 .market-slide .market-card {
     background: #fff;
@@ -217,7 +243,56 @@ nav .nav-link.active {
 .market-slide .market-card h1 {
     font-size: 1.3rem;
     margin: 0;
+    font-weight: 700;
 }
 .market-card .market-content {
     padding: 1rem;
+}
+.market-card p.name {
+    color: #888;
+    margin-bottom: 1rem;
+}
+.market-card h4 {
+    font-size: .9rem;
+    color: #888;
+    text-decoration: line-through;
+}
+.market-card span.tag {
+    color: #000;
+    background: var(--color-orange);
+    padding: .4rem .5rem;
+    border-radius: 8px;
+    font-size: .9rem;
+    font-weight: 500;
+}
+.section-marketplace .owl-carousel .owl-item img {
+    display: inline-block;
+    width: auto;
+}
+.section-marketplace .owl-prev {
+    left: -55px;
+}
+.section-marketplace .connect-1 {
+    width: 170px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+}
+
+.section-marketplace .connect-2 {
+    left: 25px;
+    bottom: 0;
+    position: absolute;
+    width: 170px;
+}
+
+/* Section Community */
+.section-community {
+    padding: 3rem 0;
+}
+.section-community .tag {
+    font-size: 1.8rem;
+    text-align: center;
+    border-radius: 24px;
+    margin: 5px 0;
 }
