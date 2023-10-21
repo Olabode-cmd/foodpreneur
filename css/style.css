@@ -458,4 +458,28 @@ nav .nav-link.active {
     left: 25px;
 }
 
-
+/* Section Events */
+.section-events {
+    padding: 6rem 0 3rem;
+}
+.section-events h1.title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+.section-events .search {
+    background: var(--color-primary-lightbg);
+    padding: 1.5rem 0;
+    margin: 1rem 0;
+}
+.section-events form {
+    position: relative;
+}
+.section-events .search-input {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 3rem;
+    border: 1.5px solid #888;
+    border-radius: 8px;
+    outline: none;
+}
