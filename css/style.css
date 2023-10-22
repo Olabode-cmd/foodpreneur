@@ -40,6 +40,10 @@ a:hover {
     color: #888;
 }
 
+img.round-16 {
+    border-radius: 16px;
+}
+
 p {
     margin: 0;
 }
@@ -382,7 +386,8 @@ nav .nav-link.active {
     position: relative;
 }
 
-.section-community .email-input {
+.section-community .email-input,
+.section-knowledge .email-input {
     padding: 1rem .5rem;
     border: 2px solid #888;
     border-radius: 8px;
@@ -391,7 +396,8 @@ nav .nav-link.active {
     outline: none;
 }
 
-.section-community .email-input:focus {
+.section-community .email-input:focus,
+.section-knowledge .email-input:focus {
     border: 2px solid var(--color-primary);
 }
 
@@ -847,44 +853,67 @@ footer ul li:hover a {
     line-height: 35px;
     text-align: center;
 }
+
 .section-values .value {
     padding: 0 4rem;
     margin-top: 3rem;
     margin-bottom: 6rem;
 }
+
 .value .value-card {
     border-radius: 8px;
     padding: 2rem 3rem;
     min-height: 250px;
     margin: 12px 0;
 }
+
 .value-card p {
     line-height: 35px;
     font-weight: 500;
 }
+
 .value-card.purple {
     background: var(--color-purple-lightbg);
 }
+
 .value-card.green {
     background: var(--color-primary-lightbg);
 }
+
 .value-card.orange {
     background: var(--color-orange-lightbg);
 }
+
 .value-card img {
     width: 45px;
 }
+
 .value-card h1.title {
     font-size: 1.4rem;
     margin-left: 1rem;
 }
+
+@media (max-width: 767px) {
+    .about-wrapper {
+        height: 80vh;
+        background: linear-gradient(to bottom, #fff 50%, #108537 50%);
+    }
+
+    .section-values .value {
+        padding: 0;
+        margin-top: 1rem;
+    }
+}
+
 .founding p {
     line-height: 35px;
     font-weight: 500;
 }
+
 .founding h1.title {
     font-weight: 600;
 }
+
 .section-values .connect-1 {
     width: 170px;
     position: absolute;
@@ -896,22 +925,27 @@ footer ul li:hover a {
 .section-team {
     padding: 3rem 0;
 }
+
 .section-team h1.title {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .section-team .subtitle {
     margin-bottom: 2rem;
 }
+
 .section-team .team {
     margin: 10px 0;
 }
+
 .team-img {
     width: 100%;
     height: 350px;
     border-radius: 16px;
     overflow: hidden;
 }
+
 .team-img img {
     width: 100%;
     height: 100%;
@@ -923,17 +957,90 @@ footer ul li:hover a {
     padding: 3rem 0;
     background: linear-gradient(to bottom, #fff 30%, #FFEFD0 30%);
 }
+
 .section-culture .culture {
     border-radius: 16px;
     margin-bottom: 2rem;
     width: 100%;
 }
+
 .section-culture h1.title {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .section-culture p {
     line-height: 35px;
     width: 85%;
     font-weight: 500;
+}
+
+@media (max-width: 767px) {
+    .section-culture {
+        background: linear-gradient(to bottom, #fff 15%, #FFEFD0 15%);
+    }
+    .section-culture p {
+        width: 100%;
+    }
+}
+
+.section-first {
+    padding: 6rem 0 3rem;
+}
+
+.section-first h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.section-first .subtitle {
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.section-first .first-card {
+    margin: 10px 0;
+    border: 2px solid var(--color-primary-lightbg);
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 16px;
+}
+
+.first-card h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.first-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.section-empower .connect-1 {
+    width: 170px;
+    position: absolute;
+    top: 15%;
+    left: 25px;
+}
+
+.section-empower .connect-2 {
+    right: 25px;
+    top: 0;
+    position: absolute;
+    width: 170px;
+}
+
+.section-knowledge {
+    background: var(--color-primary);
+    padding: 2rem 0;
+}
+.section-knowledge .subtitle {
+    font-weight: 500;
+    width: 75%
+}
+@media (max-width: 767px) {
+    .section-knowledge .subtitle {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 }
