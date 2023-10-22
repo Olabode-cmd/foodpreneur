@@ -32,6 +32,9 @@ a:hover {
 .left-align {
     padding-left: 8rem;
 }
+.text-grey {
+    color: #888;
+}
 
 p {
     margin: 0;
@@ -175,7 +178,13 @@ nav .nav-link.active {
     font-weight: 700;
     color: #000;
 }
-
+@media (max-width: 767px) {
+    .hero-banner .banner-card {
+        width: 90% !important;
+        margin: 0 auto;
+        top: 55%;
+    }
+}
 .owl-next,
 .owl-prev {
     color: #fff !important;
@@ -249,10 +258,10 @@ nav .nav-link.active {
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
-    width: 390px;
+    /* width: 390px; */
 }
 .market-card .market-img {
-    width: 390px;
+    width: 100%;
     height: 250px;
 }
 .market-card .market-img img {
@@ -285,7 +294,7 @@ nav .nav-link.active {
     font-size: .9rem;
     font-weight: 500;
 }
-.section-marketplace .owl-carousel .owl-item img {
+.section-marketplace .owl-carousel .owl-item img.icon {
     display: inline-block;
     width: auto;
 }
@@ -306,6 +315,11 @@ nav .nav-link.active {
     width: 170px;
 }
 
+@media (max-width: 767px) {
+    .market-slide {
+        padding-left: 3rem;
+    }
+}
 /* Section Community */
 .section-community {
     padding: 3rem 0;
@@ -368,9 +382,14 @@ nav .nav-link.active {
 .blog-card {
     width: 450px;
 }
+@media (max-width: 767px) {
+    .blog-card {
+        width: auto;
+    }
+}
 
 .blog-card .blog-img {
-    width: 450px;
+    width: 100%;
     height: 300px;
     overflow: hidden;
     border-radius: 8px;
@@ -472,6 +491,11 @@ nav .nav-link.active {
     padding: 1.5rem 0;
     margin: 1rem 0;
 }
+@media (max-width: 767px) {
+    .section-events .search {
+        padding: 2rem 3rem;
+    }
+}
 .section-events form {
     position: relative;
 }
@@ -482,4 +506,158 @@ nav .nav-link.active {
     border: 1.5px solid #888;
     border-radius: 8px;
     outline: none;
+    transition: .3s;
+}
+.section-events .search-input:focus {
+    border: 1.5px solid var(--color-primary);
+}
+.section-events form .btn-primary {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+.section-events form img {
+    position: absolute;
+    top: 17px;
+    left: 15px;
+}
+
+.section-events .tag {
+    padding: .4rem .8rem;
+    background: none;
+    border: 1.5px solid var(--color-primary);
+    font-weight: 500;
+    color: var(--color-primary);
+    margin: 2px 4px;
+    border-radius: 16px;
+    transition: .3s;
+    cursor: pointer;
+}
+.section-events .tag.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+.section-events .owl-carousel .owl-item img.icon {
+    display: inline-block;
+    width: auto;
+    margin-left: 10px;
+}
+.event-card {
+    padding: .7rem;
+    border: 2px solid #999;
+    border-radius: 24px;
+    min-height: 600px;
+}
+.event-card p.bold {
+    font-size: .9rem;
+    color: #888;
+    margin: 10px 0;
+}
+.event-card h2.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.section-events .owl-next {
+    right: -5%;
+}
+
+.section-events .owl-prev {
+    left: -5%;
+}
+
+/* Section Guide */
+.section-guide {
+    padding: 3rem 0;
+    background: var(--color-primary);
+}
+.section-guide h1.title {
+    color: #fff;
+    font-weight: 700;
+    /* font-size: 1.8rem; */
+}
+.section-guide .subtitle {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+.section-guide .form-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    margin: 10px 0;
+}
+.btn-outline-light:hover {
+    color: var(--color-primary);
+}
+.section-guide .connect-1 {
+    width: 170px;
+    position: absolute;
+    top: 0;
+    left: 25px;
+}
+
+.section-guide .connect-2 {
+    right: 25px;
+    bottom: 0;
+    position: absolute;
+    width: 170px;
+}
+
+/* Section Enrol */
+.section-enrol {
+    padding: 4rem 0 3rem;
+}
+.section-enrol h1.title {
+    font-weight: 600;
+}
+.section-enrol img {
+    border-radius: 24px;
+}
+.section-enrol .connect-1 {
+    width: 170px;
+    position: absolute;
+    top: 25%;
+    left: 25px;
+}
+
+.section-enrol .connect-2 {
+    right: 25px;
+    top: 0;
+    position: absolute;
+    width: 170px;
+}
+
+/* Footer */
+footer {
+    padding: 3rem 0;
+}
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+footer ul li {
+    margin: 10px 0;
+}
+footer ul li a {
+    color: #000;
+    font-weight: 500;
+    transition: .3s;
+}
+footer ul li:hover a {
+    color: var(--color-primary);
+}
+@media (max-width: 767px) {
+    .left-align {
+        padding-left: 3rem
+    }
+    .shade {
+        display: none;
+    }
+
+    .col-md-6.owl {
+        padding-left: 3rem;
+        margin-top: 1rem;
+    }
 }
