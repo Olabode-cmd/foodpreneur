@@ -13,15 +13,61 @@
     ;
 
     --color-orange: #FFBB2D;
+    --color-orange-darker: #b48319;
     --color-orange-lightbg: #FFEFD0;
 
     --color-purple: #9747FF;
+    --color-purple-darker: #5c19b3;
     --color-purple-lightbg: #EADAFF;
 }
 
 /* Utility Classes */
 body {
     font-family: 'Inter', sans-serif;
+}
+.text-orange {
+    color: var(--color-orange);
+}
+
+.bg-orange {
+    background: var(--color-orange-lightbg);
+}
+.bg-success {
+    background: var(--color-primary-lightbg) !important;
+}
+.bg-purple {
+    background: var(--color-purple-lightbg);
+}
+.text-purple {
+    color: var(--color-purple);
+}
+
+.outline-success {
+    padding: .5rem 1rem;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: #000;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.outline-orange {
+    padding: .5rem 1rem;
+    background: transparent;
+    border: 2px solid var(--color-orange);
+    color: #000;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.outline-purple {
+    padding: .5rem 1rem;
+    background: transparent;
+    border: 2px solid var(--color-purple);
+    color: #000;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: inline-block;
 }
 
 a,
@@ -85,6 +131,38 @@ img {
 
 .btn-primary:hover {
     background: var(--color-primary-darker);
+}
+.btn-orange {
+    padding: .7rem .9rem;
+    background: var(--color-orange);
+    border-radius: 8px;
+    color: #fff;
+    transition: .3s;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.btn-orange:hover {
+    background: var(--color-orange-darker);
+    color: #fff;
+}
+.btn-purple {
+    padding: .7rem .9rem;
+    background: var(--color-purple);
+    border-radius: 8px;
+    color: #fff;
+    transition: .3s;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.btn-purple:hover {
+    background: var(--color-purple-darker);
+    color: #fff;
 }
 
 .btn-shadow {
@@ -1165,6 +1243,33 @@ footer ul li:hover a {
     border-radius: 16px;
     margin: 10px 0;
 }
+.expert.entrepreneur {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin: 25px 0;
+    overflow: hidden;
+}
+.expert.entrepreneur .tag {
+    position: absolute;
+    top: -3px;
+    right: -4px;
+    border-radius: 0px;
+    border-bottom-left-radius: 16px;
+    padding: .5rem 1rem;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+}
+.expert.entrepreneur .tag.success {
+    background: var(--color-primary);
+}
+.expert.entrepreneur .tag.orange {
+    background: var(--color-orange);
+    color: #000;
+}
+.expert.entrepreneur .tag.purple {
+    background: var(--color-purple);
+}
 
 .expert img {
     width: 100%;
@@ -1608,7 +1713,7 @@ footer ul li:hover a {
     }
         .blog-header .blog-img .shade {
             background: linear-gradient(to bottom, #ffffff00, #00000052, #00000094) !important;
-        }rgba(0, 0, 0, 0.58)
+        }
 }
 .section-blogposts h1.title {
     font-size: 1.8rem;
@@ -1734,4 +1839,182 @@ form.relative {
     position: absolute;
     right: 5px;
     top: 6px;
+}
+
+.blog h1.title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 1rem 0 3rem;
+}
+@media (max-width: 767px) {
+    .blog h1.title {
+        font-size: 1.8rem;
+    }
+}
+.blog .profile {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.blog .main {
+    margin: 2rem 0 3rem;
+    border-radius: 16px;
+}
+
+.blog-body p {
+    font-weight: 500;
+    line-height: 35px;
+    margin-bottom: 1.5rem;
+}
+.blog-body h5 {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.section-trending .owl-carousel img.icon {
+    width: auto;
+}
+.section-trending .owl-next,
+.section-trending .owl-prev {
+    position: absolute;
+}
+
+.section-trending .owl-prev {
+    left: -5%
+}
+
+.section-trending .owl-next {
+    right: -5%
+}
+
+@media (max-width: 767px) {
+    .section-trending .owl-prev {
+        left: 0
+    }
+
+    .section-trending .owl-next {
+        right: 0
+    }
+}
+
+/* Orange Card */
+.orange-card {
+    display: flex;
+    background: var(--color-orange-lightbg);
+    overflow: hidden;
+    border-radius: 16px;
+    width: 100%;
+    min-height: 350px;
+    align-items: center;
+}
+.orange-img {
+    width: 50%;
+    display: inline-block;
+    height: 350px;
+}
+.orange-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.orange-content {
+    padding: 3rem 2rem;
+    width: 50%
+}
+@media (max-width: 767px) {
+    .orange-card {
+        flex-direction: column;
+    }
+    .orange-img,
+    .orange-content {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+/* Related */
+.section-related {
+    padding: 6rem 0 3rem;
+}
+.section-related h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.section-related .owl-carousel img.icon {
+    width: auto;
+}
+
+.section-related .owl-next,
+.section-related .owl-prev {
+    position: absolute;
+}
+
+.section-related .owl-prev {
+    left: -5%
+}
+
+.section-related .owl-next {
+    right: -5%
+}
+
+@media (max-width: 767px) {
+    .section-related .owl-prev {
+        left: 0
+    }
+
+    .section-related .owl-next {
+        right: 0
+    }
+}
+
+/* Foodpreneur Stars */
+.section-stars {
+    padding: 6rem 0 3rem;
+}
+.section-stars h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+.section-stars .expert {
+    transform: translateY(-3rem);
+}
+
+@media (max-width: 767px) {
+    .section-stars .expert {
+        transform: translateY(0);
+    }
+    .section-stars .row.column {
+        flex-direction: column-reverse;
+    }
+}
+.section-stars .expert .tag-feature {
+    width: 90px;
+    height: auto;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.section-stars .bg-success,
+.section-stars .bg-orange,
+.section-stars .bg-purple {
+    padding: 1rem 0 2rem;
+}
+
+/* Food Marketers */
+.food-market {
+    padding: 3rem 0;
+}
+.food-market h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+@media(max-width: 767px) {
+    .food-market .row.column {
+        flex-direction: column-reverse;
+    }
 }
