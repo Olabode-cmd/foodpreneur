@@ -1567,7 +1567,7 @@ footer ul li:hover a {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom, #ffffff00, #ffffff00, #00000048);
+    background: linear-gradient(to bottom, #ffffff00, #ffffff00, #00000065);
 }
 .blog-header .blog-img .content {
     position: absolute;
@@ -1578,7 +1578,7 @@ footer ul li:hover a {
     text-align: left;
 }
 .blog-header .blog-img .content .title {
-    width: 65%;
+    width: 60%;
     color: #ddd;
 }
 .blog-header .blog-img .content .title h1 {
@@ -1596,13 +1596,19 @@ footer ul li:hover a {
     padding-left: 2rem;
 }
 @media (max-width: 767px) {
-    .blog-header .blog-img .content .detail {
-        display: none;
-        visibility: hidden;
-    }
     .blog-header .blog-img .content .title {
         width: 85%;
     }
+    .blog-header .blog-img .content .detail {
+        width: 50%;
+        margin-top: 1rem;
+    }
+    .blog-header .blog-img .content .detail:first-of-type {
+        border-left: none;
+    }
+        .blog-header .blog-img .shade {
+            background: linear-gradient(to bottom, #ffffff00, #00000052, #00000094) !important;
+        }rgba(0, 0, 0, 0.58)
 }
 .section-blogposts h1.title {
     font-size: 1.8rem;
