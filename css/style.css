@@ -25,6 +25,11 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+html {
+    width: 100vw !important;
+    overflow-x: hidden !important;
+}
+
 .text-orange {
     color: var(--color-orange);
 }
@@ -32,12 +37,15 @@ body {
 .bg-orange {
     background: var(--color-orange-lightbg);
 }
+
 .bg-success {
     background: var(--color-primary-lightbg) !important;
 }
+
 .bg-purple {
     background: var(--color-purple-lightbg);
 }
+
 .text-purple {
     color: var(--color-purple);
 }
@@ -51,6 +59,7 @@ body {
     margin-bottom: 1rem;
     display: inline-block;
 }
+
 .outline-orange {
     padding: .5rem 1rem;
     background: transparent;
@@ -60,6 +69,7 @@ body {
     margin-bottom: 1rem;
     display: inline-block;
 }
+
 .outline-purple {
     padding: .5rem 1rem;
     background: transparent;
@@ -91,6 +101,7 @@ img.round-16 {
 p {
     margin: 0;
 }
+
 .text-underline {
     text-decoration: underline;
 }
@@ -132,6 +143,7 @@ img {
 .btn-primary:hover {
     background: var(--color-primary-darker);
 }
+
 .btn-orange {
     padding: .7rem .9rem;
     background: var(--color-orange);
@@ -148,6 +160,7 @@ img {
     background: var(--color-orange-darker);
     color: #fff;
 }
+
 .btn-purple {
     padding: .7rem .9rem;
     background: var(--color-purple);
@@ -262,7 +275,7 @@ nav .nav-link.active {
 
 .hero-banner {
     height: 95vh;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
 }
 
@@ -283,10 +296,25 @@ nav .nav-link.active {
 }
 
 @media (max-width: 767px) {
+    .banner1 {
+        background-position: 30% center !important;
+    }
+    .banner2 {
+        background-position: 30% center !important;
+    }
+    .banner3 {
+        background-position: 30% center !important;
+    }
+}
+@media (max-width: 767px) {
     .hero-banner .banner-card {
         width: 90% !important;
         margin: 0 auto;
         top: 55%;
+    }
+
+    .hero-banner .banner-card h1 {
+        font-size: 1.4rem;
     }
 }
 
@@ -303,7 +331,7 @@ nav .nav-link.active {
 }
 
 .owl-next {
-    right: 15px;
+    right: 25px;
 }
 
 .owl-prev {
@@ -421,6 +449,20 @@ nav .nav-link.active {
     border: 0;
 }
 
+@media (max-width: 767px) {
+    .course-card h1 {
+        font-size: 1.1rem;
+    }
+
+    .course-card p {
+        font-size: .9rem;
+    }
+
+    .course-card h4 {
+        font-size: .8rem;
+    }
+}
+
 .section-marketplace .owl-carousel .owl-item img.icon {
     display: inline-block;
     width: auto;
@@ -508,8 +550,6 @@ nav .nav-link.active {
 /* Section Blog */
 .section-blog {
     padding: 3rem 0;
-    /* width: 100vw !important;
-    overflow-x: hidden !important; */
 }
 
 .section-blog h1.title {
@@ -524,12 +564,6 @@ nav .nav-link.active {
 .blog-card {
     margin: 10px 0;
     /* width: 450px; */
-}
-
-@media (max-width: 767px) {
-    .blog-card {
-        width: auto;
-    }
 }
 
 .blog-card .blog-img {
@@ -576,6 +610,14 @@ nav .nav-link.active {
     background: linear-gradient(to right, #ffffff00 3%, #ffffff63 10%, #fff);
     z-index: 15;
 }
+@media (max-width: 767px) {
+    .blog-card {
+        width: auto;
+    }
+    .blog-content p {
+        font-size: .9rem;
+    }
+}
 
 /* Section Testimonial */
 .section-testimonial {
@@ -612,6 +654,14 @@ nav .nav-link.active {
     font-weight: 500;
 }
 
+@media (max-width: 767px) {
+    .section-testimonial .testimonial-card p {
+        font-size: .9rem;
+    }
+    .testimonial-card .name {
+        font-size: 1rem;
+    }
+}
 .section-testimonial .connect-1 {
     width: 170px;
     position: absolute;
@@ -652,9 +702,10 @@ nav .nav-link.active {
 }
 
 @media (max-width: 767px) {
+
     .section-events .search,
     .section-blogposts .search {
-        padding: 2rem 3rem;
+        padding: 2rem .5rem;
     }
 }
 
@@ -846,11 +897,11 @@ footer ul li:hover a {
     .shade {
         display: none;
     }
-
+/* 
     .col-md-6.owl {
         padding-left: 3rem;
         margin-top: 1rem;
-    }
+    } */
 }
 
 /* Event Page */
@@ -1194,8 +1245,13 @@ footer ul li:hover a {
 
 @media (max-width: 767px) {
     .search-hero h1.title {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
         margin-bottom: 2rem;
+        line-height: 40px;
+    }
+
+    .search-hero.short {
+        padding-top: 9rem;
     }
 }
 
@@ -1232,6 +1288,17 @@ footer ul li:hover a {
 .section-learn h1.title {
     font-size: 1.8rem;
     font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+    .section-learn {
+        padding: 4rem 1rem;
+    }
+
+    .section-learn .container .row > div {
+        margin-bottom: 3rem;
+    }
 }
 
 /* Expert Cards */
@@ -1243,12 +1310,14 @@ footer ul li:hover a {
     border-radius: 16px;
     margin: 10px 0;
 }
+
 .expert.entrepreneur {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     margin: 25px 0;
     overflow: hidden;
 }
+
 .expert.entrepreneur .tag {
     position: absolute;
     top: -3px;
@@ -1260,13 +1329,16 @@ footer ul li:hover a {
     color: #fff;
     border: none;
 }
+
 .expert.entrepreneur .tag.success {
     background: var(--color-primary);
 }
+
 .expert.entrepreneur .tag.orange {
     background: var(--color-orange);
     color: #000;
 }
+
 .expert.entrepreneur .tag.purple {
     background: var(--color-purple);
 }
@@ -1540,6 +1612,17 @@ footer ul li:hover a {
     font-weight: 500;
 }
 
+@media (max-width: 767px) {
+    .section-stories h1.heading {
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+    .section-stories p.story {
+        font-size: .9rem;
+        line-height: 30px;
+    }
+}
+
 .section-stories .owl-next,
 .section-stories .owl-prev {
     position: absolute;
@@ -1567,6 +1650,7 @@ footer ul li:hover a {
 .section-professional {
     padding: 3rem 0;
 }
+
 .pro-img {
     width: 100%;
     height: 350px;
@@ -1576,6 +1660,7 @@ footer ul li:hover a {
     position: sticky;
     top: 30px;
 }
+
 .pro-img img {
     width: 100%;
     height: 100%;
@@ -1593,10 +1678,12 @@ footer ul li:hover a {
     background-size: 16px;
     margin-bottom: 1rem;
 }
+
 .section-professional h1.title {
     font-size: 2rem;
     font-weight: 600;
 }
+
 .section-professional .info p {
     margin-bottom: 1rem;
     font-weight: 500;
@@ -1625,10 +1712,12 @@ footer ul li:hover a {
     border-radius: 16px;
     margin-top: 2rem;
 }
+
 .section-professional .mail-card h1 {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .section-professional .mail-card p {
     font-weight: 500;
 }
@@ -1643,10 +1732,12 @@ footer ul li:hover a {
 .blog-header {
     padding: 3rem 0;
 }
+
 .blog-header h1.title {
     font-weight: 600;
     font-size: 2.4rem;
 }
+
 .blog-header .subtitle {
     margin-bottom: 2rem;
     font-weight: 500;
@@ -1660,11 +1751,13 @@ footer ul li:hover a {
     border-radius: 24px;
     overflow: hidden;
 }
+
 .blog-header .blog-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .blog-header .blog-img .shade {
     position: absolute;
     z-index: 4;
@@ -1674,6 +1767,7 @@ footer ul li:hover a {
     width: 100%;
     background: linear-gradient(to bottom, #ffffff00, #ffffff00, #00000065);
 }
+
 .blog-header .blog-img .content {
     position: absolute;
     z-index: 5;
@@ -1682,43 +1776,53 @@ footer ul li:hover a {
     width: 100%;
     text-align: left;
 }
+
 .blog-header .blog-img .content .title {
     width: 60%;
     color: #ddd;
 }
+
 .blog-header .blog-img .content .title h1 {
     color: #fff;
     font-weight: 600;
     font-size: 1.8rem;
 }
+
 .blog-header .blog-img .content .title p {
     width: 85%;
 }
+
 .blog-header .blog-img .content .detail {
     width: 20%;
     color: #fff;
     border-left: 1px solid #fff;
     padding-left: 2rem;
 }
+
 @media (max-width: 767px) {
     .blog-header .blog-img .content .title {
         width: 85%;
     }
+
     .blog-header .blog-img .content .detail {
         width: 50%;
         margin-top: 1rem;
     }
+
     .blog-header .blog-img .content .detail:first-of-type {
         border-left: none;
     }
-        .blog-header .blog-img .shade {
-            background: linear-gradient(to bottom, #ffffff00, #00000052, #00000094) !important;
-        }
+
+    .blog-header .blog-img .shade {
+        background: linear-gradient(to bottom, #ffffff00, #00000052, #00000094) !important;
+    }
 }
+
 .section-blogposts h1.title {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .blog-content .text-grey {
     font-size: .9rem;
     font-weight: 500;
@@ -1741,14 +1845,16 @@ footer ul li:hover a {
     color: #fff;
 }
 
-.section-trending{
+.section-trending {
     padding: 6rem 0 3rem;
     background: var(--color-purple-lightbg);
 }
+
 .section-trending h1.title {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .trend-card {
     background: #fff;
     overflow: hidden;
@@ -1757,24 +1863,30 @@ footer ul li:hover a {
     min-height: 500px;
     margin: 10px 0;
 }
+
 .trend-card .trend-img {
     height: 250px;
     width: 100%;
 }
+
 .trend-card .trend-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .trend-card .trend-detail {
     padding: 1rem;
 }
+
 .trend-card .trend-detail h4 {
     font-weight: 600;
 }
+
 .trend-card .trend-detail p {
     color: #000;
 }
+
 .trend-card .trend-tag {
     position: absolute;
     top: 0;
@@ -1784,12 +1896,15 @@ footer ul li:hover a {
     color: #fff;
     font-weight: 500;
 }
+
 .trend-card .trend-tag.success {
     background: var(--color-primary);
 }
+
 .trend-card .trend-tag.purple {
     background: var(--color-purple);
 }
+
 .trend-card .trend-tag.orange {
     background: var(--color-orange);
     color: #000;
@@ -1808,26 +1923,32 @@ footer ul li:hover a {
     position: absolute;
     width: 140px;
 }
+
 /* Newsletter */
 .section-newsletter {
     padding: 3rem 0;
     background: var(--color-primary);
 }
+
 .section-newsletter img {
     border-radius: 16px;
 }
+
 .section-newsletter h1.title {
     color: #fff;
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 .section-newsletter p.subtitle {
     color: #fff;
     font-weight: 500;
 }
+
 form.relative {
     position: relative;
 }
+
 .section-newsletter .email-input {
     width: 100%;
     padding: 1rem;
@@ -1835,6 +1956,7 @@ form.relative {
     border: none;
     outline: none;
 }
+
 .section-newsletter .btn.btn-primary {
     position: absolute;
     right: 5px;
@@ -1846,17 +1968,20 @@ form.relative {
     font-weight: 600;
     margin: 1rem 0 3rem;
 }
+
 @media (max-width: 767px) {
     .blog h1.title {
         font-size: 1.8rem;
     }
 }
+
 .blog .profile {
     width: 75px;
     height: 75px;
     border-radius: 50%;
     margin-right: 10px;
 }
+
 .blog .main {
     margin: 2rem 0 3rem;
     border-radius: 16px;
@@ -1867,6 +1992,7 @@ form.relative {
     line-height: 35px;
     margin-bottom: 1.5rem;
 }
+
 .blog-body h5 {
     font-weight: 600;
     font-size: 1.3rem;
@@ -1875,6 +2001,7 @@ form.relative {
 .section-trending .owl-carousel img.icon {
     width: auto;
 }
+
 .section-trending .owl-next,
 .section-trending .owl-prev {
     position: absolute;
@@ -1908,24 +2035,29 @@ form.relative {
     min-height: 350px;
     align-items: center;
 }
+
 .orange-img {
     width: 50%;
     display: inline-block;
     height: 350px;
 }
+
 .orange-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .orange-content {
     padding: 3rem 2rem;
     width: 50%
 }
+
 @media (max-width: 767px) {
     .orange-card {
         flex-direction: column;
     }
+
     .orange-img,
     .orange-content {
         width: 100%;
@@ -1937,6 +2069,7 @@ form.relative {
 .section-related {
     padding: 6rem 0 3rem;
 }
+
 .section-related h1.title {
     font-size: 1.8rem;
     font-weight: 600;
@@ -1974,23 +2107,17 @@ form.relative {
 .section-stars {
     padding: 6rem 0 3rem;
 }
+
 .section-stars h1.title {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 5rem;
 }
+
 .section-stars .expert {
     transform: translateY(-3rem);
 }
 
-@media (max-width: 767px) {
-    .section-stars .expert {
-        transform: translateY(0);
-    }
-    .section-stars .row.column {
-        flex-direction: column-reverse;
-    }
-}
 .section-stars .expert .tag-feature {
     width: 90px;
     height: auto;
@@ -1998,16 +2125,34 @@ form.relative {
     top: 15px;
     right: 15px;
 }
+
 .section-stars .bg-success,
 .section-stars .bg-orange,
 .section-stars .bg-purple {
     padding: 1rem 0 2rem;
 }
 
+@media (max-width: 767px) {
+    .section-stars .expert {
+        transform: translateY(0);
+    }
+
+    .section-stars .row.column {
+        flex-direction: column-reverse;
+    }
+
+    .section-stars .bg-success,
+.section-stars .bg-orange,
+.section-stars .bg-purple {
+    padding: 2rem 1rem 5rem;
+}
+}
+
 /* Food Marketers */
 .food-market {
     padding: 3rem 0;
 }
+
 .food-market h1.title {
     font-size: 1.8rem;
     font-weight: 600;
@@ -2016,5 +2161,8 @@ form.relative {
 @media(max-width: 767px) {
     .food-market .row.column {
         flex-direction: column-reverse;
+    }
+    .food-market .row {
+        margin: 2rem 0;
     }
 }
