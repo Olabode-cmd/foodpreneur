@@ -25,6 +25,7 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+
 html {
     width: 100vw !important;
     overflow-x: hidden !important;
@@ -299,13 +300,16 @@ nav .nav-link.active {
     .banner1 {
         background-position: 30% center !important;
     }
+
     .banner2 {
         background-position: 30% center !important;
     }
+
     .banner3 {
         background-position: 30% center !important;
     }
 }
+
 @media (max-width: 767px) {
     .hero-banner .banner-card {
         width: 90% !important;
@@ -610,10 +614,12 @@ nav .nav-link.active {
     background: linear-gradient(to right, #ffffff00 3%, #ffffff63 10%, #fff);
     z-index: 15;
 }
+
 @media (max-width: 767px) {
     .blog-card {
         width: auto;
     }
+
     .blog-content p {
         font-size: .9rem;
     }
@@ -658,10 +664,12 @@ nav .nav-link.active {
     .section-testimonial .testimonial-card p {
         font-size: .9rem;
     }
+
     .testimonial-card .name {
         font-size: 1rem;
     }
 }
+
 .section-testimonial .connect-1 {
     width: 170px;
     position: absolute;
@@ -897,7 +905,8 @@ footer ul li:hover a {
     .shade {
         display: none;
     }
-/* 
+
+    /* 
     .col-md-6.owl {
         padding-left: 3rem;
         margin-top: 1rem;
@@ -1296,7 +1305,7 @@ footer ul li:hover a {
         padding: 4rem 1rem;
     }
 
-    .section-learn .container .row > div {
+    .section-learn .container .row>div {
         margin-bottom: 3rem;
     }
 }
@@ -1617,6 +1626,7 @@ footer ul li:hover a {
         font-size: 1.4rem;
         font-weight: 600;
     }
+
     .section-stories p.story {
         font-size: .9rem;
         line-height: 30px;
@@ -2142,10 +2152,10 @@ form.relative {
     }
 
     .section-stars .bg-success,
-.section-stars .bg-orange,
-.section-stars .bg-purple {
-    padding: 2rem 1rem 5rem;
-}
+    .section-stars .bg-orange,
+    .section-stars .bg-purple {
+        padding: 2rem 1rem 5rem;
+    }
 }
 
 /* Food Marketers */
@@ -2162,7 +2172,188 @@ form.relative {
     .food-market .row.column {
         flex-direction: column-reverse;
     }
+
     .food-market .row {
         margin: 2rem 0;
+    }
+}
+
+/* Section CourseInfo */
+.section-courseinfo {
+    padding: 4rem 0;
+}
+
+.section-courseinfo h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 70%;
+}
+
+.section-courseinfo p.subtitle {
+    font-weight: 500;
+    margin: 15px 0;
+    width: 90%;
+}
+
+.section-courseinfo h2.title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.section-courseinfo .accordion-button:not(.collapsed) {
+    background: none;
+    font-weight: 600;
+    color: #000;
+}
+
+.section-courseinfo .accordion img.icon {
+    width: 18px;
+}
+
+.section-readmore {
+    padding: 4rem 0 0;
+}
+
+.section-readmore h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.section-readmore p {
+    font-weight: 500;
+    line-height: 35px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
+}
+
+.read-container {
+    overflow: hidden;
+    max-height: 200px;
+    /* Set the initial max height for the container */
+    transition: max-height 0.5s ease;
+    /* Add a smooth transition for the max-height property */
+}
+
+.section-readmore .opened .btn-text img {
+    transform: rotate(180deg);
+}
+
+.section-readmore .photo {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.section-readmore .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-readmore .tag-primary {
+    font-size: .8rem;
+
+}
+
+.readmorebg {
+    padding: 3rem 0 1rem;
+    background: linear-gradient(to bottom, #ffffff25, #ffffff4d, #ffffff9d);
+    transform: translateY(-35px);
+}
+
+.coursenote {
+    padding: 1.5rem 0;
+}
+
+.coursenote h1.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.coursenote p {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
+}
+
+/* INFO CARD */
+.info-card {
+    border: 1px solid #888;
+    padding: 1rem;
+    border-radius: 16px;
+}
+
+.info-card .video {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.info-card .video .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75px;
+    transition: .3s;
+}
+
+.info-card .video .fit {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.info-card .video:hover .play {
+    width: 85px;
+}
+
+.info-card h2.price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.info-card .old-price {
+    font-size: 1rem;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.sticky-element {
+    position: sticky;
+    top: 15px;
+    /* Adjust this value based on your layout */
+}
+
+
+@media (max-width: 767px) {
+    .section-courseinfo h1.title {
+        width: 100%;
+        font-size: 1.3rem;
+    }
+
+    .section-courseinfo p.subtitle {
+        font-size: .9rem;
+        width: 100%;
+    }
+
+    .section-courseinfo p {
+        font-size: .9rem;
+    }
+
+    .section-courseinfo h2.title {
+        font-size: 1.1rem;
+    }
+
+    .section-readmore p {
+        line-height: 28px;
+        font-size: .9rem;
     }
 }
