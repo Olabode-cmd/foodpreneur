@@ -973,7 +973,7 @@ footer ul li:hover a {
 
 /* About Page */
 .about-wrapper {
-    height: 130vh;
+    height: 1100px;
     background: linear-gradient(to bottom, #fff 65%, #108537 65%);
 }
 
@@ -1051,6 +1051,11 @@ footer ul li:hover a {
     .about-wrapper {
         height: 80vh;
         background: linear-gradient(to bottom, #fff 50%, #108537 50%);
+    }
+
+    .about-wrapper .subtitle,
+    .section-values .subtitle {
+        line-height: 26px;
     }
 
     .section-values .value {
