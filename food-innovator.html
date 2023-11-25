@@ -525,7 +525,7 @@
                         <h1 class="title">Enroll in Our Food Processing Course Today!</h1>
                         <p class="subtitle">Unlock the secrets of Business success</p>
         
-                        <a href="#" class="btn btn-primary mt-4">Explore Courses</a>
+                        <a href="/courses.html" class="btn btn-primary mt-4">Explore Courses</a>
                     </div>
                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <img src="images/enrol.png" alt="enroll" class="my-3">
@@ -569,9 +569,11 @@
                 <div class="col-md-3">
                     <p class="text-grey bold mt-2">On Social</p>
                     <ul>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://www.instagram.com/foodpreneurshub/">Instagram</a></li>
                         <li><a href="#">Youtube</a></li>
-                        <li><a href="#">X (formerly Twitter)</a></li>
+                        <li><a href="https://twitter.com/foodpreneurshub">X (formerly Twitter)</a></li>
+                        <li><a href="https://wa.me/2348126378067">Whatsapp</a></li>
+                        <li><a href="https://www.linkedin.com/company/foodpreneurs-hub/">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
@@ -589,6 +591,20 @@
     <script>
         AOS.init();
 
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 25,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1.5
+                }
+            }
+        });
+
         $('.owl-two').owlCarousel({
                 loop: false,
                 margin: 25,
@@ -605,20 +621,20 @@
 
         const tags = document.querySelectorAll('.section-learn .tag');
 
-            // Add a click event listener to each tag
-            tags.forEach(tag => {
-                tag.addEventListener('click', () => {
-                    // Toggle the 'active' class for the clicked tag
-                    tag.classList.toggle('active');
+        // Add a click event listener to each tag
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Toggle the 'active' class for the clicked tag
+                tag.classList.toggle('active');
 
-                    // Remove the 'active' class from other tags
-                    tags.forEach(otherTag => {
-                        if (otherTag !== tag) {
-                            otherTag.classList.remove('active');
-                        }
-                    });
+                // Remove the 'active' class from other tags
+                tags.forEach(otherTag => {
+                    if (otherTag !== tag) {
+                        otherTag.classList.remove('active');
+                    }
                 });
             });
+        });
     </script>
 </body>
 

@@ -329,9 +329,11 @@
                 <div class="col-md-3">
                     <p class="text-grey bold mt-2">On Social</p>
                     <ul>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://www.instagram.com/foodpreneurshub/">Instagram</a></li>
                         <li><a href="#">Youtube</a></li>
-                        <li><a href="#">X (formerly Twitter)</a></li>
+                        <li><a href="https://twitter.com/foodpreneurshub">X (formerly Twitter)</a></li>
+                        <li><a href="https://wa.me/2348126378067">Whatsapp</a></li>
+                        <li><a href="https://www.linkedin.com/company/foodpreneurs-hub/">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
@@ -348,6 +350,34 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 25,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1.5
+                }
+            }
+        });
+
+        $('.owl-two').owlCarousel({
+                loop: false,
+                margin: 25,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    }
+                }
+            });
 
         const tags = document.querySelectorAll('.section-learn .tag');
 
