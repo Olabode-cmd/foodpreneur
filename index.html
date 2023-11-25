@@ -59,6 +59,25 @@
     </header>
 
     <main>
+
+        <div class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static" id="subscribeModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Subscribe to our newsletter</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="#">
+                        <div class="modal-body pt-4">
+                            <input type="email" placeholder="Email Address" id="subscribeEmail" class="form-control py-2">
+                            <button type="submit" class="btn btn-primary mt-2 w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
         <section class="section-hero">
             <div class="owl-carousel owl-theme owl-one">
                 <div class="item">
@@ -873,6 +892,14 @@
                 });
             });
         });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+                setTimeout(function () {
+                    $('#subscribeModal').modal('show');
+                }, 5000); // 5000 milliseconds (5 seconds)
+            });
 
     </script>
 </body>
