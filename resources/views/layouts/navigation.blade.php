@@ -1,100 +1,591 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+           <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('assets/images/logo.png')}}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                         <span class="logo-txt">{{ config('app.name') }}</span>
+                    </span>
+                </a>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('assets/images/logo.png')}}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <span class="logo-txt">{{ config('app.name') }}</span>
+                    </span>
+                </a>
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+            <button type="button" class="btn btn-sm px-3 header-item vertical-menu-btn noti-icon">
+                <i class="fa fa-fw fa-bars font-size-16"></i>
+            </button>
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
+            <form class="app-search d-none d-lg-block">
+                <div class="position-relative">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="bx bx-search icon-sm"></span>
+                </div>
+            </form>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+ 
+        </div>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+        <div class="d-flex">
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bx bx-bell icon-sm"></i>
+                    <span class="noti-dot bg-danger rounded-pill">3</span>
                 </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                    aria-labelledby="page-header-notifications-dropdown">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="m-0 font-size-15"> Notifications </h5>
+                            </div>
+                            <div class="col-auto">
+                                <a href="javascript:void(0);" class="small"> Mark all as read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-simplebar style="max-height: 250px;">
+                        <h6 class="dropdown-header bg-light">New</h6>
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex border-bottom align-items-start">
+                                <div class="flex-shrink-0">
+                                    <img src="assets/images/users/avatar-3.jpg"
+                                    class="me-3 rounded-circle avatar-sm" alt="user-pic">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Justin Verduzco</h6>
+                                    <div class="text-muted">
+                                        <p class="mb-1 font-size-13">Your task changed an issue from "In Progress" to <span class="badgebg-success-subtle text-success">Review</span></p>
+                                        <p class="mb-0 font-size-10 text-uppercase fw-bold"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex border-bottom align-items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-sm me-3">
+                                        <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                            <i class="uil-shopping-basket"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">New order has been placed</h6>
+                                    <div class="text-muted">
+                                        <p class="mb-1 font-size-13">Open the order confirmation or shipment confirmation.</p>
+                                        <p class="mb-0 font-size-10 text-uppercase fw-bold"><i class="mdi mdi-clock-outline"></i> 5 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <h6 class="dropdown-header bg-light">Earlier</h6>
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex border-bottom align-items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-sm me-3">
+                                        <span class="avatar-title bg-success-subtle text-success rounded-circle font-size-16">
+                                            <i class="uil-truck"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Your item is shipped</h6>
+                                    <div class="text-muted">
+                                        <p class="mb-1 font-size-13">Here is somthing that you might light like to know.</p>
+                                        <p class="mb-0 font-size-10 text-uppercase fw-bold"><i class="mdi mdi-clock-outline"></i> 1 day ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex border-bottom align-items-start">
+                                <div class="flex-shrink-0">
+                                    <img src="assets/images/users/avatar-4.jpg"
+                                        class="me-3 rounded-circle avatar-sm" alt="user-pic">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Salena Layfield</h6>
+                                    <div class="text-muted">
+                                        <p class="mb-1 font-size-13">Yay ! Everything worked!</p>
+                                        <p class="mb-0 font-size-10 text-uppercase fw-bold"><i class="mdi mdi-clock-outline"></i> 3 days ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-2 border-top d-grid">
+                        <a class="btn btn-sm btn-link font-size-14 btn-block text-center" href="javascript:void(0)">
+                            <i class="uil-arrow-circle-right me-1"></i> <span>View More..</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+ 
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-3.jpg"
+                    alt="Header Avatar">
+                    <span class="ms-2 d-none d-xl-inline-block user-item-desc">
+                        <span class="user-name">Admin. <i class="mdi mdi-chevron-down"></i></span>
+                    </span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end pt-0">
+                    <h6 class="dropdown-header">Welcome Admin!</h6>
+                    <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>  
+                    <a class="dropdown-item" href="auth-signout-cover.html"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
+     
     </div>
-</nav>
+  <!-- end dash troggle-icon -->
+
+
+</header>
+
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+
+     <!-- LOGO -->
+     <div class="navbar-brand-box">
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="{{ asset('assets/images/logo.png')}}" alt="" height="26">
+            </span>
+            <span class="logo-lg">
+                <span class="logo-txt">{{ config('app.name') }}</span>
+            </span>
+        </a>
+
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+            <span class="logo-sm">
+                <img src="{{ asset('assets/images/logo.png')}}" alt="" height="26">
+            </span>
+            <span class="logo-lg">
+                 <span class="logo-txt">{{ config('app.name') }}</span>
+            </span>
+        </a>
+    </div>
+
+    <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+        <i class="fa fa-fw fa-bars"></i>
+    </button>
+
+    <div data-simplebar class="sidebar-menu-scroll">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title" data-key="t-menu">Menu</li>
+
+                <li>
+                    <a href="index.html">
+                        <i class="bx bx-home-circle nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="menu-title" data-key="t-applications">Applications</li>
+
+                <li>
+                    <a href="apps-calendar.html">
+                        <i class="bx bx-calendar-alt nav-icon"></i>
+                        <span class="menu-item" data-key="t-calendar">Calendar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="apps-chat.html">
+                        <i class="bx bx-chat nav-icon"></i>
+                        <span class="menu-item" data-key="t-chat">Chat</span>
+                        <span class="badge rounded-pill text-danger bg-danger-subtle" data-key="t-hot">Hot</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="apps-kanban-board.html">
+                        <i class="bx bxl-trello nav-icon"></i>
+                        <span class="menu-item" data-key="t-kanban">Kanban Board</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="apps-file-manager.html">
+                        <i class="bx bx-folder nav-icon"></i>
+                        <span class="menu-item" data-key="t-filemanager">File Manager</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-shield-quarter nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Ecommerce</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="ecommerce-products.html" data-key="t-products">Products</a></li>
+                        <li><a href="ecommerce-product-detail.html" data-key="t-product-detail">Product Detail</a></li>
+                        <li><a href="ecommerce-orders.html" data-key="t-orders">Orders</a></li>
+                        <li><a href="ecommerce-customers.html" data-key="t-customers">Customers</a></li>
+                        <li><a href="ecommerce-cart.html" data-key="t-cart">Cart</a></li>
+                        <li><a href="ecommerce-checkout.html" data-key="t-checkout">Checkout</a></li>
+                        <li><a href="ecommerce-shops.html" data-key="t-shops">Shops</a></li>
+                        <li><a href="ecommerce-add-product.html" data-key="t-add-product">Add Product</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-mail-send nav-icon"></i>
+                        <span class="menu-item" data-key="t-email">Email</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="email-inbox.html" data-key="t-inbox">Inbox</a></li>
+                        <li><a href="email-read.html" data-key="t-read-email">Read Email</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-book nav-icon"></i>
+                        <span class="menu-item" data-key="t-contacts">Contacts</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="contacts-grid.html" data-key="t-user-grid">User Grid</a></li>
+                        <li><a href="contacts-list.html" data-key="t-user-list">User List</a></li>
+                        <li><a href="contacts-settings.html" data-key="t-user-settings">User Settings</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="apps-gallery.html">
+                        <i class="bx bx-image-alt nav-icon"></i>
+                        <span class="menu-item" data-key="t-gallery">Gallery</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-briefcase-alt-2 nav-icon"></i>
+                        <span class="menu-item" data-key="t-projects">Projects</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="projects-grid.html" data-key="t-p-grid">Projects Grid</a></li>
+                        <li><a href="projects-list.html" data-key="t-p-list">Projects List</a></li>
+                        <li><a href="projects-overview.html" data-key="t-p-overview">Project Overview</a></li>
+                        <li><a href="projects-create.html" data-key="t-create-new">Create New</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title" data-key="t-layouts">Layouts</li>
+        
+                <li>
+                    <a href="layout-vertical.html">
+                        <i class="bx bx-layout nav-icon"></i>
+                        <span class="menu-item" data-key="t-verfical">Vertical</span>
+                    </a>
+                </li>
+
+                <li class="menu-title" data-key="t-pages">Pages</li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="bx bx-user nav-icon"></i>
+                        <span class="menu-item" data-key="t-authentication">Authentication</span>
+                        <span class="badge rounded-pill bg-info">9</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-signin">Sign In</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-signin-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-signin-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-signup">Sign Up</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-signup-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-signup-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-signout">Sign Out</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-signout-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-signout-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-lock-screen">Lock Screen</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-lockscreen-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-lockscreen-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-forgot-password">Forgot Password</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-forgotpassword-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-forgotpassword-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-reset-password">Reset Password</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-resetpassword-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-resetpassword-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-email-verification">Email Verification</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-emailverification-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-emailverification-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-2step-verification">2-step Verification</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-2step-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-2step-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" data-key="t-thankyou">Thank you</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="auth-thankyou-basic.html" data-key="t-basic">Basic</a></li>
+                                <li><a href="auth-thankyou-cover.html" data-key="t-cover">Cover</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-info-circle nav-icon"></i>
+                        <span class="menu-item" data-key="t-error-pages">Error Pages</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="error-404-basic.html" data-key="t-error-404-basic">404 Basic</a></li>
+                        <li><a href="error-404-cover.html" data-key="t-error-404-cover">404 Cover</a></li>
+                        <li><a href="error-500-basic.html" data-key="t-error-500-basic">500 Basic</a></li>
+                        <li><a href="error-500-cover.html" data-key="t-error-500-cover">500 Cover</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-file-blank nav-icon"></i>
+                        <span class="menu-item" data-key="t-utility">Utility</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="pages-starter.html" data-key="t-starter-page">Starter Page</a></li>
+                        <li><a href="pages-profile.html" data-key="t-profile">Profile</a></li>
+                        <li><a href="pages-maintenance.html" data-key="t-maintenance">Maintenance</a></li>
+                        <li><a href="pages-comingsoon.html" data-key="t-coming-soon">Coming Soon</a></li>
+                        <li><a href="pages-faqs.html" data-key="t-faqs">FAQs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-purchase-tag-alt nav-icon"></i>
+                        <span class="menu-item" data-key="t-pricing">Pricing</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="pricing-basic.html" data-key="t-basic">Basic</a></li>
+                        <li><a href="pricing-table.html" data-key="t-table">Table</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-file nav-icon"></i>
+                        <span class="menu-item" data-key="t-invoices">Invoices</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="invoices-list.html" data-key="t-invoice-list">Invoice List</a></li>
+                        <li><a href="invoices-detail.html" data-key="t-invoice-detail">Invoice Detail</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-award nav-icon"></i>
+                        <span class="menu-item" data-key="t-timeline">Timeline</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="timeline-center.html" data-key="t-center-view">Center View</a></li>
+                        <li><a href="timeline-left.html" data-key="t-left-view">Left View</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title" data-key="t-components">Components</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-tone nav-icon"></i>
+                        <span class="menu-item" data-key="t-ui-elements">UI Elements</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="ui-alerts.html" data-key="t-alerts">Alerts</a></li>
+                        <li><a href="ui-buttons.html" data-key="t-buttons">Buttons</a></li>
+                        <li><a href="ui-cards.html" data-key="t-cards">Cards</a></li>
+                        <li><a href="ui-carousel.html" data-key="t-carousel">Carousel</a></li>
+                        <li><a href="ui-dropdowns.html" data-key="t-dropdowns">Dropdowns</a></li>
+                        <li><a href="ui-grid.html" data-key="t-grid">Grid</a></li>
+                        <li><a href="ui-images.html" data-key="t-images">Images</a></li>
+                        <li><a href="ui-modals.html" data-key="t-modals">Modals</a></li>
+                        <li><a href="ui-offcanvas.html" data-key="t-offcanvas">Offcanvas</a></li>
+                        <li><a href="ui-placeholders.html" data-key="t-placeholders">Placeholders</a></li>
+                        <li><a href="ui-progressbars.html" data-key="t-progress-bars">Progress Bars</a></li>
+                        <li><a href="ui-tabs-accordions.html" data-key="t-tabs-accordions">Tabs & Accordions</a></li>
+                        <li><a href="ui-typography.html" data-key="t-typography">Typography</a></li>
+                        <li><a href="ui-video.html" data-key="t-video">Video</a></li>
+                        <li><a href="ui-general.html" data-key="t-general">General</a></li>
+                        <li><a href="ui-colors.html" data-key="t-colors">Colors</a></li>
+                        <li><a href="ui-utilities.html" data-key="t-utilities">Utilities</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-customize nav-icon"></i>
+                        <span class="menu-item" data-key="t-extend-ui">Extended UI</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="extended-lightbox.html" data-key="t-lightbox">Lightbox</a></li>
+                        <li><a href="extended-rangeslider.html" data-key="t-range-slider">Range Slider</a></li>
+                        <li><a href="extended-sweet-alert.html" data-key="t-sweetalert">SweetAlert 2</a></li>
+                        <li><a href="extended-rating.html" data-key="t-rating">Rating</a></li>
+                        <li><a href="extended-notifications.html" data-key="t-notifications">Notifications</a></li>
+                        <li><a href="extended-swiperslider.html" data-key="t-swiperslider">Swiper Slider</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-pencil nav-icon"></i>
+                        <span class="menu-item" data-key="t-forms">Forms</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="form-elements.html" data-key="t-basic-elements">Basic Elements</a></li>
+                        <li><a href="form-validation.html" data-key="t-validation">Validation</a></li>
+                        <li><a href="form-advanced.html" data-key="t-advanced-plugins">Advanced Plugins</a></li>
+                        <li><a href="form-editors.html" data-key="t-editors">Editors</a></li>
+                        <li><a href="form-uploads.html" data-key="t-file-upload">File Upload</a></li>
+                        <li><a href="form-wizard.html" data-key="t-wizard">Wizard</a></li>
+                        <li><a href="form-mask.html" data-key="t-mask">Mask</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-table nav-icon"></i>
+                        <span class="menu-item" data-key="t-tables">Tables</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="tables-basic.html" data-key="t-bootstrap-basic">Bootstrap Basic</a></li>
+                        <li><a href="tables-advanced.html" data-key="t-advanced-tables">Advance Tables</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-bar-chart-alt-2 nav-icon"></i>
+                        <span class="menu-item" data-key="t-apex-charts">Apex Charts</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="charts-line.html" data-key="t-line">Line</a></li>
+                        <li><a href="charts-area.html" data-key="t-area">Area</a></li>
+                        <li><a href="charts-column.html" data-key="t-column">Column</a></li>
+                        <li><a href="charts-bar.html" data-key="t-bar">Bar</a></li>
+                        <li><a href="charts-mixed.html" data-key="t-mixed">Mixed</a></li>
+                        <li><a href="charts-timeline.html" data-key="t-timeline">Timeline</a></li>
+                        <li><a href="charts-candlestick.html" data-key="t-candlestick">Candlestick</a></li>
+                        <li><a href="charts-boxplot.html" data-key="t-boxplot">Boxplot</a></li>
+                        <li><a href="charts-bubble.html" data-key="t-bubble">Bubble</a></li>
+                        <li><a href="charts-scatter.html" data-key="t-scatter">Scatter</a></li>
+                        <li><a href="charts-heatmap.html" data-key="t-heatmap">Heatmap</a></li>
+                        <li><a href="charts-treemap.html" data-key="t-treemap">Treemap</a></li>
+                        <li><a href="charts-pie.html" data-key="t-pie">Pie</a></li>
+                        <li><a href="charts-radialbar.html" data-key="t-radialbar">Radialbar</a></li>
+                        <li><a href="charts-radar.html" data-key="t-radar">Radar</a></li>
+                        <li><a href="charts-polararea.html" data-key="t-polararea">Polararea</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-archive nav-icon"></i>
+                        <span class="menu-item" data-key="t-icons">Icons</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="icons-unicons.html" data-key="t-unicons">Unicons</a></li>
+                        <li><a href="icons-feathericons.html" data-key="t-feather-icons">Feather icons</a></li>
+                        <li><a href="icons-boxicons.html" data-key="t-boxicons">Boxicons</a></li>
+                        <li><a href="icons-materialdesign.html" data-key="t-material-design">Material Design</a></li>
+                        <li><a href="icons-fontawesome.html" data-key="t-font-awesome">Font Awesome 5</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-map-alt nav-icon"></i>
+                        <span class="menu-item" data-key="t-maps">Maps</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="maps-google.html" data-key="t-google">Google</a></li>
+                        <li><a href="maps-vector.html" data-key="t-vector">Vector</a></li>
+                        <li><a href="maps-leaflet.html" data-key="t-leaflet">Leaflet</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-share-alt nav-icon"></i>
+                        <span class="menu-item" data-key="t-multi-level">Multi Level</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="javascript: void(0);" data-key="t-level-1.1">Level 1.1</a></li>
+                        <li><a href="javascript: void(0);" class="has-arrow" data-key="t-level-1.2">Level 1.2</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="javascript: void(0);" data-key="t-level-2.1">Level 2.1</a></li>
+                                <li><a href="javascript: void(0);" data-key="t-level-2.2">Level 2.2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
