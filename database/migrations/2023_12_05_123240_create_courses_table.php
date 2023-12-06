@@ -16,8 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
+            $table->string('tag');
             $table->string('image');
-            
+            $table->string('author');
+            $table->integer('students');
+            $table->string('time');
+            $table->string('rating');
+            $table->string('url');
+            $table->integer('views');
             $table->timestamps();
         });
     }

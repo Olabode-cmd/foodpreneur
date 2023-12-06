@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ebook_subscribers', function (Blueprint $table) {
+        Schema::create('foodprocessings_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('email');
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ebook_subscribers');
+        Schema::dropIfExists('foodprocessing_categories');
     }
 };

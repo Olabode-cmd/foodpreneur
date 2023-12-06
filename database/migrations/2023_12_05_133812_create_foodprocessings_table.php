@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('foodprocessings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category');
-            $table->foreign('category')->references('id')->on('foodprocessing_categories');
+            $table->foreign('category')->references('id')->on('foodprocessings_categories');
             $table->string('title');
             $table->string('slug');
             $table->text('description');

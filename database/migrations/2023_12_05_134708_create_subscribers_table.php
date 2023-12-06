@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->string('name')->nullable();
+            $table->enum('type',['newsletter','community','ebook']);
             $table->timestamps();
         });
     }

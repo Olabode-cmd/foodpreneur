@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('role');
-            $table->image('image');
+            $table->text('image');
             $table->string('location');
             $table->text('socials');
             $table->text('description');
@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('signature');
             $table->string('tag');
             $table->text('achievements');
+            $table->integer('views');
+            $table->boolean('is_featured');
             $table->timestamps();
         });
     }
