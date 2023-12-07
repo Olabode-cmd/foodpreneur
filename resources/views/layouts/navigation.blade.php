@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
- 
+            
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
@@ -146,8 +146,8 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <h6 class="dropdown-header">Welcome Admin!</h6>
-                    <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>  
-                    <a class="dropdown-item" href="auth-signout-cover.html"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>  
+                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
                 </div>
             </div>
         </div>
@@ -198,14 +198,25 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="bx bx-home-circle nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
 
-                <li class="menu-title" data-key="t-applications">Applications</li>
 
+                <li class="menu-title" data-key="t-applications">MENU</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-briefcase-alt-2 nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Course</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.coursesCategory') }}">Courses Category</a></li>
+                        <li><a href="{{ route('admin.courses') }}" data-key="t-products">Add Course</a></li>
+                        <li><a href="{{ route('admin.coursesCreate') }}" data-key="t-product-detail">Course List</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="apps-calendar.html">
                         <i class="bx bx-calendar-alt nav-icon"></i>

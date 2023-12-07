@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->on('id')->references('courses_category');
             $table->text('description');
             $table->string('tag');
+            $table->double('price',10,2);
             $table->string('image');
             $table->string('author');
             $table->integer('students');
