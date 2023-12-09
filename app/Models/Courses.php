@@ -12,7 +12,7 @@ class Courses extends Model
     protected $fillable = [
         'name',
         'slug',
-        'desccription',
+        'description',
         'image',
         'tag',
         'author',
@@ -21,6 +21,8 @@ class Courses extends Model
         'time',
         'rating',
         'category_id',
+        'url',
+        'views'
     ];
 
     public function category(){

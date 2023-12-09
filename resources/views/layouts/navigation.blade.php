@@ -213,8 +213,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.coursesCategory') }}">Courses Category</a></li>
-                        <li><a href="{{ route('admin.courses') }}" data-key="t-products">Add Course</a></li>
-                        <li><a href="{{ route('admin.coursesCreate') }}" data-key="t-product-detail">Course List</a></li>
+                        <li><a href="{{ route('admin.coursesCreate') }}" data-key="t-products">Add Course</a></li>
+                        <li><a href="{{ route('admin.courses') }}" data-key="t-product-detail">Course List</a></li>
                     </ul>
                 </li>
                 <li>

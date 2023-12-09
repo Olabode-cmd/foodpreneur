@@ -21,13 +21,13 @@ Route::prefix('admin' )->group(function () {
             Route::get('',[CoursesController::class,'index'])->name('admin.courses');
             Route::get('create',[CoursesController::class,'create'])->name('admin.coursesCreate');
             Route::post('',[CoursesController::class,'store'])->name('admin.coursesStore');
-            Route::get('edit/{id}',[CoursesController::class,'edit'])->name('admin.coursesEdit');
+            Route::get('edit/{course}',[CoursesController::class,'edit'])->name('admin.coursesEdit');
             Route::patch('/{id}',[CoursesController::class,'update'])->name('admin.coursesUpdate');
             Route::delete('/{id}',[CoursesController::class,'destroy'])->name('admin.coursesDestroy');
         });
 
         Route::prefix('courses_categories')->group(function(){
-            Route::get('',[CoursesCategoryController::class,'index'])->name('admin.coursesCategory'); 
+            Route::get('',[CoursesCategoryController::class,'index'])->name('admin.coursesCategory');
             Route::post('',[CoursesCategoryController::class,'store'])->name('admin.coursesCategoryStore');
             Route::get('{id}',[CoursesCategoryController::class,'edit'])->name('admin.coursesCategoryEdit');
             Route::patch('/{id}',[CoursesCategoryController::class,'update'])->name('admin.coursesCategoryUpdate');
