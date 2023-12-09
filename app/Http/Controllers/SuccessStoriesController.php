@@ -25,7 +25,7 @@ class SuccessStoriesController extends Controller
 
         SuccessStories::create($request->all());
 
-        return redirect()->back()->with('success','SuccessStories has been added');
+        return redirect()->back()->with('success','Story has been added');
     }
 
     public function edit($id)

@@ -78,6 +78,26 @@ $(document).ready(function() {
         });
     });
 
+    $('.edit-testimonial').click(function () {
+        var testimonialid = $(this).data('testimonialid');
+        var url = '/admin/pages/testimonials/edit/' + testimonialid;
+        console.log(testimonialid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-testimonial').modal('show');
+                $("#edit-testimonial-form").attr("action", "/admin/pages/testimonials/" + data.id);
+                $("#edit-testimonial input[name='id']").val(data.id);
+                $("#edit-testimonial input[name='name']").val(data.name); 
+                $("#edit-testimonial input[name='location']").val(data.location); 
+                $("#edit-testimonial input[name='rating']").val(data.rating); 
+                $("#edit-testimonial textarea[name='description']").val(data.description); 
+            }
+        });
+    });
+
 
 });
 

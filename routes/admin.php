@@ -8,6 +8,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SuccessStoriesController;
+use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -67,11 +68,11 @@ Route::prefix('admin' )->group(function () {
             });
 
             Route::prefix('testimonials')->group(function(){
-                Route::get('',[TestimonialControllers::class,'index'])->name('admin.testimonials');
-                Route::post('',[TestimonialControllers::class,'store'])->name('admin.testimonialStore');
-                Route::get('edit/{testimonials}',[TestimonialControllers::class,'edit'])->name('admin.testimonialEdit');
-                Route::patch('/{id}',[TestimonialControllers::class,'update'])->name('admin.testimonialUpdate');
-                Route::get('/delete/{testimonials}',[TestimonialControllers::class,'destroy'])->name('admin.testimonialDestroy');
+                Route::get('',[TestimonialsController::class,'index'])->name('admin.testimonials');
+                Route::post('',[TestimonialsController::class,'store'])->name('admin.testimonialStore');
+                Route::get('edit/{testimonials}',[TestimonialsController::class,'edit'])->name('admin.testimonialEdit');
+                Route::patch('/{id}',[TestimonialsController::class,'update'])->name('admin.testimonialUpdate');
+                Route::get('/delete/{testimonials}',[TestimonialsController::class,'destroy'])->name('admin.testimonialDestroy');
             });
 
             Route::prefix('faqs')->group(function(){
