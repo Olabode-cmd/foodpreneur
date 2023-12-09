@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'image',
+        'category_id',
+        'author',
+        'author_role',
+        'author_image',
+        'published_on',
+        'tag',
+        'views',
+    ];
+
+    public function category(){
+        return $this->hasOne(BlogCategory::class, 'id', 'category_id');
+    }
 }

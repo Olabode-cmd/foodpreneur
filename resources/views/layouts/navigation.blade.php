@@ -218,6 +218,17 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-message-dots nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Blogs</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.blogsCategory') }}">Blogs Category</a></li>
+                        <li><a href="{{ route('admin.blogsCreate') }}" data-key="t-products">Add Blog</a></li>
+                        <li><a href="{{ route('admin.blogs') }}" data-key="t-product-detail">Blogs List</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a href="apps-calendar.html">
                         <i class="bx bx-calendar-alt nav-icon"></i>
                         <span class="menu-item" data-key="t-calendar">Calendar</span>

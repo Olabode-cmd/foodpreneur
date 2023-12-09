@@ -22,6 +22,26 @@ $(document).ready(function() {
         });
     });
 
+    $('.edit-blog-category').click(function () {
+        
+        var categoryid = $(this).data('categoryid');
+        var url = '/admin/blogs_categories/' + categoryid;
+        console.log(categoryid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-blog-category').modal('show');
+                $("#edit-blog-category-form").attr("action", "/admin/blogs_categories/" + data.id);
+                $("#edit-blog-category-form input[name='wallet_address']").val(data.wallet_address);
+                $("#edit-blog-category-form input[name='id']").val(data.id);
+                $("#edit-blog-category-form input[name='name']").val(data.name);
+                $("#edit-blog-category-form select[name='status']").val(data.status);
+            }
+        });
+    });
+
 
 });
 
