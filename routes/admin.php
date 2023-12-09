@@ -23,7 +23,7 @@ Route::prefix('admin' )->group(function () {
             Route::post('',[CoursesController::class,'store'])->name('admin.coursesStore');
             Route::get('edit/{course}',[CoursesController::class,'edit'])->name('admin.coursesEdit');
             Route::patch('/{id}',[CoursesController::class,'update'])->name('admin.coursesUpdate');
-            Route::delete('/{id}',[CoursesController::class,'destroy'])->name('admin.coursesDestroy');
+            Route::get('/delete/{courses}',[CoursesController::class,'destroy'])->name('admin.coursesDestroy');
         });
 
         Route::prefix('courses_categories')->group(function(){
