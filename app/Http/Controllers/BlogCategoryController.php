@@ -24,7 +24,6 @@ class BlogCategoryController extends Controller
             'name' => $request->name,
             'status' => 'Active',
         ]);
-
         return redirect()->back()->with('success','Category Added Successfully');
 
     }

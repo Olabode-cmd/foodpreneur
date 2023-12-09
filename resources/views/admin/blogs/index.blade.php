@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Courses')
+@section('title', 'Blogs')
 
 @section('content')
 
@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <div class="row d-flex align-items-center">
                                 <div class="col-6">
-                                    <h4 class="card-title mb-4">Course List</h4>
+                                    <h4 class="card-title mb-4">Blog List</h4>
                                 </div>
                             </div>
                             @include('custom.alert')
@@ -22,29 +22,25 @@
                                     <thead>
                                     <tr>
                                         <td>#</td>
-                                        <th>Name</th>
+                                        <th>Title</th>
                                         <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Students</th>
                                         <th>Views</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach ($courses as $key => $course)
+                                        @foreach ($blogs as $key => $blog)
                                             <tr>
                                                 <td>{{ $key +1 }}</td>
-                                                <td>{{ $course->name }}</td>
-                                                <td>{{ $course->category->name }}</td>
-                                                <td>₦ {{ number_format($course->price,2) }}</td>
-                                                <td>{{ $course->students }}</td>
-                                                <td>{{ $course->views }}</td>
+                                                <td>{{ $blog->title }}</td>
+                                                <td>{{ $blog->category->name }}</td>
+                                                <td>{{ $blog->views }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.coursesEdit',$course->id) }}" class="btn btn-primary btn-sm">
+                                                    <a href="{{ route('admin.blogsEdit',$blog->id) }}" class="btn btn-primary btn-sm">
                                                         Edit
                                                     </a>
-                                                    <a href="{{ route('admin.coursesDestroy', $course->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                    <a href="{{ route('admin.blogsDestroy', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

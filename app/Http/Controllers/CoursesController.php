@@ -51,7 +51,7 @@ class CoursesController extends Controller
         $path  = $request->file('image')->store('courses', 'public');
         // convert tags to array
         
-        $course = Courses::create([
+        Courses::create([
             'name' => $request->name,
             'slug' =>Str::slug($request->name),
             'description' => $request->description,
