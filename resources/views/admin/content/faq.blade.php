@@ -69,7 +69,7 @@
 <div id="add-faq" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-           <form action="{{ route('admin.faqStore') }}" method="POST" id="add-course-category-form">
+           <form method="POST" id="add-course-category-form">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">Add FAQ</h5>
@@ -105,11 +105,11 @@
 <div id="edit-faq" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-           <form action="{{ route('admin.coursesCategoryStore') }}" method="POST" id="edit-faq-form">
+           <form  method="POST" id="edit-faq-form">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Update Category</h5>
+                    <h5 class="modal-title" id="myModalLabel">Update FAQ</h5>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
                         X
                     </button>

@@ -3,7 +3,6 @@ $(document).ready(function() {
     $("#selected-img").hide();
 
     $('.edit-course-category').click(function () {
-        
         var categoryid = $(this).data('categoryid');
         var url = '/admin/courses_categories/' + categoryid;
         console.log(categoryid);
@@ -23,7 +22,6 @@ $(document).ready(function() {
     });
 
     $('.edit-blog-category').click(function () {
-        
         var categoryid = $(this).data('categoryid');
         var url = '/admin/blogs_categories/' + categoryid;
         console.log(categoryid);
@@ -43,7 +41,6 @@ $(document).ready(function() {
     });
 
     $('.edit-faq').click(function () {
-        
         var faqid = $(this).data('faqid');
         var url = '/admin/pages/faqs/edit/' + faqid;
         console.log(faqid);
@@ -58,6 +55,25 @@ $(document).ready(function() {
                 $("#edit-faq-form input[name='question']").val(data.question); 
                 $("#edit-faq-form input[name='order']").val(data.order); 
                 $("#edit-faq-form textarea[name='answer']").val(data.answer); 
+            }
+        });
+    });
+
+    $('.edit-story').click(function () {
+        var storyid = $(this).data('storyid');
+        var url = '/admin/pages/success-stories/edit/' + storyid;
+        console.log(storyid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-success-stories').modal('show');
+                $("#edit-success-stories-form").attr("action", "/admin/pages/success-stories/" + data.id);
+                $("#edit-success-stories input[name='id']").val(data.id);
+                $("#edit-success-stories input[name='name']").val(data.name); 
+                $("#edit-success-stories input[name='role']").val(data.role); 
+                $("#edit-success-stories textarea[name='description']").val(data.description); 
             }
         });
     });

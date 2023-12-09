@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SuccessStories extends Model
 {
     use HasFactory;
+    protected $fillable = [ 
+        'name',
+        'role',
+        'description',
+    ];
 }
