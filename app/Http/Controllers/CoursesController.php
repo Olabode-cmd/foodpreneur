@@ -70,14 +70,7 @@ class CoursesController extends Controller
         return redirect()->route('admin.courses')->with('success', 'Course created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Courses $courses)
-    {
-        //
-    }
-
+   
     
     public function edit(Courses $course)
     {
@@ -108,7 +101,7 @@ class CoursesController extends Controller
         if($request->has('image')){
             // delete old image
             if($courses->image){
-                unlink('storage/'.$courses->image);
+               $this->deleteImage($courses->image);
             }
         }
         $courses->update([
@@ -134,9 +127,7 @@ class CoursesController extends Controller
      */
     public function destroy(Courses $courses)
     {
-        if($courses->image){
-            unlink('storage/'.$courses->image);
-        }
+        $this->deleteImage($courses->image);
         $courses->delete();
         return redirect()->back()->with('success', 'Course deleted successfully');
     }

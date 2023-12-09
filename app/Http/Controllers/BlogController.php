@@ -21,18 +21,14 @@ class BlogController extends Controller
         return view('admin.blogs.index', compact('blogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
         $categories = BlogCategory::orderBy('name', 'asc')->get();
         return view('admin.blogs.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -66,9 +62,6 @@ class BlogController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Blog $blog)
     {
         //
@@ -79,22 +72,52 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $categories = BlogCategory::orderBy('name', 'asc')->get();
+        return view('admin.blogs.edit', compact('blog', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Blog $blog)
+
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'tags' => 'required',
+            'author' => 'required',
+            'author_role' => 'required',
+        ]);
+
+        $blog = Blog::find($request->id);
+        $path = $request->has('image') ? $request->file('image')->store('blogs', 'public') : $blog->image;
+        $author_image = $request->has('author_image') ? $request->file('author_image')->store('author', 'public') : $blog->author_image; 
+        if($request->has('image') || $request->has('author_image')){
+            // delete old image
+            $this->deleteImage($blog->image);
+            $this->deleteImage($blog->author_image);
+        }
+        $blog->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'description' => $request->description,
+            'category_id' => $request->category,
+            'tag' => $this->tags($request->tags),
+            'author' => $request->author,
+            'author_role' => $request->author_role,
+            'image' => $path,
+            'author_image' => $author_image,
+        ]);
+
+        return redirect()->route('admin.blogs')->with('success', 'Blog updated successfully');
+           
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(Blog $blog)
     {
-        //
+        $this->deleteImage($blog->image);
+        $this->deleteImage($blog->author_image);
+        $blog->delete();
+        return redirect()->route('admin.blogs')->with('success', 'Blog deleted successfully');
     }
 }

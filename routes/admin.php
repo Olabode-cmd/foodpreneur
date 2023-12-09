@@ -40,15 +40,15 @@ Route::prefix('admin' )->group(function () {
             Route::get('',[BlogController::class,'index'])->name('admin.blogs');
             Route::get('create',[BlogController::class,'create'])->name('admin.blogsCreate');
             Route::post('',[BlogController::class,'store'])->name('admin.blogsStore');
-            Route::get('edit/{blogs}',[BlogController::class,'edit'])->name('admin.blogsEdit');
+            Route::get('edit/{blog}',[BlogController::class,'edit'])->name('admin.blogsEdit');
             Route::patch('/{id}',[BlogController::class,'update'])->name('admin.blogsUpdate');
-            Route::get('/delete/{blogs}',[BlogController::class,'destroy'])->name('admin.blogsDestroy');
+            Route::get('/delete/{blog}',[BlogController::class,'destroy'])->name('admin.blogsDestroy');
         });
 
         Route::prefix('blogs_categories')->group(function(){
             Route::get('',[BlogCategoryController::class,'index'])->name('admin.blogsCategory');
             Route::post('',[BlogCategoryController::class,'store'])->name('admin.blogsCategoryStore');
-            Route::get('{id}',[BlogCategoryController::class,'edit'])->name('admin.blogsCategoryEdit');
+            Route::get('{blog}',[BlogCategoryController::class,'edit'])->name('admin.blogsCategoryEdit');
             Route::patch('/{id}',[BlogCategoryController::class,'update'])->name('admin.blogsCategoryUpdate');
             Route::get('/delete/{id}',[BlogCategoryController::class,'destroy'])->name('admin.blogsCategoryDestroy'); 
         });

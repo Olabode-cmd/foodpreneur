@@ -40,10 +40,10 @@
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="tag">Course Tag (use comma , for mutliple tags)</label>
-                                    <input id="tag" value="  @php $tags = json_decode($course->tag);
+                                    <input id="tag" value="@php $tags = json_decode($course->tag);
                                     foreach ($tags as $tag) {
                                         echo $tag . ',';
-                                    } @endphp " class="form-control" type="text" name="tags">
+                                    } @endphp" class="form-control" type="text" name="tags">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="price">Price</label>

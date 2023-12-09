@@ -17,68 +17,57 @@
                                 </div>
                             </div>
                             @include('custom.alert')
-                            <form class="row" action="{{ route('admin.coursesUpdate', $course->id) }}" method="post" enctype="multipart/form-data">
+                            <form class="row" action="{{ route('admin.blogsUpdate', $blog->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
-                                <input type="hidden" name="id" value="{{ $course->id }}">
+                                <input type="hidden" name="id" value="{{ $blog->id }}">
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="name">Course Name</label>
-                                    <input id="name" class="form-control" value="{{ $course->name }}" type="text" name="name">
+                                    <label for="name">Title</label>
+                                    <input id="name" class="form-control" value="{{ $blog->title }}" type="text" name="title">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="category">Course Category</label>
+                                    <label for="category">Select Category</label>
                                     <select name="category" id="category" class="form-control">
                                         <option disabled selected>Select Category</option>
                                         @foreach ($categories as $categories)
-                                            <option @if ($course->category_id == $categories->id) selected @endif value="{{ $categories->id }}">{{ $categories->name }}</option>
+                                            <option @if ($blog->category_id == $categories->id) selected @endif value="{{ $categories->id }}">{{ $categories->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12 mb-3">
-                                    <label for="editor">Course Description</label>
-                                    <textarea name="description" id="editor" rows="5">{!! $course->description !!}</textarea>
+                                    <label for="editor">Content</label>
+                                    <textarea name="description" id="editor" rows="5">{!! $blog->description !!}</textarea>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="tag">Course Tag (use comma , for mutliple tags)</label>
-                                    <input id="tag" value="  @php $tags = json_decode($course->tag);
+                                    <input id="tag" value="@php $tags = json_decode($blog->tag);
                                     foreach ($tags as $tag) {
                                         echo $tag . ',';
-                                    } @endphp " class="form-control" type="text" name="tags">
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="price">Price</label>
-                                    <input oninput="validateInput(this);" value="{{ $course->price }}" id="price" class="form-control" type="text" name="price">
+                                    } @endphp" class="form-control" type="text" name="tags">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image">Image</label>
                                     <input id="image" class="form-control" type="file" name="image">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="author">Author</label>
-                                    <input  id="author" class="form-control" value="{{ $course->author }}" type="text" name="author">
+                                    <label for="time">Author </label>
+                                    <input value="{{ $blog->author }}" id="time" class="form-control" type="text" name="author">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="students">Students</label>
-                                    <input oninput="validateInput(this);" value="{{ $course->students }}" id="students" class="form-control" type="text" name="students">
+                                    <label for="time">Author Role</label>
+                                    <input value="{{ $blog->author_role }}"  id="time" class="form-control" type="text" name="author_role">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="time">Course Duration</label>
-                                    <input  id="time" class="form-control" value="{{ $course->time }}" type="text" name="duration">
+                                    <label for="rating">Author Image</label>
+                                    <input  id="rating" class="form-control" type="file" name="author_image">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="rating">Rating</label>
-                                    <input  id="rating" class="form-control" value="{{ $course->rating }}" type="text" name="rating">
+                                    <label for="views">Blog Views</label>
+                                    <input  id="views" class="form-control" value="{{ $blog->views }}" type="number" name="views">
                                 </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="url">Course Url</label>
-                                    <input  id="url" class="form-control" value="{{ $course->url }}" type="text" name="url">
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="views">Course Views</label>
-                                    <input  id="views" class="form-control" value="{{ $course->views }}" type="number" name="views">
-                                </div>
+
                                 <div class="form-group col-sm-12 mb-3">
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
                                 </div>
 
                             </form> 

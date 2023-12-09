@@ -8,4 +8,10 @@ trait Actions{
         $tagsArray = explode(',', $tags);
         return json_encode($tagsArray);
     }
+
+    public function deleteImage($image){
+        if($image){
+            @unlink('storage/'.$image);
+        }
+    }
 }
