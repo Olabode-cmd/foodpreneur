@@ -68,17 +68,17 @@
 <div id="add-course-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-           <form action="{{ route('admin.coursesCategoryStore') }}" method="POST" id="add-course-category-form">
+           <form action="{{ route('admin.blogsCategoryStore') }}" method="POST" id="add-course-category-form">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Add Course</h5>
+                    <h5 class="modal-title" id="myModalLabel">Add Blog</h5>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
                         X
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="my-input">Course Category</label>
+                        <label for="my-input">Blog Category</label>
                         <input id="my-input" class="form-control" type="text" name="name">
                     </div>
     
