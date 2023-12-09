@@ -42,6 +42,26 @@ $(document).ready(function() {
         });
     });
 
+    $('.edit-faq').click(function () {
+        
+        var faqid = $(this).data('faqid');
+        var url = '/admin/pages/faqs/edit/' + faqid;
+        console.log(faqid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-faq').modal('show');
+                $("#edit-faq-form").attr("action", "/admin/pages/faqs/" + data.id);
+                $("#edit-faq-form input[name='id']").val(data.id);
+                $("#edit-faq-form input[name='question']").val(data.question); 
+                $("#edit-faq-form input[name='order']").val(data.order); 
+                $("#edit-faq-form textarea[name='answer']").val(data.answer); 
+            }
+        });
+    });
+
 
 });
 

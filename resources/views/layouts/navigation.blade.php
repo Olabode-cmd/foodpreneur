@@ -60,7 +60,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/users/avatar-3.jpg"
+                                    <img src="{{ asset('assets/images/users/avatar-3.jpg') }}"
                                     class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
@@ -113,7 +113,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/users/avatar-4.jpg"
+                                    <img src="{{ asset('assets/images/users/avatar-4.jpg') }}"
                                         class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
@@ -138,7 +138,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-3.jpg"
+                    <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-3.jpg') }}"
                     alt="Header Avatar">
                     <span class="ms-2 d-none d-xl-inline-block user-item-desc">
                         <span class="user-name">Admin. <i class="mdi mdi-chevron-down"></i></span>
@@ -226,6 +226,17 @@
                         <li><a href="{{ route('admin.blogsCategory') }}">Blogs Category</a></li>
                         <li><a href="{{ route('admin.blogsCreate') }}" data-key="t-products">Add Blog</a></li>
                         <li><a href="{{ route('admin.blogs') }}" data-key="t-product-detail">Blogs List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-book-content nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Website Content</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.successStories') }}">Success Stories</a></li>
+                        <li><a href="{{ route('admin.testimonials') }}" data-key="t-products">Testimonials</a></li>
+                        <li><a href="{{ route('admin.faqs') }}" data-key="t-product-detail">FAQ</a></li>
                     </ul>
                 </li>
                 <li>

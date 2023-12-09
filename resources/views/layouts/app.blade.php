@@ -35,12 +35,7 @@
         <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
         <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-        <!-- apexcharts -->
-        <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-    
-        <!-- Vector map-->
-        <script src="{{ asset('assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
+ 
     
         <!-- swiper js -->
         <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>

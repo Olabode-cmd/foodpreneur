@@ -4,8 +4,10 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\SuccessStoriesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,7 +57,31 @@ Route::prefix('admin' )->group(function () {
         });
 
         Route::get('subscribers',[SubscriberController::class,'index'])->name('admin.subscribers');
+        Route::prefix('pages')->group(function(){
+            Route::prefix('success-stories')->group(function(){
+                Route::get('',[SuccessStoriesController::class,'index'])->name('admin.successStories');
+                Route::post('',[SuccessStoriesController::class,'store'])->name('admin.successStoriesStore');
+                Route::get('edit/{successStories}',[SuccessStoriesController::class,'edit'])->name('admin.successStoriesEdit');
+                Route::patch('/{id}',[SuccessStoriesController::class,'update'])->name('admin.successStoriesUpdate');
+                Route::get('/delete/{successStories}',[SuccessStoriesController::class,'destroy'])->name('admin.successStoriesDestroy');
+            });
 
+            Route::prefix('testimonials')->group(function(){
+                Route::get('',[TestimonialControllers::class,'index'])->name('admin.testimonials');
+                Route::post('',[TestimonialControllers::class,'store'])->name('admin.testimonialStore');
+                Route::get('edit/{testimonials}',[TestimonialControllers::class,'edit'])->name('admin.testimonialEdit');
+                Route::patch('/{id}',[TestimonialControllers::class,'update'])->name('admin.testimonialUpdate');
+                Route::get('/delete/{testimonials}',[TestimonialControllers::class,'destroy'])->name('admin.testimonialDestroy');
+            });
+
+            Route::prefix('faqs')->group(function(){
+                Route::get('',[FaqController::class,'index'])->name('admin.faqs');
+                Route::post('',[FaqController::class,'store'])->name('admin.faqStore');
+                Route::get('/edit/{id}',[FaqController::class,'edit'])->name('admin.faqEdit');
+                Route::patch('/{id}',[FaqController::class,'update'])->name('admin.faqUpdate');
+                Route::get('/delete/{faqs}',[FaqController::class,'destroy'])->name('admin.faqDestroy');
+            });
+        });
     });
 
 
