@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -52,6 +53,8 @@ Route::prefix('admin' )->group(function () {
             Route::patch('/{id}',[BlogCategoryController::class,'update'])->name('admin.blogsCategoryUpdate');
             Route::get('/delete/{id}',[BlogCategoryController::class,'destroy'])->name('admin.blogsCategoryDestroy'); 
         });
+
+        Route::get('subscribers',[SubscriberController::class,'index'])->name('admin.subscribers');
 
     });
 

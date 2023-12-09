@@ -229,9 +229,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="apps-calendar.html">
-                        <i class="bx bx-calendar-alt nav-icon"></i>
-                        <span class="menu-item" data-key="t-calendar">Calendar</span>
+                    <a href="{{ route('admin.subscribers') }}">
+                        <i class="bx bx-envelope nav-icon"></i>
+                        <span class="menu-item" data-key="t-calendar">Subscriber</span>
                     </a>
                 </li>
 
