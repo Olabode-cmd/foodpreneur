@@ -13,7 +13,6 @@ $(document).ready(function() {
             success: function(data) {
                 $('#edit-course-category').modal('show');
                 $("#edit-course-category-form").attr("action", "/admin/courses_categories/" + data.id);
-                $("#edit-course-category-form input[name='wallet_address']").val(data.wallet_address);
                 $("#edit-course-category-form input[name='id']").val(data.id);
                 $("#edit-course-category-form input[name='name']").val(data.name);
                 $("#edit-course-category-form select[name='status']").val(data.status);
@@ -32,7 +31,6 @@ $(document).ready(function() {
             success: function(data) {
                 $('#edit-blog-category').modal('show');
                 $("#edit-blog-category-form").attr("action", "/admin/blogs_categories/" + data.id);
-                $("#edit-blog-category-form input[name='wallet_address']").val(data.wallet_address);
                 $("#edit-blog-category-form input[name='id']").val(data.id);
                 $("#edit-blog-category-form input[name='name']").val(data.name);
                 $("#edit-blog-category-form select[name='status']").val(data.status);
@@ -94,6 +92,23 @@ $(document).ready(function() {
                 $("#edit-testimonial input[name='location']").val(data.location); 
                 $("#edit-testimonial input[name='rating']").val(data.rating); 
                 $("#edit-testimonial textarea[name='description']").val(data.description); 
+            }
+        });
+    });
+
+    $('.edit-food-category').click(function () {
+        var categoryid = $(this).data('categoryid');
+        var url = '/admin/food/processing/categories/' + categoryid;
+        console.log(categoryid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-food-category').modal('show');
+                $("#edit-food-category-form").attr("action", "/admin/food/processing/categories/" + data.id);
+                $("#edit-food-category-form input[name='id']").val(data.id);
+                $("#edit-food-category-form input[name='name']").val(data.name);
             }
         });
     });

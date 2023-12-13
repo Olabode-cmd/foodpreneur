@@ -5,6 +5,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FoodprocessingCategoriesController;
+use App\Http\Controllers\FoodprocessingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SuccessStoriesController;
@@ -55,6 +57,24 @@ Route::prefix('admin' )->group(function () {
             Route::get('{blog}',[BlogCategoryController::class,'edit'])->name('admin.blogsCategoryEdit');
             Route::patch('/{id}',[BlogCategoryController::class,'update'])->name('admin.blogsCategoryUpdate');
             Route::get('/delete/{id}',[BlogCategoryController::class,'destroy'])->name('admin.blogsCategoryDestroy'); 
+        });
+
+        Route::prefix('food/processing')->group(function(){
+            Route::prefix('categories')->group(function(){
+                Route::get('',[FoodprocessingCategoriesController::class,'index'])->name('admin.processingCategory');
+                Route::post('',[FoodprocessingCategoriesController::class,'store'])->name('admin.processingCategoryStore');
+                Route::get('{processing}',[FoodprocessingCategoriesController::class,'edit'])->name('admin.processingCategoryEdit');
+                Route::patch('/{id}',[FoodprocessingCategoriesController::class,'update'])->name('admin.processingCategoryUpdate');
+                Route::get('/delete/{id}',[FoodprocessingCategoriesController::class,'destroy'])->name('admin.processingCategoryDestroy');
+            });
+
+            Route::get('',[FoodprocessingController::class,'index'])->name('admin.processing');
+            Route::get('create',[FoodprocessingController::class,'create'])->name('admin.processingCreate');
+            Route::post('',[FoodprocessingController::class,'store'])->name('admin.processingStore');
+            Route::get('edit/{processing}',[FoodprocessingController::class,'edit'])->name('admin.processingEdit');
+            Route::patch('/{id}',[FoodprocessingController::class,'update'])->name('admin.processingUpdate');
+            Route::get('/delete/{processing}',[FoodprocessingController::class,'destroy'])->name('admin.processingDestroy');
+            
         });
 
         Route::get('subscribers',[SubscriberController::class,'index'])->name('admin.subscribers');

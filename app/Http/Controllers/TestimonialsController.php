@@ -76,7 +76,6 @@ class TestimonialsController extends Controller
             'rating' =>$request->rating,
             'image' =>$path,
         ]);
-
         return redirect()->back()->with('success','Testimonial Updated Successfully');
     }
 

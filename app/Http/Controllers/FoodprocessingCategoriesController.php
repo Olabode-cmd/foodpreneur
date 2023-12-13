@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FoodprocessingCategories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FoodprocessingCategoriesController extends Controller
 {
@@ -12,54 +13,51 @@ class FoodprocessingCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = FoodprocessingCategories::latest()->get();
+        return view('admin.foodprocessing.category',compact('categories'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        FoodprocessingCategories::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect()->back()->with('success','Category Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(FoodprocessingCategories $foodprocessingCategories)
+    
+    public function edit($id)
     {
-        //
+        $category = FoodprocessingCategories::find($id);
+        return response()->json($category);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(FoodprocessingCategories $foodprocessingCategories)
+   
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, FoodprocessingCategories $foodprocessingCategories)
-    {
-        //
-    }
+        $category = FoodprocessingCategories::find($id);
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(FoodprocessingCategories $foodprocessingCategories)
+        return redirect()->back()->with('success','Category Updated Successfully');
+    }
+ 
+    public function destroy($id)
     {
-        //
+        $category = FoodprocessingCategories::find($id);
+        $category->delete();
+        return redirect()->back()->with('success','Category Deleted Successfully');
     }
 }
