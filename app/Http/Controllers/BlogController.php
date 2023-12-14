@@ -61,15 +61,7 @@ class BlogController extends Controller
 
 
     }
-
-    public function show(Blog $blog)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit(Blog $blog)
     {
         $categories = BlogCategory::orderBy('name', 'asc')->get();

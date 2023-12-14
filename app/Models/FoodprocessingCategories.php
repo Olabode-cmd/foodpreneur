@@ -14,4 +14,9 @@ class FoodprocessingCategories extends Model
         'name',
         'slug',
     ];
+
+    public function foodprocessings()
+    {
+        return $this->hasMany(Foodprocessing::class, 'category', 'id');
+    }
 }

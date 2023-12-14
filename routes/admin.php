@@ -71,10 +71,10 @@ Route::prefix('admin' )->group(function () {
             Route::get('',[FoodprocessingController::class,'index'])->name('admin.processing');
             Route::get('create',[FoodprocessingController::class,'create'])->name('admin.processingCreate');
             Route::post('',[FoodprocessingController::class,'store'])->name('admin.processingStore');
-            Route::get('edit/{processing}',[FoodprocessingController::class,'edit'])->name('admin.processingEdit');
+            Route::get('edit/{foodprocessing}',[FoodprocessingController::class,'edit'])->name('admin.processingEdit');
             Route::patch('/{id}',[FoodprocessingController::class,'update'])->name('admin.processingUpdate');
             Route::get('/delete/{processing}',[FoodprocessingController::class,'destroy'])->name('admin.processingDestroy');
-            
+
         });
 
         Route::get('subscribers',[SubscriberController::class,'index'])->name('admin.subscribers');
