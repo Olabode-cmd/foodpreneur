@@ -7,6 +7,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FoodprocessingCategoriesController;
 use App\Http\Controllers\FoodprocessingController;
+use App\Http\Controllers\ProfessionalsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SuccessStoriesController;
@@ -40,6 +41,15 @@ Route::prefix('admin' )->group(function () {
             Route::get('{id}',[CoursesCategoryController::class,'edit'])->name('admin.coursesCategoryEdit');
             Route::patch('/{id}',[CoursesCategoryController::class,'update'])->name('admin.coursesCategoryUpdate');
             Route::get('/delete/{id}',[CoursesCategoryController::class,'destroy'])->name('admin.coursesCategoryDestroy');
+        });
+
+        Route::prefix('professionals')->group(function(){
+            Route::get('',[ProfessionalsController::class,'index'])->name('admin.professionals');
+            Route::get('create',[ProfessionalsController::class,'create'])->name('admin.professionalsCreate');
+            Route::post('',[ProfessionalsController::class,'store'])->name('admin.professionalsStore');
+            Route::get('edit/{professionals}',[ProfessionalsController::class,'edit'])->name('admin.professionalsEdit');
+            Route::patch('/{professionals}',[ProfessionalsController::class,'update'])->name('admin.professionalsUpdate');
+            Route::get('/delete/{professionals}',[ProfessionalsController::class,'destroy'])->name('admin.professionalsDestroy');
         });
 
         Route::prefix('blogs')->group(function(){

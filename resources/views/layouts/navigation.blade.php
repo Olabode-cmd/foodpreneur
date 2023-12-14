@@ -230,6 +230,16 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Food Professionals</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.professionalsCreate') }}" data-key="t-products">Add Food Professional</a></li>
+                        <li><a href="{{ route('admin.professionals') }}" data-key="t-product-detail">Food Professionals List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-food-menu nav-icon"></i>
                         <span class="menu-item" data-key="t-ecommerce">Food Processing</span>
                     </a>
