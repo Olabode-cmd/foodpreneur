@@ -235,8 +235,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.eventsCategory') }}">Events Category</a></li>
-                        <li><a href="{{ route('admin.blogsCreate') }}" data-key="t-products">Add Blog</a></li>
-                        <li><a href="{{ route('admin.blogs') }}" data-key="t-product-detail">Blogs List</a></li>
+                        <li><a href="{{ route('admin.eventsCreate') }}" data-key="t-products">Add Event</a></li>
+                        <li><a href="{{ route('admin.events') }}" data-key="t-product-detail">Events List</a></li>
                     </ul>
                 </li>
                 <li>

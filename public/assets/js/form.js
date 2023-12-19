@@ -184,7 +184,13 @@ function displayBannerImage(){
 }
 
 ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .then( editor => {
-            console.log( editor );
-    } )
+.create( document.querySelector( '#editor' ) )
+.then( editor => {
+        console.log( editor );
+} )
+
+ClassicEditor
+.create( document.querySelector( '.editor' ) )
+.then( editor => {
+        console.log( editor );
+} )

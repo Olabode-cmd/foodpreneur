@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventCategories;
 use App\Models\Events;
+use App\Traits\Actions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EventsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use Actions;
+    
     public function index()
     {
-        //
+        $events = Events::latest()->with('categories','attendees')->get();
+        return view('admin.events.index',compact('events'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+
+        $categories = EventCategories::orderBy('name')->get();
+        return view('admin.events.create',compact('categories'));
     }
 
     /**
@@ -28,7 +31,43 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'location' => 'required',
+            'city' => 'required',
+            'description' => 'required',
+            'schedule' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category' => 'required',
+            'speakers_name.*' => 'required',
+            'speakers_role.*' => 'required',
+            'speakers_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'speakers_company.*' => 'required',
+        ]);
+
+        $path = $request->file('image')->store('events', 'public');
+
+        Events::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'category_id' => $request->category,
+            'date' => $request->date,
+            'location' => $request->location,
+            'city' => $request->city,
+            'description' => $request->description,
+            'schedule' => $request->schedule,
+            'image' => $path,
+            'speakers' => $this->speakers($request),
+        ]);
+
+        return redirect()->route('admin.events')->with('success', 'Event created successfully');
+        
+    }
+
+    public function attendees($id){
+        $event = Events::find($id)->load('attendees');
+        return view('admin.events.attendees',compact('event'));
     }
 
     /**

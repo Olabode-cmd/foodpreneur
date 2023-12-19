@@ -37,4 +37,21 @@ trait Actions{
 
         return json_encode($achievements);
     }
+
+    public function speakers($request){
+        $speakers = [];
+        // dd($request->all());
+        foreach($request->speakers_name as $key => $name){
+
+            $imageName = $request->speakers_avatar[$key] <> '' ? $request->speakers_avatar[$key]->store('speakers', 'public') : null;
+
+            $speakers[] = [
+                'speakers_name' => $request->speakers_name[$key],
+                'speakers_role' => $request->speakers_role[$key],
+                'speakerss_avatrt' => $imageName ?? null,
+                'speakers_company' => $request->speakers_company[$key]
+            ];
+        }
+        return json_encode($speakers);
+    }
 }
