@@ -230,6 +230,17 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-calendar-event nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Events</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.eventsCategory') }}">Events Category</a></li>
+                        <li><a href="{{ route('admin.blogsCreate') }}" data-key="t-products">Add Blog</a></li>
+                        <li><a href="{{ route('admin.blogs') }}" data-key="t-product-detail">Blogs List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-user nav-icon"></i>
                         <span class="menu-item" data-key="t-ecommerce">Food Professionals</span>
                     </a>

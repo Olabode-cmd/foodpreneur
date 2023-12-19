@@ -113,6 +113,23 @@ $(document).ready(function() {
         });
     });
 
+    $('.edit-event-category').click(function () {
+        var categoryid = $(this).data('categoryid');
+        var url = '/admin/events_categories/' + categoryid;
+        console.log(categoryid);
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(data) {
+                $('#edit-event-category').modal('show');
+                $("#edit-event-category-form").attr("action", "/admin/events_categories/" + data.id);
+                $("#edit-event-category-form input[name='id']").val(data.id);
+                $("#edit-event-category-form input[name='name']").val(data.name);
+            }
+        });
+    });
+
 
 });
 

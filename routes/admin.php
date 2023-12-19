@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\EventsCategoriesController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FoodprocessingCategoriesController;
 use App\Http\Controllers\FoodprocessingController;
@@ -67,6 +68,14 @@ Route::prefix('admin' )->group(function () {
             Route::get('{blog}',[BlogCategoryController::class,'edit'])->name('admin.blogsCategoryEdit');
             Route::patch('/{id}',[BlogCategoryController::class,'update'])->name('admin.blogsCategoryUpdate');
             Route::get('/delete/{id}',[BlogCategoryController::class,'destroy'])->name('admin.blogsCategoryDestroy'); 
+        });
+
+        Route::prefix('events_categories')->group(function(){
+            Route::get('',[EventsCategoriesController::class,'index'])->name('admin.eventsCategory');
+            Route::post('',[EventsCategoriesController::class,'store'])->name('admin.eventsCategoryStore');
+            Route::get('{blog}',[EventsCategoriesController::class,'edit'])->name('admin.eventsCategoryEdit');
+            Route::patch('/{id}',[EventsCategoriesController::class,'update'])->name('admin.eventsCategoryUpdate');
+            Route::get('/delete/{id}',[EventsCategoriesController::class,'destroy'])->name('admin.eventsCategoryDestroy'); 
         });
 
         Route::prefix('food/processing')->group(function(){

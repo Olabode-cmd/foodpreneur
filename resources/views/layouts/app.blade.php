@@ -27,15 +27,14 @@
         </div>
 
 
-        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
         <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
         <script src="{{ asset('assets/libs/metismenujs/metismenujs.min.js') }}"></script>
         <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
         <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
         <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
         <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
- 
     
         <!-- swiper js -->
         <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>

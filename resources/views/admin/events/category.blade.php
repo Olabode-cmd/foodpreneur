@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Blogs Categories')
+@section('title', 'Events Categories')
 
 @section('content')
 
@@ -16,8 +16,8 @@
                                     <h4 class="card-title mb-4">Categories</h4>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#add-course-category">
-                                        Add Blog Category
+                                    <a href="#" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#add-event-category">
+                                        Add Event Category
                                     </a>
                                 </div>
                             </div>
@@ -28,21 +28,20 @@
                                     <tr>
                                         <td>#</td>
                                         <th>Name</th>
-                                        <th>Status</th> 
                                         <th>Action</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach ($blogs as $key => $blog)
+                                        @foreach ($events as $key => $event)
                                             <tr>
                                                 <td>{{ $key +1 }}</td>
-                                                <td>{{ $blog->name }}</td>
-                                                <td>{{ $blog->status }}</td>
+                                                <td>{{ $event->name }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-sm edit-blog-category ml-3" data-categoryid="{{ $blog->id }}">
+                                                    <a href="#" class="btn btn-primary btn-sm edit-event-category ml-3" data-categoryid="{{ $event->id }}">
                                                         Edit
                                                     </a>
+                                                    <a href="{{ route('admin.eventsCategoryDestroy', $event->id) }}" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -65,20 +64,20 @@
 </div>
 @endsection
 
-<div id="add-course-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+<div id="add-event-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-           <form action="{{ route('admin.blogsCategoryStore') }}" method="POST" id="add-course-category-form">
+           <form action="{{ route('admin.eventsCategoryStore') }}" method="POST" id="add-course-category-form">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Add Blog</h5>
+                    <h5 class="modal-title" id="myModalLabel">Add Event</h5>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
                         X
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="my-input">Blog Category</label>
+                        <label for="my-input">Event Category</label>
                         <input id="my-input" class="form-control" type="text" name="name">
                     </div>
     
@@ -93,10 +92,10 @@
     </div><!-- /.modal-dialog -->
 </div>
 
-<div id="edit-blog-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+<div id="edit-event-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-           <form  method="POST" id="edit-blog-category-form">
+           <form  method="POST" id="edit-event-category-form">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
@@ -107,15 +106,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="my-input">Blog Category</label>
+                        <label for="my-input">Event Category</label>
                         <input id="my-input" class="form-control" type="text" name="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="my-input">Status</label>
-                        <select name="status" id="" class="form-control">
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
                     </div>
                     <input type="hidden" name="id">
                 </div>
