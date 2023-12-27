@@ -3,6 +3,8 @@
 namespace App\Traits;
 use Illuminate\Support\Str;
 
+use function PHPSTORM_META\type;
+
 trait Actions{
 
     public function tags($tags){
@@ -119,6 +121,14 @@ trait Actions{
             : null;
     }
 
+
+    public function deleteSpeakerImages($speakers){
+        $speaker = json_decode($speakers,true);
+        
+        foreach($speaker as  $speak){
+            $this->deleteImage($speak['speakers_avatar']);
+        }
+    }
     
 }
 

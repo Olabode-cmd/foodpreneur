@@ -123,8 +123,12 @@ class EventsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Events $events)
+    public function destroy(Events $event)
     {
-        //
+        $this->deleteImage($event->image);
+        $this->deleteSpeakerImages($event->speakers);
+        $event->attendees()->delete();
+        $event->delete();
+        return redirect()->route('admin.events')->with('success', 'Event deleted successfully');
     }
 }
