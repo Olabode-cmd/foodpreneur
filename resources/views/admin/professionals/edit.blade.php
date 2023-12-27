@@ -195,18 +195,18 @@
 
         // Function to add event listeners to delete buttons
         function addDeleteButtonListeners(item) {
-                const deleteBtns = item.querySelectorAll('.delete-btn');
-                deleteBtns.forEach(function(btn) {
-                    btn.addEventListener('click', function() {
-                        this.closest('.repeater-item').remove();
-                    });
+            const deleteBtns = item.querySelectorAll('.delete-btn');
+            deleteBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    this.closest('.repeater-item').remove();
                 });
-            }
+            });
+        }
 
-            // Initial event listeners for delete buttons
-            repeaterList.querySelectorAll('.repeater-item').forEach(addDeleteButtonListeners);
+        // Initial event listeners for delete buttons
+        repeaterList.querySelectorAll('.repeater-item').forEach(addDeleteButtonListeners);
             
 
-});
+    });
 
 </script>

@@ -70,28 +70,54 @@ class EventsController extends Controller
         return view('admin.events.attendees',compact('event'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Events $events)
+  
+    public function edit($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Events $events)
-    {
-        //
+        $categories = EventCategories::orderBy('name')->get();
+        $event = Events::find($id);
+        return view('admin.events.edit',compact('event','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Events $events)
+    public function update(Request $request, Events $event)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'location' => 'required',
+            'city' => 'required',
+            'description' => 'required',
+            'schedule' => 'required',
+            'category' => 'required',
+            'speakers_name.*' => 'required',
+            'speakers_role.*' => 'required',
+            'speakers_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'speakers_company.*' => 'required',
+        ]);
+
+        $path = $request->has('image') ? $request->file('image')->store('professionals', 'public') : $event->image;
+
+        if ($request->has('image')) {
+            $this->deleteImage($event->image);
+        }
+
+        $event->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'category_id' => $request->category,
+            'date' => $request->date,
+            'location' => $request->location,
+            'city' => $request->city,
+            'description' => $request->description,
+            'schedule' => $request->schedule,
+            'image' => $path,
+            'speakers' => $this->updateSpeakers($request,$event),
+        ]);
+
+        return redirect()->route('admin.events')->with('success', 'Event updated successfully');
+
     }
 
     /**

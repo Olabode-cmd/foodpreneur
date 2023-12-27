@@ -77,14 +77,14 @@ Route::prefix('admin' )->group(function () {
             Route::post('',[EventsController::class,'store'])->name('admin.eventsStore');
             Route::get('edit/{event}',[EventsController::class,'edit'])->name('admin.eventsEdit');
             Route::get('attendees/{event}',[EventsController::class,'attendees'])->name('admin.eventsAttendees');
-            Route::patch('/{id}',[EventsController::class,'update'])->name('admin.eventsUpdate');
+            Route::patch('/{event}',[EventsController::class,'update'])->name('admin.eventsUpdate');
             Route::get('/delete/{event}',[EventsController::class,'destroy'])->name('admin.eventsDestroy');
         });
 
         Route::prefix('events_categories')->group(function(){
             Route::get('',[EventsCategoriesController::class,'index'])->name('admin.eventsCategory');
             Route::post('',[EventsCategoriesController::class,'store'])->name('admin.eventsCategoryStore');
-            Route::get('{blog}',[EventsCategoriesController::class,'edit'])->name('admin.eventsCategoryEdit');
+            Route::get('{id}',[EventsCategoriesController::class,'edit'])->name('admin.eventsCategoryEdit');
             Route::patch('/{id}',[EventsCategoriesController::class,'update'])->name('admin.eventsCategoryUpdate');
             Route::get('/delete/{id}',[EventsCategoriesController::class,'destroy'])->name('admin.eventsCategoryDestroy'); 
         });
