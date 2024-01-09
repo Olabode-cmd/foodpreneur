@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Home\CoursesController;
+use App\Http\Controllers\Home\EventController;
+use App\Http\Controllers\Home\FoodProfessionals;
+use App\Http\Controllers\Home\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [IndexController::class, 'index'])->name('welcome');
+Route::get('/about', [IndexController::class, 'about'])->name('home.about');
+Route::get('upcoming-events', [EventController::class, 'index'])->name('home.events');
+Route::get('events/{event}', [EventController::class, 'event'])->name('home.event');
+Route::get('blogs', [IndexController::class, 'blogs'])->name('home.blogs');
+Route::get('blogs/{blog}', [IndexController::class, 'blog'])->name('home.blog');
+Route::get('courses', [CoursesController::class, 'index'])->name('home.courses');
+Route::get('courses/{course}', [CoursesController::class, 'course'])->name('home.course');
+Route::get('food-professionals', [FoodProfessionals::class, 'index'])->name('home.foodProfessionals');
+Route::get('food-professionals/{professional}', [FoodProfessionals::class, 'professional'])->name('home.professional');
+
+
 
 
 Route::prefix('admin' )->group(function () {
