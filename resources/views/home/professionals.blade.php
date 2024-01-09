@@ -36,28 +36,15 @@
             </div>
 
             <div class="row mt-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
-                        <div class="expert">
-                            <img src="{{asset('home/images/jane-doe.png')}}" alt="jane-doe">
-                            <div class="info">
-                                <h6>Jane Doe</h6>
-                                <p>Chef, Entrepreneur</p>
-                                <p class="text-grey">Lagos, Nigeria</p>
-                            </div>
-
-                            <div class="shade">&nbsp;</div>
-                        </div>
-                    </a>
-                </div>
-
+               
+                @foreach ($professionals as $professional)
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
+                    <a href="{{ route('home.professional', $professional->slug) }}">
                         <div class="expert">
-                            <img src="{{asset('home/images/alyssia.png')}}" alt="alyssia">
+                            <img src="{{asset('storage/'.$professional->image)}}" alt="alyssia">
                             <div class="info">
-                                <h6>Alyssia Tayla</h6>
-                                <p>International Cook, Entrepreneur</p>
+                                <h6>{{ $professional->name }}</h6>
+                                <p>{{ $professional->role }}</p>
                                 <p class="text-grey">Lagos, Nigeria</p>
                             </div>
 
@@ -65,66 +52,7 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
-                        <div class="expert">
-                            <img src="{{asset('home/images/dana-sabi.png')}}" alt="dana-sabi">
-                            <div class="info">
-                                <h6>Dana Tanya Sabi</h6>
-                                <p>Food Scientist</p>
-                                <p class="text-grey">Toronto, Canada</p>
-                            </div>
-
-                            <div class="shade">&nbsp;</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
-                        <div class="expert">
-                            <img src="{{asset('home/images/cherie.png')}}" alt="cherie">
-                            <div class="info">
-                                <h6>Cherie Oluwayemisi</h6>
-                                <p>Entrepreneur, CEO Tiegar Foods</p>
-                                <p class="text-grey">Lagos, Nigeria</p>
-                            </div>
-
-                            <div class="shade">&nbsp;</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
-                        <div class="expert">
-                            <img src="{{asset('home/images/tayla.png')}}" alt="tayla">
-                            <div class="info">
-                                <h6>Alyssia Tayla</h6>
-                                <p>Entrepreneur, Social Media Expert</p>
-                                <p class="text-grey">Moscow, Russia</p>
-                            </div>
-
-                            <div class="shade">&nbsp;</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
-                    <a href="{{ route('home.professional', 'jane-doe') }}">
-                        <div class="expert">
-                            <img src="{{asset('home/images/rowina.png')}}" alt="rowina">
-                            <div class="info">
-                                <h6>Ike Rowina</h6>
-                                <p>Chef, Influencer</p>
-                                <p class="text-grey">London, United Kingdom</p>
-                            </div>
-
-                            <div class="shade">&nbsp;</div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -1,6 +1,10 @@
 @extends('layouts.home')
 
-@section('title', 'Professional Name')
+@section('title')
+
+{{ $professional->name }}
+
+@endsection
 
 @section('content')
 <main>
@@ -9,38 +13,41 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="pro-img">
-                        <img src="{{ asset('home/images/jane-doe.png') }}" alt="jane">
+                        <img src="{{ asset('storage/'.$professional->image)}}" alt="jane">
                     </div>
                 </div>
 
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1 class="title">Jane Doe</h1>
-                            <p class="text-primary bold mb-2">Chef, Entrepreneur</p>
+                            <h1 class="title">{{ $professional->name }}</h1>
+                            <p class="text-primary bold mb-2">{{ $professional->role }}</p>
 
                             <div class="d-flex align-items-center mb-4">
                                 <div class="d-flex align-items-center me-3">
                                     <img src="{{ asset('home/images/location.png') }}" alt="location" class="icon">
-                                    <p class="text-grey">Lagos, Nigeria</p>
+                                    <p class="text-grey">{{ $professional->location }}</p>
                                 </div>
 
                                 <div class="d-flex align-items-center">
                                     <img src="{{ asset('home/images/star-disc.png') }}" alt="star" class="icon">
-                                    <p class="text-grey">8+ years experience</p>
+                                    <p class="text-grey">{{ $professional->experience }}+ years experience</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 my-3">
                             <h6>Social</h6>
+                            @php 
+                                $socials = json_decode($professional->socials,true);
+                            @endphp
                             <div class="d-flex" data-aos="fade-up" data-aos-delay="300">
-                                <a href="#" class="me-2">
+                                <a href="{{ $socials[0]['twitter'] =='' ? '#' : $socials[0]['twitter'] }}" target="_blank" class="me-2">
                                     <img src="{{ asset('home/images/x.png') }}" alt="x">
                                 </a>
-                                <a href="#" class="me-2">
+                                <a href="{{ $socials[0]['facebook'] =='' ? '#' : $socials[0]['facebook'] }}" target="_blank" class="me-2">
                                     <img src="{{ asset('home/images/facebook.png') }}" alt="facebook">
                                 </a>
-                                <a href="#" class="me-2">
+                                <a href="{{ $socials[0]['linkedin'] =='' ? '#' : $socials[0]['linkedin'] }}" target="_blank" class="me-2">
                                     <img src="{{ asset('home/images/linkedin.png') }}" alt="linkedin">
                                 </a>
                             </div>
@@ -49,32 +56,26 @@
 
                     <div class="info">
                         <p>
-                            John is a dedicated mentor and educator, sharing his knowledge with aspiring chefs and food enthusiasts. He has lectured
-                            at culinary schools and conducted workshops on culinary entrepreneurship, inspiring the next generation of culinary
-                            talents.</p>
-                            
-                            <p>In addition to his culinary prowess, John is a savvy entrepreneur. He founded and successfully operates several
-                            food-related ventures, including restaurants, catering services, and a line of gourmet food products. His ability to
-                            blend creativity with business acumen has earned him recognition in both the culinary and entrepreneurial spheres.</p>
+                            {!! $professional->description !!}
+                        </p>
                             
                             <p><span class="bold d-block">Awards and Achievements:</span>
-                            Throughout his career, John has received numerous awards and accolades, including several culinary competition victories
-                            and recognition for his contributions to the food industry.</p>
+                                {{ $professional->awards }}
+                            </p>
                             
                             <p><span class="bold d-block">Philanthropy:</span>
-                            John is also passionate about giving back to the community. He actively supports local food charities and initiatives
-                            focused on reducing food waste and promoting sustainability.</p>
+                            {{ $professional->philanthropy }}.</p>
                             
                             <p><span class="bold d-block">Signature Style:</span>
-                            Known for his creative flair, John's signature style combines traditional techniques with a
-                            contemporary twist. His dishes are a reflection of his culinary philosophy: fresh, seasonal, and sustainable
-                            ingredients, expertly crafted into mouthwatering experiences.
+                            {{ $professional->signature  }}.
                         </p>
 
                         <div class="d-flex mt-4">
-                            <span class="tag">Food Scientist</span>
-                            <span class="tag">Chef</span>
-                            <span class="tag">Entrepreneur</span>
+                            @foreach (json_decode($professional->tag) as $tag)
+                                @if ($tag != null)
+                                    <span class="tag">{{ $tag }}</span>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
 
@@ -82,23 +83,16 @@
                         <h1 class="achievements">Achievements</h1>
 
                         <ul class="custom-list">
-                            <li>
-                                <h5>NYU</h5>
-                                <p class="bold">Bachelor of Science in Business Administration (BSBA)</p>
-                                <p class="text-grey">Feb 2020 - Oct 2023</p>
-                            </li>
-
-                            <li>
-                                <h5>Founder and CEO</h5>
-                                <p class="bold">Food and Food Company</p>
-                                <p class="text-grey">Jan 2022 - Present</p>
-                            </li>
-
-                            <li>
-                                <h5>Founder</h5>
-                                <p class="bold">The Snacks Community</p>
-                                <p class="text-grey">Dec 2022 - Present</p>
-                            </li>
+                            @foreach (json_decode($professional->achievements) as $achievement)
+                                @if ($achievement != null)
+                                <li>
+                                    <h5>{{ $achievement->achievement_title }}</h5>
+                                    <p class="bold">{{ $achievement->achievement_duration }}</p>
+                                    <p class="text-grey">{{ $achievement->achievement_description }}</p>
+                                </li>
+                                @endif
+                                
+                            @endforeach
                         </ul>
                     </div>
 
@@ -110,7 +104,7 @@
 
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('home/images/comments.png') }}" alt="comments">
-                            <span>14</span>
+                            <span>{{ $professional->views }}</span>
                         </div>
                     </div>
 
