@@ -296,9 +296,10 @@
                 <div class="col-md-6">
                     <h1 class="title mt-2">Subscribe to our Newsletter</h1>
                     <p class="subtitle">Get timely updates and newsletters on the latest blog posts and Foodpreneurs Hub trends.</p>
-
-                    <form action="#" class="relative mt-4">
-                        <input type="email" placeholder="Email address" class="email-input">
+                    @include('custom.alert')
+                    <form action="{{ route('home.newsletter') }}" method="POST" class="relative mt-4">
+                        @csrf
+                        <input type="email" name="email" required placeholder="Email address" class="email-input">
                         <input type="submit" value="Subscribe" class="btn btn-primary">
                     </form>
                 </div>

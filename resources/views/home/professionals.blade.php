@@ -135,32 +135,34 @@
             <h1 class="title" data-aos="fade-up">Featured</h1>
 
             <div class="owl-carousel owl-theme owl-one" data-aos="fade-up">
+                @foreach ($featuredProfessionals as $featured)
                 <div class="item">
                     <div class="featured-card">
                         <div class="featured-img">
-                            <img src="{{asset('home/images/featured.png')}}" alt="featured" class="feature-img">
+                            <img src="{{ asset('storage/' .$featured->image) }}" alt="featured" class="feature-img">
                             <img src="{{asset('home/images/featured-tag.png')}}" alt="featured-tag" class="featured-tag">
                         </div>
 
                         <div class="featured-details">
                             <div>
-                                <h1 class="title">James Din</h1>
-                                <p class="text-primary">Chef, Entrepreneur</p>
+                                <h1 class="title">{{ $featured->name }}</h1>
+                                <p class="text-primary">{{ $featured->role }}</p>
                             </div>
 
                             <div class="d-flex align-items-start">
                                 <img src="{{asset('home/images/star-disc.png')}}" alt="disc" class="icon star">
                                 <ul>
                                     <li>
-                                        <p class="text-grey bold">Bread Specialist</p>
-                                        <p>UBC Foods</p>
+                                       
+                                        <p class="text-grey bold">{{ $featured->location }}</p>
+                                        <p>{{ $featured->experience }} years experience</p>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="d-flex justify-content-end w-100">
                                 <!-- <div>&nbsp;</div> -->
-                                <a href="{{ route('home.professional', 'jane-doe') }}">
+                                <a href="{{ route('home.professional', $featured->slug) }}">
                                     <div class="d-flex align-items-center">
                                         <p class="bold text-primary me-2 mt-3">View Profile</p>
                                         <img src="{{asset('home/images/open-green.png')}}" alt="" class="icon">
@@ -170,42 +172,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="featured-card">
-                        <div class="featured-img">
-                            <img src="{{asset('home/images/cherie.png')}}" alt="featured" class="feature-img">
-                            <img src="{{asset('home/images/featured-tag.png')}}" alt="featured-tag" class="featured-tag">
-                        </div>
-                
-                        <div class="featured-details">
-                            <div>
-                                <h1 class="title">Cherie Oluwayemisi</h1>
-                                <p class="text-primary">Chef, Entrepreneur</p>
-                            </div>
-                
-                            <div class="d-flex align-items-start">
-                                <img src="{{asset('home/images/star-disc.png')}}" alt="disc" class="icon star">
-                                <ul>
-                                    <li>
-                                        <p class="text-grey bold">Bread Specialist</p>
-                                        <p>UBC Foods</p>
-                                    </li>
-                                </ul>
-                            </div>
-                
-                            <div class="d-flex justify-content-end w-100">
-                                <!-- <div>&nbsp;</div> -->
-                                <a href="{{ route('home.professional', 'jane-doe') }}">
-                                    <div class="d-flex align-items-center">
-                                        <p class="bold text-primary me-2 mt-3">View Profile</p>
-                                        <img src="{{asset('home/images/open-green.png')}}" alt="" class="icon">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -215,67 +182,64 @@
             <h1 class="title">A Few of Our <span class="text-primary">Foodpreneur</span> Stars!</h1>
         </div>
     
-        <div class="bg-orange">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <p class="bold text-orange mb-3">Entrepreneur of the Day</p>
-                        <h1 class="title mb-4">World Renowned Farm-to-Produce Entrepreneur</h1>
-                        <p class="subtitle mb-3">Meet Zara Saidat a farm-to-produce food entrepreneur who gained global
-                            recognition for
-                            innovative food processing and
-                            production</p>
-    
-                        <a href="{{ route('home.professional', 'jane-doe') }}" class="btn btn-orange">View Profile</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="expert">
-                            <img src="{{asset('home/images/star1.png')}}" alt="jane-doe">
-                            <div class="info">
-                                <h6>Jane Doe</h6>
-                                <p>Chef, Entrepreneur</p>
+       @foreach ($professionalOfTheDay as $key => $professional)
+           {{ ($key) }}
+            @if ($key == 0)
+            <div class="bg-orange">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <p class="bold text-orange mb-3">Entrepreneur of the Day</p>
+                            <h1 class="title mb-4">World Renowned Farm-to-Produce Entrepreneur</h1>
+                            <p class="subtitle mb-3">Meet {{ $professional->name }}  {{ implode(' ', array_slice(explode(' ', strip_tags($professional->description)), 0, 35)) }} ...</p>
+        
+                            <a href="{{ route('home.professional', $professional->slug) }}" class="btn btn-orange">View Profile</a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="expert">
+                                <img src="{{asset('storage/'.$professional->image)}}" alt="jane-doe">
+                                <div class="info">
+                                    <h6>{{ $professional->name }}</h6>
+                                    <p>{{ $professional->role }}</p>
+                                </div>
+        
+                                <img src="{{asset('home/images/featured-tag.png')}}" alt="featured" class="tag-feature">
+        
+                                <div class="shade">&nbsp;</div>
                             </div>
-    
-                            <img src="{{asset('home/images/featured-tag.png')}}" alt="featured" class="tag-feature">
-    
-                            <div class="shade">&nbsp;</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <div class="bg-success">
-            <div class="container">
-                <div class="row align-items-center column">
-                    <div class="col-md-6">
-                        <div class="expert">
-                            <img src="{{asset('home/images/star2.png')}}" alt="jane-doe">
-                            <div class="info">
-                                <h6>David Aramide</h6>
-                                <p>Chef, Entrepreneur</p>
+           @elseif ($key == 1)
+            <div class="bg-success">
+                <div class="container">
+                    <div class="row align-items-center column">
+                        <div class="col-md-6">
+                            <div class="expert">
+                                <img src="{{asset('storage/'.$professional->image)}}" alt="jane-doe">
+                                <div class="info">
+                                    <h6>{{ $professional->name }}</h6>
+                                    <p>{{ $professional->role }}</p>
+                                </div>
+        
+                                <img src="{{asset('home/images/featured-tag.png')}}" alt="featured" class="tag-feature">
+        
+                                <div class="shade">&nbsp;</div>
                             </div>
-    
-                            <img src="{{asset('home/images/featured-tag.png')}}" alt="featured" class="tag-feature">
-    
-                            <div class="shade">&nbsp;</div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="bold text-primary mb-3">Entrepreneur of the Day</p>
-                        <h1 class="title mb-4">World Renowned Farm-to-Produce Entrepreneur</h1>
-                        <p class="subtitle mb-3">Meet Zara Saidat a farm-to-produce food entrepreneur who gained global
-                            recognition for
-                            innovative food processing and
-                            production</p>
-    
-                        <a href="{{ route('home.professional', 'jane-doe') }}" class="btn btn-primary">View Profile</a>
+                        <div class="col-md-6">
+                            <p class="bold text-primary mb-3">Entrepreneur of the Day</p>
+                            <h1 class="title mb-4">World Renowned Farm-to-Produce Entrepreneur</h1>
+                            <p class="subtitle mb-3">Meet {{ $professional->name }}  {{ implode(' ', array_slice(explode(' ', strip_tags($professional->description)), 0, 35)) }} ...</p>
+        
+                            <a href="{{ route('home.professional', $professional->slug) }}" class="btn btn-primary">View Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <div class="bg-purple">
+           @elseif ($key == 2)
+           <div class="bg-purple">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -291,10 +255,10 @@
     
                     <div class="col-md-6">
                         <div class="expert">
-                            <img src="{{asset('home/images/star3.png')}}" alt="jane-doe">
+                            <img src="{{asset('storage/'.$professional->image)}}" alt="jane-doe">
                             <div class="info">
-                                <h6>David Aramide</h6>
-                                <p>Chef, Entrepreneur</p>
+                                <h6>{{ $professional->name }}</h6>
+                                <p>{{ $professional->role }}</p>
                             </div>
     
                             <img src="{{asset('home/images/featured-tag.png')}}" alt="featured" class="tag-feature">
@@ -305,6 +269,10 @@
                 </div>
             </div>
         </div>
+           @endif
+       @endforeach
+ 
+    
 
         <div class="text-center" id="innovator-month">
             <a href="register/nomination.html">

@@ -28,9 +28,13 @@
                                     <label for="name">Name</label>
                                     <input id="name" class="form-control" value="{{ $professional->name }}" type="text" name="name">
                                 </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
                                     <label for="name">Role</label>
                                     <input id="name" class="form-control" value="{{ $professional->role }}" type="text" name="role">
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
+                                    <label for="name">Years Of Experience</label>
+                                    <input id="name" class="form-control" value="{{ $professional->experience }}" type="number" name="experience">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image"> User Image</label>
@@ -82,11 +86,18 @@
                                     } @endphp" class="form-control" type="text" name="tags">
                                 </div>
 
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
                                     <label for="name">Featured Or Regular</label>
                                     <select class="form-select" name="is_featured">
                                         <option @if ($professional->is_featured == 1) selected @endif value="1">Featured</option>
                                         <option @if ($professional->is_featured == 0) selected @endif value="0">Regular</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
+                                    <label for="name">Entrepreneur of the day</label>
+                                    <select class="form-select" name="is_entrepreneur">
+                                        <option @if ($professional->is_entrepreneur == 1) selected @endif value="1">Yes</option>
+                                        <option @if ($professional->is_entrepreneur == 0) selected @endif value="0">No</option>
                                     </select>
                                 </div>
                                 

@@ -23,9 +23,13 @@
                                     <label for="name">Name</label>
                                     <input id="name" class="form-control" type="text" name="name">
                                 </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
                                     <label for="name">Role</label>
                                     <input id="name" class="form-control" type="text" name="role">
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12 mb-3">
+                                    <label for="name">Years Of Experience</label>
+                                    <input id="name" class="form-control" type="number" name="experience">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image"> User Image</label>
@@ -70,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="tag">Course Tag (use comma , for mutliple tags)</label>
+                                    <label for="tag"> Tag (use comma , for mutliple tags)</label>
                                     <input id="tag" class="form-control" type="text" name="tags">
                                 </div>
 

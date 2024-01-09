@@ -13,9 +13,9 @@ class CoursesController extends Controller
     public function index(){
         $courses = Courses::all();
         $categories = CourseCategory::all();
-        $faq = Faq::orderBy('order', 'asc')->get();
+        $faqs = Faq::orderBy('order', 'asc')->get();
 
-        return view('home.courses', compact('courses', 'categories', 'faq'));
+        return view('home.courses', compact('courses', 'categories', 'faqs'));
     }
 
     public function course($slug){

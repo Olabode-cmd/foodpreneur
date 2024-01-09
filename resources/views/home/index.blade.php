@@ -12,9 +12,11 @@
                     <h5 class="modal-title">Subscribe to our newsletter</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#">
+                @include('custom.alert')
+                <form action="{{ route('home.newsletter') }}" method="POST">
+                    @csrf
                     <div class="modal-body pt-4">
-                        <input type="email" placeholder="Email Address" id="subscribeEmail" class="form-control py-2">
+                        <input  type="email" name="email" required placeholder="Email Address" id="subscribeEmail" class="form-control py-2">
                         <button type="submit" class="btn btn-primary mt-2 w-100">Subscribe</button>
                     </div>
                 </form>
@@ -31,7 +33,7 @@
                         <h1>Start your <span class="text-primary">Food Processing Business</span> with our exclusive Courses</h1>
                         <p>Craft, Create, and Conquer the Food Industry!</p>
 
-                        <a href="/courses.html" class="btn btn-primary mt-4">Register Now</a>
+                        <a href="{{ route('home.courses') }}" class="btn btn-primary mt-4">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +101,7 @@
                     <p>Empower your food entrepreneurship journey with us.</p>
                 </div>
 
-                <a href="/courses.html" class="btn btn-primary my-2" data-aos="fade-up" data-aos-delay="300">Explore Courses</a>
+                <a href="{{ route('home.courses') }}" class="btn btn-primary my-2" data-aos="fade-up" data-aos-delay="300">Explore Courses</a>
             </div>
         </div>
 
@@ -667,9 +669,10 @@
                     <h1 class="title my-3">Free Bakery Business Guide in your Inbox</h1>
                     <p class="subtitle">Discover Inspiring Stories and Tips in Our Blog for Food Entrepreneurs.</p>
 
-                    <form action="#">
-                        <input type="text" placeholder="First Name" class="form-input">
-                        <input type="email" placeholder="Email" class="form-input">
+                    <form action="{{ route('home.ebook') }}" method="POST">
+                        @csrf
+                        <input type="text" required name="name" placeholder="First Name" class="form-input">
+                        <input type="email" required name="email" placeholder="Email" class="form-input">
                         <input type="submit" value="Get Free eBook" class="btn btn-outline-light">
                     </form>
                 </div>
@@ -687,7 +690,7 @@
                     <h1 class="title">Enrol in Our Food Processing Course Today!</h1>
                     <p class="subtitle">Unlock the secrets of Business success</p>
 
-                    <a href="/courses.html" class="btn btn-primary mt-4">Explore Courses</a>
+                    <a href="{{ route('home.courses') }}" class="btn btn-primary mt-4">Explore Courses</a>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <img src="home/images/enrol.png" alt="enroll" class="my-3">

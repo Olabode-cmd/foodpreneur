@@ -13,6 +13,7 @@ class Professionals extends Model
         'name',
         'slug',
         'role',
+        'experience',
         'image',
         'location',
         'description',
@@ -23,6 +24,7 @@ class Professionals extends Model
         'tag',
         'achievements',
         'is_featured',
+        'is_entrepreneur',
         'views'
     ];
 }

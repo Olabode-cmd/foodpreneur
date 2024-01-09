@@ -688,124 +688,23 @@
 
             <div class="question-accordion">
                 <div class="accordion" id="accordionExample">
+                    @foreach ($faqs as $faq)
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                                What kind of food processing course do we offer?
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id }}"
+                                aria-expanded="true" aria-controls="collapse{{ $faq->id }}">
+                                {{ $faq->question }}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="collapse{{ $faq->id }}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <p>
-                                    Foodpreneurs Hub offers short courses and a Food Business Program. The short courses are readily 
-                                    available on the school page all you have to do is click on the specific course available pay and 
-                                    start learning. Once you pay you have 30 days to complete the course. On the other hand, the food 
-                                    business program is a 3 months long intensive program focused on helping Aspiring food entrepreneurs start
-                                     their food processing businesses.
+                                    {{ $faq->answer }}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Who can join the Foodpreneurs Hub Community?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    You are welcome to join the FH community if you own a food business, work in a food company, 
-                                    or want to own a food processing business. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                How can I enroll in a course?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    You can enroll in the short courses on the school page by clicking on the —- button. Pay for the 
-                                    course and take the course at your convenience within 30 days. Click on the apply button to apply 
-                                    by paying for the application fees and filling out the application form for the food business program. 
-                                    After careful consideration of your application, successful candidates will be contacted to enroll in the program.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                How can I contribute to the Foodpreneurs Hub blog?
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    Kindly send your articles on food processing with your name, short bio, and social media links or 
-                                    handles to article@foodpreneurshub.com and your articles will be published in your name after careful review by our editors.
-                                                                        </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                How can I get support if I have questions or encounter issues with the platform?
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    Send an email with your enquiry or issues to support@foodpreneurshub.com and we will respond within 24 hrs. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Can I cancel or change my course enrollment ?
-                            </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    Unfortunately, you can not cancel or change your course enrollment. And there are no refunds once payment has been made.  
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                Do you offer any certificate upon course completion?
-                            </button>
-                        </h2>
-                        <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>
-                                    Yes, we do offer certificates to students who have completed all the modules, and assignments and also met the criteria of completing the short course and business program.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                  
                 </div>

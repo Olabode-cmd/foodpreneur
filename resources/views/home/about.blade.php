@@ -276,8 +276,10 @@
                          No spam.</p>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <form action="#">
-                        <input type="email" placeholder="Email Address" class="email-input mb-3">
+                    @include('custom.alert')
+                    <form action="{{ route('home.community') }}" method="POST" >
+                        @csrf
+                        <input type="email" name="email" required placeholder="Email Address" class="email-input mb-3">
                         <input type="submit" value="Subscribe for updates" class="btn btn-outline-light">
                     </form>
                 </div>

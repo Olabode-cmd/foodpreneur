@@ -27,6 +27,7 @@
                                         <th>Location</th>
                                         <th>Views</th>
                                         <th>Featured</th>
+                                        <th>Entrepeneur of the day</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -44,6 +45,13 @@
                                                         <span class="badge badge-soft-success">Featured</span>
                                                     @else
                                                         <span class="badge badge-soft-danger">Regular</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($professional->is_entrepreneur)
+                                                        <span class="badge badge-soft-success">Yes</span>
+                                                    @else
+                                                        <span class="badge badge-soft-danger">No</span>
                                                     @endif
                                                 </td>
                                                 <td>

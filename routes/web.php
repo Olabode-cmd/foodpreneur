@@ -29,7 +29,9 @@ Route::get('courses/{course}', [CoursesController::class, 'course'])->name('home
 Route::get('food-professionals', [FoodProfessionals::class, 'index'])->name('home.foodProfessionals');
 Route::get('food-professionals/{professional}', [FoodProfessionals::class, 'professional'])->name('home.professional');
 
-
+Route::post('newsletter', [IndexController::class, 'newsletter'])->name('home.newsletter');
+Route::post('community', [IndexController::class, 'community'])->name('home.community');
+Route::post('ebook', [IndexController::class, 'ebook'])->name('home.ebook');
 
 
 Route::prefix('admin' )->group(function () {

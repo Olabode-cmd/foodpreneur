@@ -17,3 +17,13 @@
 </script>
 
 @endif
+@if (session('error'))
+<script>
+     swal(
+        'Oops',
+        '{{ session('error') }}',
+        'error',
+    )
+</script>
+
+@endif

@@ -52,6 +52,7 @@ Route::prefix('admin' )->group(function () {
             Route::get('edit/{professionals}',[ProfessionalsController::class,'edit'])->name('admin.professionalsEdit');
             Route::patch('/{professionals}',[ProfessionalsController::class,'update'])->name('admin.professionalsUpdate');
             Route::get('/delete/{professionals}',[ProfessionalsController::class,'destroy'])->name('admin.professionalsDestroy');
+            Route::get('of-the-day',[ProfessionalsController::class,'ofTheday'])->name('admin.professionalsOfTheday');
         });
 
         Route::prefix('blogs')->group(function(){

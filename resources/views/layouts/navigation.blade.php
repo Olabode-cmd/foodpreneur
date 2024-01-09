@@ -247,6 +247,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.professionalsCreate') }}" data-key="t-products">Add Food Professional</a></li>
                         <li><a href="{{ route('admin.professionals') }}" data-key="t-product-detail">Food Professionals List</a></li>
+                        <li><a href="{{ route('admin.professionalsOfTheday') }}" data-key="t-product-detail">Professional Of the Day</a></li>
                     </ul>
                 </li>
                 <li>

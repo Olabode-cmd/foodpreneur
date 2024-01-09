@@ -33,6 +33,7 @@ class ProfessionalsController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'location' => 'required',
             'description' => 'required',
+            'experience' => 'required',
             
         ]);
         $path = request()->file('image')->store('professionals', 'public');
@@ -40,6 +41,7 @@ class ProfessionalsController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'role' => $request->role,
+            'experience' => $request->experience,
             'location' => $request->location,
             'description' => $request->description,
             'image' => $path,
@@ -73,6 +75,7 @@ class ProfessionalsController extends Controller
             'role' => 'required',
             'location' => 'required',
             'description' => 'required',
+            'experience' => 'required',
         ]);
         $path = $request->has('image') ? $request->file('image')->store('professionals', 'public') : $professionals->image;
 
@@ -83,6 +86,7 @@ class ProfessionalsController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'role' => $request->role,
+            'experience' => $request->experience,
             'location' => $request->location,
             'description' => $request->description,
             'image' => $path,
@@ -92,10 +96,17 @@ class ProfessionalsController extends Controller
             'tag' => $this->tags($request->tags),
             'achievements' => $this->achievements($request),
             'socials' => $this->socials($request),
-            'is_featured' => $request->is_featured
+            'is_featured' => $request->is_featured,
+            'is_entrepreneur' => $request->is_entrepreneur
+
         ]);
 
         return redirect()->route('admin.professionals')->with('success', 'Professional updated successfully');
+    }
+
+    public function ofTheday(){
+        $professionals = Professionals::where('is_featured', 1)->get();
+        return view('home.professionals', compact('professionals'));
     }
 
     public function destroy($id)
