@@ -5,13 +5,22 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Courses;
+use App\Models\EventCategories;
+use App\Models\Events;
 use App\Models\Subscriber;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index(){
-        return view('home.index');
+        $blogs = Blog::latest('created_at')->with('category')->take(3)->get();
+        $testimonials = Testimonials::latest('created_at')->take(3)->get();
+        $courses = Courses::latest('created_at')->take(5)->get();
+        $events = Events::latest('created_at')->take(5)->get();
+        $eventCategories = EventCategories::all();
+        return view('home.index', compact('blogs', 'testimonials', 'courses', 'events', 'eventCategories'));
     }
 
     public function about(){

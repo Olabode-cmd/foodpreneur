@@ -107,191 +107,116 @@
 
         <div class="course-slide" data-aos="fade-up">
             <div class="owl-carousel owl-theme owl-two">
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/market1.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
+                @if (count($courses) > 0)
+                    @foreach ($courses as $course)
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="{{ asset('storage/'.$course->image) }}" alt="market">
                         </div>
-
-                        <h1><a href="https://selar.co/kd9j" style="color: black;">Bakery Masterclass: Start a Profitable Business</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN60,000</h1>
-                                <h4>NGN77,000</h4>
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between mb-2">
+                                <!-- <p>12,897 students</p> -->
+                                <p>{{ $course->time }}</p>
                             </div>
 
-                            <div>
-                                <p><span class="tag">Bestseller</span> &nbsp; 4.8 <img src="home/images/star.png"
-                                        alt="star" class="icon" /></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <h1><a href="{{ route('home.course', $course->slug) }}" style="color: black;">{{ $course->title }}</a></h1>
+                            <!-- <p class="name">Olushola Oladejo</p> -->
 
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/market2.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
-                        </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h1>NGN {{ number_format($course->slashed_price, 2) }}</h1>
+                                    <h4>NGN {{ number_format($course->price, 2) }}</h4>
+                                </div>
 
-                        <h1><a href="https://selar.co/fp69" style="color: black">Starting a Poundo Yam Business</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN30,000</h1>
-                                <h4>NGN60,000</h4>
-                            </div>
-
-                            <div>
-                                <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
+                                <div>
+                                    <p>&nbsp; {{ $course->rating }} <img src="home/images/star.png" alt="star" class="icon" /></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-               
-                <div class="course-card">
-                <div class="course-img">
-                    <img src="home/images/market2.png" alt="market">
-                </div>
-                <div class="course-content">
-                    <div class="d-flex justify-content-between mb-2">
-                        <!-- <p>12,897 students</p> -->
-                        <p>1h 13m</p>
-                    </div>
+                    @endforeach
 
-                    <h1><a href=" https://selar.co/sd36" style="color: black;">Food Business Ideas</a></h1>
-                    <!-- <p class="name">Olushola Oladejo</p> -->
-
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <h1>NGN30,000</h1>
-                            <h4>NGN60,000</h4>
+                    @else
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="home/images/market1.png" alt="market">
                         </div>
-
-                        <div>
-                            <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/market3.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
-                        </div>
-
-                        <h1><a href="https://selar.co/z8b1" style="color: black;">Starting an Oil Extraction Business</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN60,000</h1>
-                                <h4>NGN150,000</h4>
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between mb-2">
+                                <!-- <p>12,897 students</p> -->
+                                <p>1h 13m</p>
                             </div>
-
-                            <div>
-                                <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="home/images/star.png" alt="star"
-                                        class="icon" /></p>
+    
+                            <h1><a href="https://selar.co/kd9j" style="color: black;">Bakery Masterclass: Start a Profitable Business</a></h1>
+                            <!-- <p class="name">Olushola Oladejo</p> -->
+    
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h1>NGN60,000</h1>
+                                    <h4>NGN77,000</h4>
+                                </div>
+    
+                                <div>
+                                    <p><span class="tag">Bestseller</span> &nbsp; 4.8 <img src="home/images/star.png"
+                                            alt="star" class="icon" /></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/blackseedoil.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
+    
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="home/images/market2.png" alt="market">
                         </div>
-
-                        <h1><a href="https://selar.co/iv8d" style="color: black;">Starting a Blackseed Oil Extraction Course</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN60,000</h1>
-                                <h4>NGN150,000</h4>
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between mb-2">
+                                <!-- <p>12,897 students</p> -->
+                                <p>1h 13m</p>
                             </div>
-
-                            <div>
-                                <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="home/images/star.png" alt="star"
-                                        class="icon" /></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/sesameoil.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
-                        </div>
-
-                        <h1><a href="https://selar.co/nmdd" style="color: black;"> Sesame Oil Extraction Course</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN60,000</h1>
-                                <h4>NGN150,000</h4>
-                            </div>
-
-                            <div>
-                                <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="home/images/star.png" alt="star"
-                                        class="icon" /></p>
+    
+                            <h1><a href="https://selar.co/fp69" style="color: black">Starting a Poundo Yam Business</a></h1>
+                            <!-- <p class="name">Olushola Oladejo</p> -->
+    
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h1>NGN30,000</h1>
+                                    <h4>NGN60,000</h4>
+                                </div>
+    
+                                <div>
+                                    <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="home/images/groundnutoil.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!-- <p>12,897 students</p> -->
-                            <p>1h 13m</p>
+                   
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="home/images/market2.png" alt="market">
                         </div>
-
-                        <h1><a href="https://selar.co/z8b1" style="color: black">Starting a Groundnut oil extraction course</a></h1>
-                        <!-- <p class="name">Olushola Oladejo</p> -->
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>NGN30,000</h1>
-                                <h4>NGN50,000</h4>
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between mb-2">
+                                <!-- <p>12,897 students</p> -->
+                                <p>1h 13m</p>
                             </div>
-
-                            <div>
-                                <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
+    
+                            <h1><a href="" style="color: black;">Food Business Ideas</a></h1>
+                            <!-- <p class="name">Olushola Oladejo</p> -->
+    
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h1>NGN30,000</h1>
+                                    <h4>NGN60,000</h4>
+                                </div>
+    
+                                <div>
+                                    <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+                
 
             </div>
 
@@ -349,70 +274,43 @@
                     <h1 class="title">The Foodpreneur's Blog</h1>
                     <p class="mb-4">Discover food processing ideas, industry news and success stories of entrepreneurs.</p>
 
-                    <a href="blog.html" class="btn btn-primary-outline">More Blog Posts</a>
+                    <a href="{{ route('home.blogs') }}" class="btn btn-primary-outline">More Blog Posts</a>
                 </div>
 
                 <div class="col-md-6 owl" data-aos="fade-up" data-aos-delay="300">
                     <div class="owl-carousel owl-theme owl-three">
-                        <div class="item">
-                            <div class="blog-card">
-                                <a href="#">
-                                    <div class="blog-img">
-                                        <img src="home/images/blog-img1.png" alt="blog">
-                                    </div>
-
-                                    <div class="blog-content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h3 class="title">Plantain Chip Production</h3>
-                                            <img src="home/images/open.png" alt="open">
+                        @foreach ($blogs as $blog)
+                            <div class="item">
+                                <div class="blog-card">
+                                    <a href="{{ route('home.blog', $blog->slug) }}">
+                                        <div class="blog-img">
+                                            <img src="{{ asset('storage/'.$blog->image) }}" alt="blog">
                                         </div>
-                                        <p>
-                                            Bread is a staple food eaten in almost every home. Both old and young
-                                            eat
-                                            it. According to Statista, the
-                                            value of the
-                                            Nigerian bread...
-                                        </p>
-
-                                        <div class="d-flex">
-                                            <span class="blog-tag">Food</span>
-                                            <span class="blog-tag">Business</span>
-                                            <span class="blog-tag">Idea</span>
+                                
+                                        <div class="blog-content">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h3 class="title">{{ $blog->title }}</h3>
+                                                <img src="{{ asset('home/images/open.png') }}" alt="open">
+                                            </div>
+                                            <p>
+                                                {{ implode(' ', array_slice(explode(' ', strip_tags($blog->description)), 0, 28)) }} ...
+                                            </p>
+                                
+                                            <div class="d-flex">
+                                                @foreach (json_decode($blog->tag) as $tag)
+                                                @if ($tag != null)
+                                                    <span class="blog-tag">{{ $tag }}</span>
+                                                @endif
+                                            @endforeach
+                                            </div>
+            
+                                            <p class="text-grey mt-3">Posted - {{ $blog->created_at->format('d M, Y') }}</p>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="item">
-                            <div class="blog-card">
-                                <a href="#">
-                                    <div class="blog-img">
-                                        <img src="home/images/blog-img2.png" alt="blog">
-                                    </div>
-
-                                    <div class="blog-content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h3 class="title">Plantain Chip Production</h3>
-                                            <img src="home/images/open.png" alt="open">
-                                        </div>
-                                        <p>
-                                            Bread is a staple food eaten in almost every home. Both old and young
-                                            eat
-                                            it. According to Statista, the
-                                            value of the
-                                            Nigerian bread...
-                                        </p>
-
-                                        <div class="d-flex">
-                                            <span class="blog-tag">Food</span>
-                                            <span class="blog-tag">Business</span>
-                                            <span class="blog-tag">Idea</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -428,87 +326,31 @@
             <h1 class="title text-center">See what our Customers  are saying about <span class="text-primary">Foodpreneurs Hub.</span></h1>
 
             <div class="row">
+                @foreach ($testimonials as $testimonial)
                 <div class="col-md-4">
                     <div class="testimonial-card" data-aos="fade-up">
                         <p class="mb-4">
-                            <span class="bold">The course content is very rich. I am now very confident with the knowledge
-                                 I have gained in this online course to start my bakery business. I will also register my 
-                                 bakery staff for this course.
+                            <span class="bold">{{ $testimonial->description }}</span>.
                         </p>
 
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
                                 <!-- <img src="home/images/jenny.png" alt="jenny" class="me-2"> -->
                                 <div>
-                                    <p class="name">Ezo Goddey</p>
-                                    <p class="location">Lagos, NG</p>
+                                    <p class="name">{{ $testimonial->name }}</p>
+                                    <p class="location">{{ $testimonial->location }}</p>
                                 </div>
                             </div>
 
                             <div class="d-flex">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
+                                @for($i = 0; $i < $testimonial->rating; $i++)
+                                    <img src="home/images/star.png" alt="star">
+                                @endfor
                             </div>
                         </div>
                     </div>
                 </div>
-
-                  <div class="col-md-4">
-                    <div class="testimonial-card" data-aos="fade-up">
-                        <p class="mb-4">
-                            <span class="bold">The consulting experience was great all round... we had 2 recipes at the end, 
-                                it was still much better than we could have done alone.
-
-
-                        </p>
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <!-- <img src="home/images/jenny.png" alt="jenny" class="me-2"> -->
-                                <div>
-                                    <p class="name">Malobi Ogbechie</p>
-                                    <p class="location">Lagos, NG</p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                            </div>
-                        </div>
-                    </div>
-            
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                        <p class="mb-4">
-                            <span class="bold">I hope a lot of people take advantage of this opportunity. I gained a lot from this course. 
-                            I now extract my oil. Thank you Foodpreneurs Hub</span>
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <p class="name">Itoro Green</p>
-                                    <p class="location">Lagos, NG</p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/star.png" alt="star">
-                                <img src="home/images/half-star.png" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <img src="home/images/connect.png" alt="connect" class="connect-1 d-none d-md-block">
@@ -536,17 +378,39 @@
                     <p class="bold my-2">Filter by:</p>
 
                     <div class="d-flex flex-wrap">
-                        <span class="tag active">Soon</span>
-                        <span class="tag">Workshop</span>
-                        <span class="tag">Panel Discussion</span>
-                        <span class="tag">Pitch Battle</span>
-                        <span class="tag">Summit</span>
-                        <span class="tag">Party</span>
-                        <span class="tag">Hackathon</span>
+                        @foreach ($eventCategories as $key => $categories)
+                            <span class="tag {{ $key == 0 ? 'active' : '' }}">{{ $categories->name }}</span>
+                        @endforeach
+                        
                     </div>
                 </div>
 
                 <div class="owl-carousel owl-theme owl-four mt-4" data-aos="fade-up">
+                    @if ($events->count() > 0)
+                        @foreach ($events as $event)
+                            <div class="item">
+                                <div class="event-card">
+                                    <div class="event-img">
+                                        <img src="{{ asset('storage/'.$event->image) }}" alt="event">
+                                    </div>
+                                    <div class="event-details">
+                                        <p class="bold">{{ $event->date }} &bull; {{ $event->city }}</p>
+                                        <h2 class="title">{{ $event->title }}</h1>
+        
+                                            <div class="d-flex align-items-center mt-4">
+                                                <a href="{{ route('home.event', $event->slug) }}" class="btn btn-primary me-4">View Details</a>
+                                                <div class="d-flex align-items-center">
+                                                    <p class="text-primary">Share</p>
+                                                    <img src="home/images/share.png" alt="share" class="icon">
+                                                </div>
+                                            </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+
                     <div class="item">
                         <div class="event-card">
                             <div class="event-img">
@@ -651,11 +515,13 @@
                             </div>
                         </div>
                     </div>
+                        
+                    @endif
                 </div>
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="upcoming-events.html" class="tag-primary btn">Load More</a>
+            <a href="{{ route('home.events') }}" class="tag-primary btn">Load More</a>
         </div>
     </section>
 

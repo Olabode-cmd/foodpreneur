@@ -45,6 +45,10 @@
                                     <input oninput="validateInput(this);" id="price" class="form-control" type="text" name="price">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="price">Slashed Price</label>
+                                    <input oninput="validateInput(this);" id="price" class="form-control" type="text" name="slashed_price">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image">Image</label>
                                     <input id="image" class="form-control" type="file" name="image">
                                 </div>

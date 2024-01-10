@@ -88,10 +88,6 @@
                         <label for="location">Location</label>
                         <input type="text" name="location" id="location"  class="form-control">
                     </div>
-                    <div class="form-group mb-4">
-                        <label for="image">Image</label>
-                        <input type="file" name="image" id="image"  class="form-control">
-                    </div>
 
                     <div class="form-group mb-4">
                         <label for="description">Description</label>
@@ -99,7 +95,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="Rating">Rating</label>
-                        <input id="Rating" class="form-control" type="text" name="rating">
+                        <input id="Rating" min="1" max="5" class="form-control" type="number" name="rating">
                     </div>
                     
     
@@ -135,10 +131,6 @@
                         <label for="location">Location</label>
                         <input type="text" name="location" id="location"  class="form-control">
                     </div>
-                    <div class="form-group mb-4">
-                        <label for="image">Image</label>
-                        <input type="file" name="image" id="image"  class="form-control">
-                    </div>
 
                     <div class="form-group mb-4">
                         <label for="description">Description</label>
@@ -146,7 +138,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="Rating">Rating</label>
-                        <input id="Rating" class="form-control" type="text" name="rating">
+                        <input id="Rating" min="1" max="5" class="form-control" type="number" name="rating">
                     </div>
                     <input type="hidden" name="id">
                 </div>

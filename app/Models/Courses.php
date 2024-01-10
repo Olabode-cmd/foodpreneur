@@ -17,6 +17,7 @@ class Courses extends Model
         'tag',
         'author',
         'price',
+        'slashed_price',
         'students',
         'time',
         'rating',

@@ -25,6 +25,7 @@
                                         <th>Name</th>
                                         <th>Category</th>
                                         <th>Price</th>
+                                        <th>Slashed Price</th>
                                         <th>Students</th>
                                         <th>Views</th>
                                         <th>Action</th>
@@ -38,6 +39,7 @@
                                                 <td>{{ $course->name }}</td>
                                                 <td>{{ $course->category->name }}</td>
                                                 <td>₦ {{ number_format($course->price,2) }}</td>
+                                                <td>₦ {{ number_format($course->slashed_price,2) }}</td>
                                                 <td>{{ $course->students }}</td>
                                                 <td>{{ $course->views }}</td>
                                                 <td>

@@ -40,14 +40,15 @@
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="tag">Course Tag (use comma , for mutliple tags)</label>
-                                    <input id="tag" value="@php $tags = json_decode($course->tag);
-                                    foreach ($tags as $tag) {
-                                        echo $tag . ',';
-                                    } @endphp" class="form-control" type="text" name="tags">
+                                    <input id="tag" value="{{ implode(',', array_filter(json_decode($course->tag), 'strlen')) }}p" class="form-control" type="text" name="tags">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="price">Price</label>
                                     <input oninput="validateInput(this);" value="{{ $course->price }}" id="price" class="form-control" type="text" name="price">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="slashedprice">Slashed price</label>
+                                    <input oninput="validateInput(this);" value="{{ $course->slashed_price }}" id="slashedprice" class="form-control" type="text" name="slashed_price">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image">Image</label>

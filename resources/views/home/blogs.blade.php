@@ -75,7 +75,7 @@
 
             <div class="row mt-4">
                 @foreach ($blogs as $blog)
-                <div class="col-md-6 col-">
+                <div class="col-md-6 col-sm-12">
                     <div class="blog-card">
                         <a href="{{ route('home.blog', $blog->slug) }}">
                             <div class="blog-img">
