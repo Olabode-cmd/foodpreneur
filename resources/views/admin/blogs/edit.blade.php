@@ -39,14 +39,11 @@
                                     <textarea name="description" id="editor" rows="5">{!! $blog->description !!}</textarea>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="tag">Course Tag (use comma , for mutliple tags)</label>
-                                    <input id="tag" value="@php $tags = json_decode($blog->tag);
-                                    foreach ($tags as $tag) {
-                                        @if ($tag != null)
-                                        echo $tag . ',';
-                                        @endif
-                                    } @endphp" class="form-control" type="text" name="tags">
+                                    <label for="tag">Course Tag (use comma , for multiple tags)</label>
+                                    <input id="tag" value="{{ implode(',', array_filter(json_decode($blog->tag), 'strlen')) }}" class="form-control" type="text" name="tags">
                                 </div>
+                                
+                                
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="image">Image</label>
                                     <input id="image" class="form-control" type="file" name="image">
@@ -62,6 +59,13 @@
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="rating">Author Image</label>
                                     <input  id="rating" class="form-control" type="file" name="author_image">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="rating">Is Trending</label>
+                                    <select class="form-select" name="is_trending">
+                                        <option value="1" @if ($blog->is_trending) selected @endif>Yes</option>
+                                        <option value="0" @if (!$blog->is_trending) selected @endif>No</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="views">Blog Views</label>

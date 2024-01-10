@@ -39,6 +39,7 @@ class BlogController extends Controller
             'tags' => 'required',
             'author' => 'required',
             'author_role' => 'required',
+            'is_trending' => 'required',
             // 'author_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -54,6 +55,7 @@ class BlogController extends Controller
             'author' => $request->author,
             'author_role' => $request->author_role,
             'author_image' => $author_image,
+            'is_trending' => $request->is_trending,
             'views' => 0
         ]);
 
@@ -78,14 +80,18 @@ class BlogController extends Controller
             'tags' => 'required',
             'author' => 'required',
             'author_role' => 'required',
+            'is_trending' => 'required',
         ]);
 
         $blog = Blog::find($request->id);
         $path = $request->has('image') ? $request->file('image')->store('blogs', 'public') : $blog->image;
         $author_image = $request->has('author_image') ? $request->file('author_image')->store('author', 'public') : $blog->author_image; 
-        if($request->has('image') || $request->has('author_image')){
+        if($request->has('image')){
             // delete old image
             $this->deleteImage($blog->image);
+        }
+        if($request->has('author_image')){
+            // delete old image
             $this->deleteImage($blog->author_image);
         }
         $blog->update([
@@ -97,6 +103,7 @@ class BlogController extends Controller
             'author' => $request->author,
             'author_role' => $request->author_role,
             'image' => $path,
+            'is_trending' => $request->is_trending,
             'author_image' => $author_image,
         ]);
 

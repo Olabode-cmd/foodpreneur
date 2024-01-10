@@ -19,18 +19,24 @@ class IndexController extends Controller
     }
 
     public function blogs(){
-        $blogs = Blog::latest()->get();
+        $blogs = Blog::latest('created_at')->with('category')->paginate(9);
         $blogsCategories = BlogCategory::all();
-
-        return view('home.blogs', compact('blogs', 'blogsCategories'));
+        $trending = Blog::latest()->where('is_trending', 1)->with('category')->take(3)->get();
+        return view('home.blogs', compact('blogs', 'blogsCategories', 'trending'));
     }
 
     public function blog($slug){
-
         $blog = Blog::where('slug', $slug)->first();
-        $blogsCategories = BlogCategory::all();
 
-        return view('home.single-blog', compact('blog', 'blogsCategories'));
+        if (!$blog) {
+            abort(404); // or handle accordingly if the blog is not found
+        }
+        $relatedBlogs = Blog::where('category_id', $blog->category_id)
+                    ->where('id', '!=', $blog->id)
+                    ->inRandomOrder() // Order by random
+                    ->take(3)
+                    ->get();
+        return view('home.single-blog', compact('blog', 'relatedBlogs'));
     }
 
     public function newsletter(Request $request){

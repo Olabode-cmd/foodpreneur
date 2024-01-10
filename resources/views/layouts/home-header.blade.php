@@ -67,8 +67,8 @@
                        
                     </ul>
                     <div class="d-flex align-items-center">
-                        <a href="courses.html" class="btn-text">Food Business School</a>
-                        <a href="#" class="btn btn-primary ms-4 btn-shadow">Apply Now</a>
+                        <a href="{{ route('home.courses') }}" class="btn-text">Food Business School</a>
+                        <a href="" class="btn btn-primary ms-4 btn-shadow">Apply Now</a>
                     </div>
                 </div>
             </div>

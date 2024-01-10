@@ -56,6 +56,13 @@
                                     <label for="rating">Author Image</label>
                                     <input  id="rating" class="form-control" type="file" name="author_image">
                                 </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="rating">Is Trending</label>
+                                    <select class="form-select" name="is_trending">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
 
                                 <div class="form-group col-sm-12 mb-3">
                                     <button type="submit" class="btn btn-primary btn-sm">Save</button>
