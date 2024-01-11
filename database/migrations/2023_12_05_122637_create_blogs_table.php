@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('author_image')->nullable();
             $table->string('published_on');
             $table->string('tag');
+            $table->boolean('is_trending')->default(false);
             $table->integer('views')->default(0);
             $table->timestamps();
         });

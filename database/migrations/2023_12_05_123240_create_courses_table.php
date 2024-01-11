@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('tag');
             $table->double('price',10,2);
+            $table->double('slashed_price',10,2);
             $table->string('image');
             $table->string('author');
             $table->integer('students');

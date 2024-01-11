@@ -11,20 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('foodprocessings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('event_categories');
+            $table->unsignedBigInteger('category');
+            $table->foreign('category')->references('id')->on('foodprecessings_categories');
             $table->string('title');
             $table->string('slug');
-            $table->text('description');
-            $table->text('schedule');
-            $table->string('date');
-            $table->string('city');
-            $table->string('location');
-            $table->string('filter');
+            $table->longText('description');
             $table->string('image');
-            $table->text('speakers');
+            $table->string('tag');
+            $table->string('author');
+            $table->string('author_role');
+            $table->string('author_image');
+            $table->integer('views');
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('foodprocessings');
     }
 };

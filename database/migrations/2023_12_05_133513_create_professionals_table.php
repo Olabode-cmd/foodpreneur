@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('professionals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('role');
+            $table->integer('experience');
             $table->text('image');
             $table->string('location');
             $table->text('socials');
@@ -26,6 +28,7 @@ return new class extends Migration
             $table->text('achievements');
             $table->integer('views');
             $table->boolean('is_featured');
+            $table->boolean('is_entrepreneur');
             $table->timestamps();
         });
     }
