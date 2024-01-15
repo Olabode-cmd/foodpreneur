@@ -44,7 +44,7 @@
                         <h1>Join our <span class="text-primary">Community of Food Innovators</span> and access opportunities for growth and collaboration</h1>
                         <p>Join Our Community of Food Entrepreneurs and Share the Flavor of Achievement</p>
 
-                        <a href="/register/community.html" class="btn btn-primary mt-4">Join Community</a>
+                        <a href="/register/#" class="btn btn-primary mt-4">Join Community</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <h1>Feast Your Eyes on <br /> <span class="text-primary">Foodpreneurial Wisdom</span></h1>
                         <p>Explore Our Blog, Where Food Entrepreneurs Share Their Secret Recipes for Success</p>
 
-                        <a href="blog.html" class="btn btn-primary mt-4">Start Reading</a>
+                        <a href="{{ route('home.blogs') }}" class="btn btn-primary mt-4">Start Reading</a>
                     </div>
                 </div>
             </div>
@@ -89,8 +89,8 @@
             </div>
         </div>
 
-        <img src="home/images/connect.png" alt="connect" class="connect-1 d-none d-md-block">
-        <img src="home/images/connect.png" alt="connect" class="connect-2 d-none d-md-block">
+        <img src="{{ asset('home/images/connect.png') }}" alt="connect" class="connect-1 d-none d-md-block">
+        <img src="{{ asset('home/images/connect.png') }}" alt="connect" class="connect-2 d-none d-md-block">
     </section>
 
     <section class="section-marketplace">
@@ -107,8 +107,7 @@
 
         <div class="course-slide" data-aos="fade-up">
             <div class="owl-carousel owl-theme owl-two">
-                @if (count($courses) > 0)
-                    @foreach ($courses as $course)
+                @foreach ($courses as $course)
                     <div class="course-card">
                         <div class="course-img">
                             <img src="{{ asset('storage/'.$course->image) }}" alt="market">
@@ -116,10 +115,11 @@
                         <div class="course-content">
                             <div class="d-flex justify-content-between mb-2">
                                 <!-- <p>12,897 students</p> -->
-                                <p>{{ $course->time }}</p>
+                                <p>{{ $course->course_hours }}</p>
                             </div>
 
-                            <h1><a href="{{ route('home.course', $course->slug) }}" style="color: black;">{{ $course->title }}</a></h1>
+                            <h1>
+                                <a href="{{ route('home.course', $course->slug) }}" style="color: black;">{{ $course->name }}</a></h1>
                             <!-- <p class="name">Olushola Oladejo</p> -->
 
                             <div class="d-flex align-items-center justify-content-between">
@@ -129,95 +129,16 @@
                                 </div>
 
                                 <div>
-                                    <p>&nbsp; {{ $course->rating }} <img src="home/images/star.png" alt="star" class="icon" /></p>
+                                    <p>
+                                        <span class="tag">
+                                            <a href="{{ route('home.course', $course->slug) }}" style="color: black;">Read More</a>
+                                        </span> 
+                                        &nbsp; 4.5 <img src="home/images/star.png" alt="star" class="icon" /> </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-
-                    @else
-                    <div class="course-card">
-                        <div class="course-img">
-                            <img src="home/images/market1.png" alt="market">
-                        </div>
-                        <div class="course-content">
-                            <div class="d-flex justify-content-between mb-2">
-                                <!-- <p>12,897 students</p> -->
-                                <p>1h 13m</p>
-                            </div>
-    
-                            <h1><a href="https://selar.co/kd9j" style="color: black;">Bakery Masterclass: Start a Profitable Business</a></h1>
-                            <!-- <p class="name">Olushola Oladejo</p> -->
-    
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h1>NGN60,000</h1>
-                                    <h4>NGN77,000</h4>
-                                </div>
-    
-                                <div>
-                                    <p><span class="tag">Bestseller</span> &nbsp; 4.8 <img src="home/images/star.png"
-                                            alt="star" class="icon" /></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="course-card">
-                        <div class="course-img">
-                            <img src="home/images/market2.png" alt="market">
-                        </div>
-                        <div class="course-content">
-                            <div class="d-flex justify-content-between mb-2">
-                                <!-- <p>12,897 students</p> -->
-                                <p>1h 13m</p>
-                            </div>
-    
-                            <h1><a href="https://selar.co/fp69" style="color: black">Starting a Poundo Yam Business</a></h1>
-                            <!-- <p class="name">Olushola Oladejo</p> -->
-    
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h1>NGN30,000</h1>
-                                    <h4>NGN60,000</h4>
-                                </div>
-    
-                                <div>
-                                    <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="course-card">
-                        <div class="course-img">
-                            <img src="home/images/market2.png" alt="market">
-                        </div>
-                        <div class="course-content">
-                            <div class="d-flex justify-content-between mb-2">
-                                <!-- <p>12,897 students</p> -->
-                                <p>1h 13m</p>
-                            </div>
-    
-                            <h1><a href="" style="color: black;">Food Business Ideas</a></h1>
-                            <!-- <p class="name">Olushola Oladejo</p> -->
-    
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h1>NGN30,000</h1>
-                                    <h4>NGN60,000</h4>
-                                </div>
-    
-                                <div>
-                                    <p>&nbsp; 4.8 <img src="home/images/star.png" alt="star" class="icon" /></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                
-
+                @endforeach
             </div>
 
             <img src="home/images/connect.png" alt="connect" class="connect-1 d-none d-md-block">
@@ -414,14 +335,14 @@
                     <div class="item">
                         <div class="event-card">
                             <div class="event-img">
-                                <img src="home/images/20.png" alt="event">
+                                <img src="{{ asset('home/images/20.png') }}" alt="event">
                             </div>
                             <div class="event-details">
-                                <p class="bold">Jan. 12 - 13, 2023 &bull; Virtual</p>
+                                <p class="bold">Jan. 12 - Jan. 13, 2024 • Virtual</p>
                                 <h2 class="title">Food Innovation Summit</h1>
 
                                     <div class="d-flex align-items-center mt-4">
-                                        <a href="single-event.html" class="btn btn-primary me-4">View Details</a>
+                                        <a href="https://mailchi.mp/32707c1eaf2f/2024-food-innovation-summit-registration" class="btn btn-primary me-4">View Details</a>
                                         <div class="d-flex align-items-center">
                                             <p class="text-primary">Share</p>
                                             <img src="home/images/share.png" alt="share" class="icon">
@@ -435,14 +356,14 @@
                     <div class="item">
                         <div class="event-card">
                             <div class="event-img">
-                                <img src="home/images/event2.png" alt="event">
+                                <img src="{{ asset('home/images/info-session.png') }}" alt="event">
                             </div>
                             <div class="event-details">
-                                <p class="bold">Oct 28, 2023 &bull; Abuja</p>
-                                <h2 class="title">Taste of the World: Global Culinary Exploration</h1>
+                                <p class="bold">2024 • Virtual</p>
+                                <h2 class="title">Food Business Growth Info Session</h1>
 
                                     <div class="d-flex align-items-center mt-4">
-                                        <a href="events.html" class="btn btn-primary me-4">View Details</a>
+                                        <a href="#" class="btn btn-primary me-4">View Details</a>
                                         <div class="d-flex align-items-center">
                                             <p class="text-primary">Share</p>
                                             <img src="home/images/share.png" alt="share" class="icon">
@@ -456,11 +377,11 @@
                     <div class="item">
                         <div class="event-card">
                             <div class="event-img">
-                                <img src="home/images/event3.png" alt="event">
+                                <img src="{{ asset('home/images/business-launch.png') }}" alt="event">
                             </div>
                             <div class="event-details">
-                                <p class="bold">Oct 28, 2023 &bull; Abuja</p>
-                                <h2 class="title">The Role of Food Innovators in the Development of Africa’s Economy
+                                <p class="bold">O2024 • Virtual</p>
+                                <h2 class="title">Food Business Launch
                                     </h1>
 
                                     <div class="d-flex align-items-center mt-4">
@@ -478,14 +399,14 @@
                     <div class="item">
                         <div class="event-card">
                             <div class="event-img">
-                                <img src="home/images/event1.png" alt="event">
+                                <img src="{{ asset('home/images/2025-summit.png') }}" alt="event">
                             </div>
                             <div class="event-details">
-                                <p class="bold">Oct 28, 2023 &bull; Abuja</p>
-                                <h2 class="title">Sustainability and Food: A Green Revolution</h1>
+                                <p class="bold">2025 • Virtual</p>
+                                <h2 class="title">Food Innovation Summit, 2025</h1>
 
                                     <div class="d-flex align-items-center mt-4">
-                                        <a href="events.html" class="btn btn-primary me-4">View Details</a>
+                                        <a href="#" class="btn btn-primary me-4">View Details</a>
                                         <div class="d-flex align-items-center">
                                             <p class="text-primary">Share</p>
                                             <img src="home/images/share.png" alt="share" class="icon">
@@ -506,7 +427,7 @@
                                 <h2 class="title">Taste of the World: Global Culinary Exploration</h1>
 
                                     <div class="d-flex align-items-center mt-4">
-                                        <a href="events.html" class="btn btn-primary me-4">View Details</a>
+                                        <a href="#" class="btn btn-primary me-4">View Details</a>
                                         <div class="d-flex align-items-center">
                                             <p class="text-primary">Share</p>
                                             <img src="home/images/share.png" alt="share" class="icon">

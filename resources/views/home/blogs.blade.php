@@ -106,6 +106,16 @@
                 </div>
                 @endforeach
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center">
+                        {{-- pagination links --}}
+                        {{ $blogs->links("pagination::bootstrap-4") }}
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 

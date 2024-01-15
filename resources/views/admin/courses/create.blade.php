@@ -33,9 +33,18 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12 mb-3">
-                                    <label for="editor">Course Description</label>
+                                    <label for="editor">About this class</label>
                                     <textarea name="description" id="editor" rows="5"></textarea>
                                 </div>
+                                <div class="form-group col-sm-12 mb-3">
+                                    <label for="editor">Who should take this course?</label>
+                                    <textarea name="course_reason" class="editor" rows="5"></textarea>
+                                </div>
+                                <div class="form-group col-sm-12 mb-3">
+                                    <label for="editor">Course duration</label>
+                                    <textarea name="course_duration" class="form-control" rows="5"></textarea>
+                                </div>
+
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="tag">Course Tag (use comma , for mutliple tags)</label>
                                     <input id="tag" class="form-control" type="text" name="tags">
@@ -49,21 +58,14 @@
                                     <input oninput="validateInput(this);" id="price" class="form-control" type="text" name="slashed_price">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="image">Image</label>
+                                    <label for="image">Banner </label>
                                     <input id="image" class="form-control" type="file" name="image">
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="author">Author</label>
-                                    <input  id="author" class="form-control" type="text" name="author">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="students">Students</label>
                                     <input oninput="validateInput(this);" id="students" class="form-control" type="text" name="students">
                                 </div>
-                                <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="time">Course Duration</label>
-                                    <input  id="time" class="form-control" type="text" name="duration">
-                                </div>
+                                
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="rating">Rating</label>
                                     <input  id="rating" class="form-control" type="text" name="rating">
@@ -71,6 +73,35 @@
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
                                     <label for="url">Course Url</label>
                                     <input  id="url" class="form-control" type="text" name="url">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="url">Course Sections</label>
+                                    <input  id="url" class="form-control" type="number" name="course_sections">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="url">Course Lectures</label>
+                                    <input  id="url" class="form-control" type="number" name="course_lectures">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="url">Course Hours</label>
+                                    <input  id="url" class="form-control" type="text" name="course_hours">
+                                </div>
+                                <hr class="m-4">
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="author">Author Name</label>
+                                    <input  id="author" class="form-control" type="text" name="author">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="author">Author Role</label>
+                                    <input  id="author" class="form-control" type="text" name="author_role">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="author">Author Image</label>
+                                    <input  id="author" class="form-control" type="file" name="author_image">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12 mb-3">
+                                    <label for="author">Author Description</label>
+                                    <textarea name="author_description" class="form-control" rows="5"></textarea>
                                 </div>
 
                                 <div class="form-group col-sm-12 mb-3">

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->double('price',10,2);
             $table->double('slashed_price',10,2);
             $table->string('image');
-            $table->string('author');
             $table->integer('students');
             $table->string('time');
             $table->string('rating');

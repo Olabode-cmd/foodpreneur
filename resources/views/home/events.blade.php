@@ -56,22 +56,19 @@
                             </div>
                         </div>
 
-                        <div class="event">
+                            <div class="event">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ asset('home/images/event2.png') }}" alt="event">
+                                    <img src="{{ asset('home/images/info-session.png') }}" alt="event">
                                 </div>
                         
                                 <div class="col-9">
-                                    <p class="bold text-grey">10am WAT Oct 28, 2023 • Abuja</p>
+                                    <p class="bold text-grey">2024 • Virtual</p>
                         
-                                    <h1 class="title">Taste of the World: Global Culinary Exploration</h1>
+                                    <h1 class="title">Food Business Growth Info Session</h1>
                                     <p class="my-3">
-                                        Join us for a series of immersive workshops designed to empower aspiring foodpreneurs like you. Our
-                                        expert facilitators,
-                                        who have a wealth of experience in the food industry, will guide you through the essential ingredients
-                                        needed to start,
-                                        run, and grow a thriving food business.
+The Food Business Growth Program is a transformative initiative tailored to propel food processing businesses to new heights, targeting their owners. This program empowers businesses to expand their market reach and optimize operations, focusing on crucial aspects like market analysis, product innovation, and efficient scaling strategies.
+
                                     </p>
                         
                                     <div class="d-flex align-items-center">
@@ -81,23 +78,46 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="event">
+                        
+                        
+                                 <div class="event">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ asset('home/images/event3.png') }}" alt="event">
+                                    <img src="{{ asset('home/images/business-launch.png') }}" alt="event">
                                 </div>
                         
                                 <div class="col-9">
-                                    <p class="bold text-grey">10am WAT Oct 28, 2023 • Abuja</p>
+                                    <p class="bold text-grey">2024 • Virtual</p>
                         
-                                    <h1 class="title">The Role of Food Innovators in Africa’s Economy</h1>
+                                    <h1 class="title">Food Business Launch</h1>
                                     <p class="my-3">
-                                        Join us for a series of immersive workshops designed to empower aspiring foodpreneurs like you. Our
-                                        expert facilitators,
-                                        who have a wealth of experience in the food industry, will guide you through the essential ingredients
-                                        needed to start,
-                                        run, and grow a thriving food business.
+The Food Processing Business Launch Program is a comprehensive initiative designed for aspiring entrepreneurs aiming to start their food processing ventures. Specially curated with you in mind, this program contains practical modules, steps, and resources to guide individuals through the complexities of establishing a successful food processing business. By the end of this 16-week program, you can be assured of having a product ready for sale if you diligently follow all the modules and steps.
+
+
+                                    </p>
+                        
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{route('home.event','how-are-you')}}" class="btn btn-primary me-3">View Details</a>
+                                        <a href="#" class="btn btn-text">Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="event">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{ asset('home/images/2025-summit.png') }}" alt="event">
+                                </div>
+                        
+                                <div class="col-9">
+                                    <p class="bold text-grey">2025 • Virtual</p>
+                        
+                                    <h1 class="title">Food Innovation Summit, 2025</h1>
+                                    <p class="my-3">
+                                        Prepare to witness a paradigm shift in the food processing industry at the 2025 Food Innovation Summit. This summit is a convergence of thought leaders, industry experts, and innovators dedicated to pushing the boundaries of food processing through cutting-edge technologies, sustainable practices, and groundbreaking solutions.
+
+
                                     </p>
                         
                                     <div class="d-flex align-items-center">

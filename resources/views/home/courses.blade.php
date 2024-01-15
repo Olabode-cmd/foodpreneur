@@ -56,222 +56,52 @@
                 <h1 class="title">Explore <span class="text-primary">Foodpreneurial</span> Online Courses</h1>
                 <div class="d-flex flex-wrap justify-content-center">
                     <span class="tag active">Popular</span>
-                    <span class="tag">Recipes</span>
-                    <span class="tag">Food Processing</span>
-                    <span class="tag">Food Trends</span>
-                    <span class="tag">Ingredient Spotlight</span>
-                    <span class="tag">How-to Guides</span>
-                    <span class="tag">DIY Projects</span>
-                    <span class="tag">Project Review</span>
+                    @foreach ($categories as $category)
+                        <span class="tag">{{ $category->name }}</span>
+                    @endforeach
+                    
                 </div>
             </div>
 
             <div class="courses-section">
                 <div class="row">
+                    @foreach ($courses as $course)
                     <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/fp69">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/market2.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
+                        <a href="{{ route('home.course', $course->slug) }}">
+                            <div class="course-card" style="color: black;">
+                                <div class="course-img">
+                                    <img src="{{ asset('storage/'.$course->image) }}" alt="market">
                                 </div>
-                        
-                                <h1>Pounded Yam Flour Production: From Zero to Expert</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;30,000</h1>
+                                <div class="course-content">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <p>{{ number_format($course->students) }} students</p>
+                                        <p>{{ $course->course_hours }}</p>
                                     </div>
-                        
-                                    <div>
-                                        <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
+                            
+                                    <h1>{{ $course->name }}</h1>
+                                    <p class="name">{{ $course->author_name }}</p>
+                            
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h1>&#8358; {{ number_format($course->slashed_price, 2) }}</h1>
+                                        </div>
+                                        <div>
+                                            <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/kd9j">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/market1.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
-                                </div>
-                        
-                                <h1>Starting a Bakery Business Course</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;60,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p><span class="tag">Bestseller</span> &nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" />
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    @endforeach
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            {{-- pagination links --}}
+                            {{ $courses->links("pagination::bootstrap-4") }}
                         </div>
-                    </a>
                     </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href=" https://selar.co/z8b1">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/market3.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
-                                </div>
-                        
-                                <h1>Oil Business 101: Start a Profitable Oil Business From Scratch</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;60,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/iv8d">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/bg-hero3') }}.png" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
-                                </div>
-                        
-                                <h1>Starting a Blackseed Oil Extraction Course</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;30,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/sd36">
-                        <div class="course-card">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/businessidea.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p style="color: black;">12,897 students</p>
-                                    <p style="color: black;">1h 13m</p>
-                                </div>
-                        
-                                <h1>Food Business Ideas</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;5,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p style="color: black;">&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/sd36">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/sesameoil.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
-                                </div>
-                        
-                                <h1>Starting a Sesame Oil Extraction Course</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;30,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="https://selar.co/lok2">
-                        <div class="course-card" style="color: black;">
-                            <div class="course-img">
-                                <img src="{{ asset('home/images/market3.png') }}" alt="market">
-                            </div>
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p>12,897 students</p>
-                                    <p>1h 13m</p>
-                                </div>
-                        
-                                <h1>Starting a Groundnut Oil Extraction Course</h1>
-                                <p class="name">Olushola Oladejo</p>
-                        
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h1>&#8358;60,000</h1>
-                                    </div>
-                        
-                                    <div>
-                                        <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-                    
-
                 </div>
             </div>
         </div>
@@ -283,15 +113,25 @@
                 <div class="col-md-6">
                     <h1 class="title"><span class="text-primary">Business</span> Launch Program</h1>
                     <p>Launch your food processing business in the next 4 months with our intensive training program.</p>
-
-                    <button type="button" class="btn btn-primary mt-3">Apply Now</button>
-
-                    <div class="d-flex mt-3 align-items-center">
+                    
+                       <div class="d-flex mt-3 align-items-center">
+                        <img src="{{ asset('home/images/check.png') }}" alt="check">
+                        <p class="small">
+                            Application fee is $50. Get a 50% discount and pay $25 if you apply by January 13, 2024.
+                        </p>
+                    </div>
+                    
+                       <div class="d-flex mt-3 align-items-center">
                         <img src="{{ asset('home/images/check.png') }}" alt="check">
                         <p class="small">
                             Guaranteed money back if you follow all the steps in the program and don’t launch your food processing business.
                         </p>
                     </div>
+                    
+                    
+                    <a href= "https://buy.stripe.com/bIY7uL8Kvamp3IIfZ1">
+                    <button type="button" class="btn btn-primary mt-3">Apply Now</button>
+                    </a>
                 </div>
                 <div class="col-md-6">
                     <img src="{{ asset('home/images/launch.png') }}" alt="launch" class="mt-2">
@@ -455,83 +295,12 @@
                                     product.
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                                    Module 10 - Regulatory
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">It is important that your product and food business meets regulatory standards 
-                                    and regulations, to avoid fines and litigation from regulatory agencies. In this module, we will be looking 
-                                    at regulatory standards and how to register your food products with the appropriate regulatory bodies. 
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
-                                    Module 11 - Marketing and Sales
-                                </button>
-                            </h2>
-                            <div id="flush-collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">This module provides a comprehensive roadmap to navigate the dynamic landscape 
-                                    of marketing and sales in the food industry. Learners will learn the fundamentals of strategic branding, 
-                                    market positioning, and how to effectively communicate their product value and carve out a distinct identity 
-                                    for their products. Through practical case studies and hands-on exercises, entrepreneurs will master the art 
-                                    of crafting compelling narratives and leveraging digital and traditional channels to reach their target audience. 
-                                    The module also explores sales fundamentals, including pricing strategies, distribution channels, and relationship-building 
-                                    techniques, ensuring learners are equipped to successfully bring them to market and increase their sales.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
-                                    Module 12 - Food Exporting
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">This module is essential to understanding the process of exporting your food 
-                                    products outside the country, within the continent of Africa, and outside the continent of Africa. 
-                                    In this course, you will gain insights into necessary certifications and necessary licenses to kick-start 
-                                    your food product exportation.
-
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseThirteen" aria-expanded="false" aria-controls="flush-collapseThirteen">
-                                    Module 9 - SOP/Unit Operations
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThirteen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">This module is a vital resource for aspiring food product entrepreneurs seeking 
-                                    to understand the intricacies of funding and grants within the food industry. Learners will gain comprehensive 
-                                    insights into various funding options, ranging from traditional loans to venture capital, as well as explore the 
-                                    landscape of grants and subsidies tailored for food-related ventures. The module provides practical guidance on creating 
-                                    compelling funding pitches, understanding financial metrics, and building investor relations. 
-
-                            </div>
-                        </div>
-
-
-                        <button class="btn btn-text text-center w-100 py-3" id="loadMoreButton">
-                            <span id="remainingSections"><a href="/register/register.html" style="color: #27A24F;"> Register to get on Our Waitlist</a>
+                            
+                            <button class="btn btn-text text-center w-100 py-3" id="loadMoreButton">
+                            <span id="remainingSections"><a href="https://buy.stripe.com/bIY7uL8Kvamp3IIfZ1" style="color: #27A24F;"> Register to get on Our Waitlist</a>
                             <!-- <i class="fa-solid fa-chevron-down"></i> -->
                         </button>
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -554,7 +323,7 @@
                             <img src="{{ asset('home/images/shola.jpeg') }}" alt="jane-doe">
                             <div class="info">
                                 <h6>Olushola Oladejo</h6>
-                                <p>Food Entrepreneur</p>
+                                <p>Entrepreneur and Food Technologist</p>
                             </div>
                         
                             <div class="shade">&nbsp;</div>
@@ -567,8 +336,8 @@
                         <div class="expert">
                             <img src="{{ asset('home/images/yosola.jpeg') }}" alt="alyssia">
                             <div class="info">
-                                <h6>Yosola Oke</h6>
-                                <p>Entrepreneur</p>
+                                <h6>Yosola Oke Akinrinola</h6>
+                                <p>Entrepreneur and Business Consultant</p>
                             </div>
                 
                             <div class="shade">&nbsp;</div>
@@ -639,7 +408,8 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="title">Why Students Love Foodpreneurs Hub</h1>
-                <p class="subtitle">Foodpreneurs Hub is here to support you on every step of your creative journey</p>
+                <p class="subtitle">Food Innovators Page- Some of our Success stories
+</p>
             </div>
         </div>
 
@@ -651,28 +421,26 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <h1 class="quote">
-                            The course content is very ric. I am now very confident with the knowledge
-                                 I have gained in this online course to start my bakery business. I will also register my 
-                                 bakery staff for this course.
+                            Motivated by a fervor for healthy living, Itoro, an unwavering cosmetic chemist and CEO of Tamil Naturals, embarked on the challenging journey of establishing a sesame oil extraction business. <br/><br/> She firmly believes that skincare originates internally, emphasizing the pivotal role of nutrition in achieving radiant skin. While driven by a desire to promote healthier lifestyles, Itoro faced a knowledge gap hindering the launch of her sesame oil venture. <br/><br/>
+All the online resources that she explored lacked the practical insights essential for hands-on production. The prospect of manufacturing the oil seemed daunting. However, a turning point occurred when she stumbled upon our oil extraction course advertisement on Instagram, turning her aspirations into reality. <br/><br/>
+
+Enrolling in our course and consultation service at Foodpreneurs Hub proved to be a game-changer for Itoro. The platform not only facilitated a seamless initiation into oil extraction but also equipped her with invaluable skills to optimize profits.
+
                         </h1>
-                        <p>-Ezo Goddey, Foodpreneurs Hub Student</p>
+                        <!--<p>-Ezo Goddey, Foodpreneurs Hub Student</p>-->
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <h1 class="quote">
-                            The consulting experience was great all round... we had 2 recipes at the end, 
-                                it was still much better than we could have done alone.
-                        </h1>
-                        <p>-Malobi Ogbechie, Foodpreneurs Hub Student</p>
-                    </div>
+ Itoro achieved an impressive 100% return on investment with her inaugural production batch, which promptly sold out.<br/><br/>
 
-                    <div class="col-md-6 mb-4">
-                        <h1 class="quote">
-                            I hope a lot of people take advantage of this opportunity. I gained a lot from this course. 
-                            I now extract my oil. Thank you Foodpreneurs Hub.
-                        </h1>
+With the help of Foodpreneurs Hub, she had a smooth start. Beyond oil extraction, she also learned skills that help her to maximize her profit. She had a 100% ROI on the first production batch and sold out very fast. <br/><br/>
 
-                        <p>-Itoro Green, Foodpreneurs Hub Student</p>
+Praising Foodpreneurs Hub, Itoro highly recommends us to aspiring food product entrepreneurs, highlighting our role in helping her eliminate procrastination and foster accountability. When envisioning the future of her company in the next five years, Itoro foresees expanding beyond Nigerian shelves to export her oil globally. Thanks to the oil's extended shelf life and resistance to rancidity, she plans to produce substantial batches, ensuring a lasting presence in the market.
+
+                        </h1>
+                        <p>-From Passion To Profit: Itoro’s Entrepreneurial Journey
+</p>
                     </div>
 
                 </div>

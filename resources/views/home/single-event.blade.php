@@ -251,9 +251,10 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/shola.jpeg') }}" alt="speaker">
                         <h5 class="bold mt-2">Olushola Oladejo</h5>
-                        <p class="text-grey">Co-founder <br /> Foodpreneurshub Inc.</p>
+                        <p class="text-grey">Co-founder, Foodpreneurshub Inc.</p>
+                        <span style="color: green">Host</span>
                 
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <a href="https://www.linkedin.com/in/olushola-oladejo/" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
@@ -261,9 +262,11 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/ndidi.jpg') }}" alt="speaker">
                         <h5 class="bold mt-2">Ndidi Okonkwo</h5>
-                        <p class="text-grey">Food Expert <br /> CEO & Co-founder</p>
+                        <p class="text-grey">Founder, LEAP Africa and Africa Food Change-makers.</p>
+                        <span style= "color: green">Speaker</span>
                 
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <a href="https://www.linkedin.com/in/ndidi-okonkwo-nwuneli-840696a/overlay/about-this-profile/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
@@ -271,9 +274,12 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/mark.jpg') }}" alt="speaker">
                         <h5 class="bold mt-2">Mark Peterson</h5>
-                        <p class="text-grey">Founder and CEO <br /> Ziscuit</p>
+                        <p class="text-grey">Founder and CEO, Ziscuit Inc.</p>
+                        <span style= "color: green">Speaker</span>
+
                 
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <a href=" https://www.linkedin.com/in/mark-peterson-ziscuit/overlay/about-this-profile/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
@@ -281,9 +287,11 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/jane.jpg') }}" alt="speaker">
                         <h5 class="bold mt-2">Jane Omojokun</h5>
-                        <p class="text-grey">Managing Director <br /> Nugata Consults Limited</p>
-                
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <p class="text-grey">Managing Director and Lead Consultant, Nugata Consults Limited</p>
+                                        <span style= "color: green">Speaker</span>
+
+                        <a href="https://www.linkedin.com/in/jane-omojokun-aa991024/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
@@ -291,9 +299,11 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/Chilufya.jpg') }}" alt="speaker">
                         <h5 class="bold mt-2">Chilufya Chileshe</h5>
-                        <p class="text-grey">Chief of Staff <br /> SDG2 Advocacy Hub</p>
-                
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <p class="text-grey">Chief of Staff, The SDG2 Advocacy</p>
+                        <span style= "color: green">Speaker</span>
+
+                        <a href="https://www.linkedin.com/in/chilufya-chileshe-b3182544/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
@@ -301,21 +311,60 @@
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/Wuraola.jpg') }}" alt="speaker">
                         <h5 class="bold mt-2">Wuraola Ayeni</h5>
-                        <p class="text-grey">Founder <br /> IYL Foods and Confectionery</p>
+                        <p class="text-grey">Founder, IYL Foods and Confectionery</p>
+                        <span style= "color: green">Speaker</span>
+
                 
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <a href="https://www.linkedin.com/in/thewuraola/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
                 </div>
 
-                <!-- <div class="col-md-4 mt-2">
+                <div class="col-md-4 mt-2">
+                    <div class="card text-center p-3">
+                        <img src="{{ asset('home/images/tony.jpeg') }}" alt="Tony Bello Image">
+                        <h5 class="bold mt-2">Tony Bello</h5>
+                        <p class="text-grey">CEO & Co-founder, Sage Industries</p>
+                        <span style= "color: green">Speaker</span>
+
+                
+                        <a href="https://www.linkedin.com/in/dr-tony-bello-818947a/
+" class="btn btn-primary mt-3">See bio</a>
+                    </div>
+                </div>
+                
+                    <div class="col-md-4 mt-2">
                     <div class="card text-center p-3">
                         <img src="{{ asset('home/images/toba.jpeg') }}" alt="speaker">
-                        <h5 class="bold mt-2">Tony Bello</h5>
-                        <p class="text-grey">Sage Industries <br /> CEO & Co-founder</p>
+                        <h5 class="bold mt-2">Toba Best</h5>
+                        <p class="text-grey" style="color: green">Facilitator</p><br/>
+
                 
-                        <a href="#" class="btn btn-primary mt-3">See bio</a>
+                        <a href="https://www.linkedin.com/in/tobabest/
+" class="btn btn-primary mt-3">See bio</a>
                     </div>
-                </div> -->
+                </div>
+                
+                      <div class="col-md-4 mt-2">
+                    <div class="card text-center p-3">
+                        <img src="{{ asset('home/images/ademola.jpeg') }}" alt="speaker">
+                        <h5 class="bold mt-2">Dr. Ade Akinrinola</h5>
+                        <p class="text-grey" style="color: green">Facilitator</p>
+                
+                        <a href="https://www.linkedin.com/in/ademola-akinrinola/
+" class="btn btn-primary mt-3">See bio</a>
+                    </div>
+                </div>
+                
+                         <div class="col-md-4 mt-2">
+                    <div class="card text-center p-3">
+                        <img src="{{ asset('home/images/iboi.jpeg') }}" alt="Iboi Image">
+                        <h5 class="bold mt-2">Osagie Iboi</h5>
+                        <p class="text-grey" style="color: green">Facilitator</p>
+                
+                        <a href="https://www.linkedin.com/in/osagie-iboi-21273a78/" class="btn btn-primary mt-3">See bio</a>
+                    </div>
+                </div>
 
             </div>
         </div>

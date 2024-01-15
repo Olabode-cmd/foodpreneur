@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CoursesController extends Controller
 {
     public function index(){
-        $courses = Courses::all();
+        $courses = Courses::latest()->paginate(12);
         $categories = CourseCategory::all();
         $faqs = Faq::orderBy('order', 'asc')->get();
 
@@ -20,9 +20,8 @@ class CoursesController extends Controller
 
     public function course($slug){
         $course = Courses::where('slug', $slug)->first();
-        $categories = CourseCategory::all();
-        $faq = Faq::orderBy('order', 'asc')->get();
+        $relatedCourses = Courses::where('category_id', $course->category_id)->where('id', '!=', $course->id)->latest()->take(4)->get();
 
-        return view('home.single-course', compact('course', 'categories', 'faq'));
+        return view('home.single-course', compact('course', 'relatedCourses'));
     }
 }
