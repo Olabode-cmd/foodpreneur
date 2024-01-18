@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index(){
-        $events = Events::latest()->get();
-        $eventsCategory =  EventCategories::all();
-        return view('home.events', compact('events', 'eventsCategory'));
+        $events = Events::latest()->paginate(10);
+        return view('home.events', compact('events'));
     }
 
     public function event($slug){
