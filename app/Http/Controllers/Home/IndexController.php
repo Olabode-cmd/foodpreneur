@@ -18,7 +18,7 @@ class IndexController extends Controller
         $blogs = Blog::latest('created_at')->with('category')->take(3)->get();
         $testimonials = Testimonials::latest('created_at')->take(3)->get();
         $courses = Courses::latest('created_at')->take(5)->get();
-        $events = Events::latest('created_at')->take(5)->get();
+        $events = Events::latest('created_at')->take(3)->get();
         $eventCategories = EventCategories::all();
         return view('home.index', compact('blogs', 'testimonials', 'courses', 'events', 'eventCategories'));
     }

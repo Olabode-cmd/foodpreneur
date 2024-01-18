@@ -22,6 +22,7 @@ Route::get('/', [IndexController::class, 'index'])->name('welcome');
 Route::get('/about', [IndexController::class, 'about'])->name('home.about');
 Route::get('upcoming-events', [EventController::class, 'index'])->name('home.events');
 Route::get('events/{event}', [EventController::class, 'event'])->name('home.event');
+Route::get('events/{event}/register', [EventController::class, 'register'])->name('home.event.register');
 Route::get('blogs', [IndexController::class, 'blogs'])->name('home.blogs');
 Route::get('blogs/{blog}', [IndexController::class, 'blog'])->name('home.blog');
 Route::get('courses', [CoursesController::class, 'index'])->name('home.courses');

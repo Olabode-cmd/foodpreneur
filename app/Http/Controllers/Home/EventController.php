@@ -20,4 +20,8 @@ class EventController extends Controller
         $eventsCategory =  EventCategories::all();
         return view('home.single-event', compact('event', 'eventsCategory'));
     }
+
+    public function register($slug){
+        return view('home.event-register');
+    }
 }

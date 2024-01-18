@@ -2,7 +2,12 @@
 @section('title', 'Home')
 
 @section('content')
-    
+<style>
+    .owl-item{
+        /* width: 350px !important;
+        display: inline; */
+    }
+</style>
 <main>
 
     <div class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static" id="subscribeModal">
