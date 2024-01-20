@@ -182,7 +182,7 @@
                         fastest growing community of food professionals and entrepreneurs</p>
 
                     {{--  --}}
-                    <p class="lead">Click here to <i class="fa fa-arrow-right"></i> <a href="{{ route('home.courses') }}" class="btn btn-primary">Join Our Community </a></p>
+                    <p class="lead">Click here to <i class="fa fa-arrow-right"></i> <a href="{{ route('home.communityView') }}" class="btn btn-primary">Join Our Community </a></p>
                     
 
                 </div>

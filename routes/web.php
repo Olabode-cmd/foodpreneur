@@ -32,6 +32,7 @@ Route::get('food-professionals', [FoodProfessionals::class, 'index'])->name('hom
 Route::get('food-professionals/{professional}', [FoodProfessionals::class, 'professional'])->name('home.professional');
 
 Route::post('newsletter', [IndexController::class, 'newsletter'])->name('home.newsletter');
+Route::get('community', [IndexController::class, 'communityView'])->name('home.communityView');
 Route::post('community', [IndexController::class, 'community'])->name('home.community');
 Route::post('ebook', [IndexController::class, 'ebook'])->name('home.ebook');
 

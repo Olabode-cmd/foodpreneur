@@ -24,6 +24,8 @@
                                         <td>#</td>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>About</th>
                                         <th>Date Registered</th>
                                     </tr>
                                     </thead>
@@ -32,8 +34,10 @@
                                         @foreach ($event->attendees as $key => $attendance)
                                             <tr>
                                                 <td>{{ $key +1 }}</td>
-                                                <td>{{ $attendance->name }}</td>
+                                                <td>{{ $attendance->firstname }} {{ $attendance->lastname }}</td>
                                                 <td>{{ $attendance->email }}</td>
+                                                <td>{{ $attendance->phone }}</td>
+                                                <td>{{ $attendance->about }}</td>
                                                 <td>{{ $attendance->created_at->format('Y-m-d') }}</td>
                                             </tr>
                                         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Community;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,10 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subscribers = Subscriber::latest()->get();
-        return view('admin.subscribers.index', compact('subscribers'));
+        $subscribers = Subscriber::where('type','newsletter')->latest()->get();
+        $ebooksubscribers = Subscriber::where('type','ebook')->latest()->get();
+        $communities = Community::latest()->get();
+        return view('admin.subscribers.index', compact('subscribers','ebooksubscribers','communities'));
     }
 
     /**

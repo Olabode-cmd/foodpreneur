@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Community;
 use App\Models\Courses;
 use App\Models\EventCategories;
 use App\Models\Events;
@@ -64,18 +65,27 @@ class IndexController extends Controller
     }
 
     public function community(Request $request){
-        $check = Subscriber::where('type','community')->where('email', $request->email)->first();
+        $request->validate([
+            'email' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'country' => 'required',
+            'work' => 'required',
+            'city' => 'required',
+        ]);
+        $check = Community::where('email', $request->email)->first();
+        
         if(!$check){
-            Subscriber::create([
-                'email' => $request->email,
-                'name' => null,
-                'type' => 'community'
-            ]);
+            Community::create($request->all());
 
             return back()->with('success', 'You have successfully subscribed to join our community!');
         }
 
         return back()->with('error', 'You have already subscribed to join our community!');
+    }
+
+    public function communityView(){
+        return view('home.community');
     }
 
     public function ebook(Request $request){
