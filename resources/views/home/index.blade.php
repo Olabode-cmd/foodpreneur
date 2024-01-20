@@ -181,10 +181,10 @@
                     <p class="mb-4">Collaborate and grow with other food innovators on Africa’s 
                         fastest growing community of food professionals and entrepreneurs</p>
 
-                    <form action="#">
-                        <input type="email" placeholder="Email Address" class="email-input">
-                        <input type="submit" value="Join Community" class="btn btn-primary">
-                    </form>
+                    {{--  --}}
+                    <p class="lead">Click here to <i class="fa fa-arrow-right"></i> <a href="{{ route('home.courses') }}" class="btn btn-primary">Join Our Community </a></p>
+                    
+
                 </div>
             </div>
 

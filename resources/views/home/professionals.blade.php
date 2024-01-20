@@ -111,7 +111,6 @@
         </div>
     
        @foreach ($professionalOfTheDay as $key => $professional)
-           {{ ($key) }}
             @if ($key == 0)
             <div class="bg-orange">
                 <div class="container">
