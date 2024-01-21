@@ -47,6 +47,7 @@ Route::prefix('admin' )->group(function () {
 
         Route::prefix('professionals')->group(function(){
             Route::get('',[ProfessionalsController::class,'index'])->name('admin.professionals');
+            Route::get('nominated-professionals',[ProfessionalsController::class,'nominatedProfessionals'])->name('admin.nominatedProfessionals');
             Route::get('create',[ProfessionalsController::class,'create'])->name('admin.professionalsCreate');
             Route::post('',[ProfessionalsController::class,'store'])->name('admin.professionalsStore');
             Route::get('edit/{professionals}',[ProfessionalsController::class,'edit'])->name('admin.professionalsEdit');

@@ -37,7 +37,7 @@
         </div>
 
         <div class="d-flex">
-            <div class="dropdown d-inline-block">
+            {{-- <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell icon-sm"></i>
@@ -132,7 +132,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             
 
             <div class="dropdown d-inline-block">
@@ -248,6 +248,9 @@
                         <li><a href="{{ route('admin.professionalsCreate') }}" data-key="t-products">Add Food Professional</a></li>
                         <li><a href="{{ route('admin.professionals') }}" data-key="t-product-detail">Food Professionals List</a></li>
                         <li><a href="{{ route('admin.professionalsOfTheday') }}" data-key="t-product-detail">Professional Of the Day</a></li>
+                        <li>
+                            <a href="{{ route('admin.nominatedProfessionals') }}" data-key="t-product-detail">Nominated Employees</a>
+                        </li>
                     </ul>
                 </li>
                 <li>

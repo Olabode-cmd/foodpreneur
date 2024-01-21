@@ -35,7 +35,8 @@ Route::post('newsletter', [IndexController::class, 'newsletter'])->name('home.ne
 Route::get('community', [IndexController::class, 'communityView'])->name('home.communityView');
 Route::post('community', [IndexController::class, 'community'])->name('home.community');
 Route::post('ebook', [IndexController::class, 'ebook'])->name('home.ebook');
-
+Route::get('nominate-professional-for-the-month', [IndexController::class, 'nominate'])->name('home.nominate');
+Route::post('nominate', [IndexController::class, 'storeNominate'])->name('home.storeNominate');
 
 Route::prefix('admin' )->group(function () {
 

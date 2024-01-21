@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nominees;
 use App\Models\Professionals;
 use App\Traits\Actions;
 use Illuminate\Http\Request;
@@ -17,6 +18,10 @@ class ProfessionalsController extends Controller
         return view('admin.professionals.index', compact('professionals'));
     }
 
+    public function nominatedProfessionals(){
+        $nominees = Nominees::latest()->get();
+        return view('admin.professionals.nominated', compact('nominees'));
+    }
     /**
      * Show the form for creating a new resource.
      */

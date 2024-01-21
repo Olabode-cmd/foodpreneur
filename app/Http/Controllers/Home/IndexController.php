@@ -9,6 +9,7 @@ use App\Models\Community;
 use App\Models\Courses;
 use App\Models\EventCategories;
 use App\Models\Events;
+use App\Models\Nominees;
 use App\Models\Subscriber;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
@@ -102,4 +103,41 @@ class IndexController extends Controller
 
         return back()->with('error', 'You have already subscribed for the ebook!');
     }
+
+    public function nominate(){
+        return view('home.nominate');
+    }
+
+    public function storeNominate(Request $request){
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'voter' => 'required',
+            'nominees_firstname' => 'required',
+            'nominees_lastname' => 'required',
+            'nominees_occupation' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'reason' => 'required',
+        ]);
+        
+        Nominees::create([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'voter' => $request->voter,
+            'nominees_firstname' => $request->nominees_firstname,
+            'nominees_lastname' => $request->nominees_lastname,
+            'nominees_occupation' => $request->nominees_occupation,
+            'country' => $request->country,
+            'city' => $request->city,
+            'reason' => $request->reason,
+            'business' => $request->business,
+            'personal' => $request->personal,
+            'linkedin' => $request->linkedin,
+            'ig' => $request->instagram,
+        ]);
+
+        return back()->with('success', 'You have successfully nominated for the month!');
+    }
+
 }

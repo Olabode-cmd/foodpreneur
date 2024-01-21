@@ -202,8 +202,7 @@
     
 
         <div class="text-center" id="innovator-month">
-            <a href="register/nomination.html">
-            <button class="btn btn-primary mt-3" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nominate a Food Innovator for the month</button>
+            <a href="{{ route('home.nominate') }}" class="btn btn-primary mt-3" type="button" >Nominate a Food Innovator for the month</a>
         </a>
         </div>
     
