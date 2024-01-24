@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventsCategoriesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FaqController;
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin' )->group(function () {
     
-    Route::get('/', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('admin.dashboard');
+    Route::get('/', DashboardController::class, 'index')->middleware(['auth', 'verified'])->name('admin.dashboard');
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

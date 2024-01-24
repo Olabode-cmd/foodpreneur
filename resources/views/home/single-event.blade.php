@@ -8,7 +8,7 @@
 <main>
     <section class="event-wrapper">
         <div class="container">
-            <div class="event-slide mb-4">
+            {{-- <div class="event-slide mb-4">
                 <div class="d-flex align-items-center">
                     <p class="text-uppercase font-semibold">brought to you by</p>
                     <img src="{{ asset('home/images/logo.png') }}" alt="logo">
@@ -36,6 +36,9 @@
                          </a>
                     </div>
                 </div>
+            </div> --}}
+            <div class="my-4">
+                <img src="{{ asset('storage/'.$event->image) }}" alt="single-event" class="rounded">
             </div>
 
             <div class="details">

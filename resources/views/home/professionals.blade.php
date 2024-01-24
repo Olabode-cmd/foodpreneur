@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <main>
     <section class="search-hero short"
         style="background: url('{{asset("home/images/food-hero.png")}}') no-repeat; background-size: cover">
@@ -261,20 +262,19 @@
                                     lacked the knowledge and resources to launch her food business. She wondered, "How do I turn my passion for food into a
                                     thriving venture?"
                                 </p>
-                            </div>
-                            <div class="col-md-6">
                                 <p class="story">
                                     One day, while scrolling through food blogs, Maria stumbled upon The Foodpreneur Academy. It seemed like the perfect
                                     platform to nurture her culinary ambitions. The academy offered a range of food processing courses, a supportive
                                     community, and a blog filled with stories of successful food entrepreneurs.
                                 </p>
-                                    
+                                
                                 <p class="story">
                                     But the real magic happened when Maria joined the academy's community. She connected with like-minded individuals,
-                                    shared her journey, and found mentors who guided her through the ups and downs of foodpreneurship. Collaboration became
+                                    shared her journey, and found mentors who guided her through the ups and downs of foodpreneurship. Collaboration
+                                    became
                                     the secret ingredient to her success, as fellow members supported her in ways she had never imagined.
                                 </p>
-
+                                
                                 <p class="text-primary mt-2">Maria Gonzalez</p>
                                 <p class="text-grey">Food Innovator</p>
                             </div>
@@ -299,14 +299,13 @@
                                     aut cum sequi aliquid officiis voluptate harum odit accusamus aperiam dolorem 
                                     facere architecto ipsa deleniti fugiat sint sit laboriosam quas, excepturi adipisci! Impedit, sint voluptatem.
                                 </p>
-                            </div>
-                            <div class="col-md-6">
+
                                 <p class="story">
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum tempore aliquid voluptatibus perferendis in
                                     delectus quos magni odio explicabo perspiciatis id sequi, nisi sed, beatae nobis libero ea atque.
                                     Nesciunt numquam necessitatibus fuga et aliquid tempore quas maxime deleniti.
                                 </p>
-                
+                                
                                 <p class="story">
                                     But the real magic happened when Maria joined the academy's community. She connected with
                                     like-minded individuals,
@@ -315,7 +314,7 @@
                                     the secret ingredient to her success, as fellow members supported her in ways she had never
                                     imagined.
                                 </p>
-                
+                                
                                 <p class="text-primary mt-2">Maria Gonzalez</p>
                                 <p class="text-grey">Food Innovator</p>
                             </div>
@@ -347,3 +346,37 @@
 </main>
 
 @endsection
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    $('.owl-one').owlCarousel({
+        loop: true,
+        margin: 25,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1.5
+            }
+        }
+    });
+
+    $('.owl-two').owlCarousel({
+            loop: true,
+            margin: 25,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1.4
+                }
+            }
+        });
+
+    
+</script>
