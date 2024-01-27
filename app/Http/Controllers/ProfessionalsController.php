@@ -15,6 +15,7 @@ class ProfessionalsController extends Controller
     public function index()
     {
         $professionals = Professionals::latest()->get();
+        
         return view('admin.professionals.index', compact('professionals'));
     }
 
