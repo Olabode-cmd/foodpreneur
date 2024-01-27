@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <main>
     <section class="search-hero short"
         style="background: url('{{asset("home/images/food-hero.png")}}') no-repeat; background-size: cover">
@@ -111,7 +112,6 @@
         </div>
     
        @foreach ($professionalOfTheDay as $key => $professional)
-           {{ ($key) }}
             @if ($key == 0)
             <div class="bg-orange">
                 <div class="container">
@@ -203,8 +203,7 @@
     
 
         <div class="text-center" id="innovator-month">
-            <a href="register/nomination.html">
-            <button class="btn btn-primary mt-3" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nominate a Food Innovator for the month</button>
+            <a href="{{ route('home.nominate') }}" class="btn btn-primary mt-3" type="button" >Nominate a Food Innovator for the month</a>
         </a>
         </div>
     
@@ -246,84 +245,23 @@
             </div>
 
             <div class="owl-carousel owl-theme owl-two" data-aos="fade-up">
+                @foreach ($sucessStories as $stories)
                 <div class="item">
                     <div class="stories">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="heading">Maria's Flavorful Journey to Foodpreneurship</h1>
+                                <h1 class="heading">{{ $stories->name }}'s Flavorful Journey to Foodpreneurship</h1>
 
                                 <p class="story">
-                                    Maria Gonzalez, a determined food enthusiast with a dream, embarked on a journey that would ultimately lead to her
-                                    remarkable success as a food entrepreneur. Her story is a testament to the power of passion, perseverance, and the right
-                                    support network.
+                                    {{ $stories->description }}
                                 </p>
-                                    
-                                <p class="story">
-                                    Maria's dream was to share her authentic flavors with a broader audience, but she faced significant challenges. She
-                                    lacked the knowledge and resources to launch her food business. She wondered, "How do I turn my passion for food into a
-                                    thriving venture?"
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="story">
-                                    One day, while scrolling through food blogs, Maria stumbled upon The Foodpreneur Academy. It seemed like the perfect
-                                    platform to nurture her culinary ambitions. The academy offered a range of food processing courses, a supportive
-                                    community, and a blog filled with stories of successful food entrepreneurs.
-                                </p>
-                                    
-                                <p class="story">
-                                    But the real magic happened when Maria joined the academy's community. She connected with like-minded individuals,
-                                    shared her journey, and found mentors who guided her through the ups and downs of foodpreneurship. Collaboration became
-                                    the secret ingredient to her success, as fellow members supported her in ways she had never imagined.
-                                </p>
-
-                                <p class="text-primary mt-2">Maria Gonzalez</p>
-                                <p class="text-grey">Food Innovator</p>
+                                <p class="text-primary mt-2">{{ $stories->name }}</p>
+                                <p class="text-grey">{{ $stories->role }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="stories">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="heading">Lorem ipsum dolor, sit amet consectetur adipisicing.</h1>
-                
-                                <p class="story">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Dolores molestias qui ad officia iusto dignissimos fuga.
-                                    Minima suscipit voluptatibus repudiandae nostrum maiores ratione dicta ab!
-                                </p>
-                
-                                <p class="story">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, cumque! Unde maxime nemo minima qui 
-                                    aut cum sequi aliquid officiis voluptate harum odit accusamus aperiam dolorem 
-                                    facere architecto ipsa deleniti fugiat sint sit laboriosam quas, excepturi adipisci! Impedit, sint voluptatem.
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="story">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum tempore aliquid voluptatibus perferendis in
-                                    delectus quos magni odio explicabo perspiciatis id sequi, nisi sed, beatae nobis libero ea atque.
-                                    Nesciunt numquam necessitatibus fuga et aliquid tempore quas maxime deleniti.
-                                </p>
-                
-                                <p class="story">
-                                    But the real magic happened when Maria joined the academy's community. She connected with
-                                    like-minded individuals,
-                                    shared her journey, and found mentors who guided her through the ups and downs of foodpreneurship.
-                                    Collaboration became
-                                    the secret ingredient to her success, as fellow members supported her in ways she had never
-                                    imagined.
-                                </p>
-                
-                                <p class="text-primary mt-2">Maria Gonzalez</p>
-                                <p class="text-grey">Food Innovator</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             
         </div>
@@ -349,3 +287,37 @@
 </main>
 
 @endsection
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    $('.owl-one').owlCarousel({
+        loop: true,
+        margin: 25,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1.5
+            }
+        }
+    });
+
+    $('.owl-two').owlCarousel({
+            loop: true,
+            margin: 25,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1.4
+                }
+            }
+        });
+
+    
+</script>

@@ -24,18 +24,18 @@ class TestimonialsController extends Controller
         $request->validate([
             'name' =>'required',
             'location' =>'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'rating' =>'required',
             'description' =>'required',
         ]);
 
-        $path = $request->file('image')->store('testimonials','public');
+        // $path = $request->file('image')->store('testimonials','public');
         Testimonials::create([
             'name' =>$request->name,
             'location' =>$request->location,
             'description' =>$request->description,
             'rating' =>$request->rating,
-            'image' =>$path,
+            // 'image' =>$path,
         ]);
 
         return redirect()->back()->with('success','Testimonial has been added');
@@ -61,20 +61,20 @@ class TestimonialsController extends Controller
         ]);
         
         $testimonials = Testimonials::find($id);
-        $path = $request->has('image') ? $request->file('image')->store('testimonials', 'public') : $testimonials->image; 
-        if($request->has('image') ){
-            // delete old image
-            $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-            $this->deleteImage($testimonials->image); 
-        }
+        // $path = $request->has('image') ? $request->file('image')->store('testimonials', 'public') : $testimonials->image; 
+        // if($request->has('image') ){
+        //     // delete old image
+        //     $request->validate([
+        //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     ]);
+        //     $this->deleteImage($testimonials->image); 
+        // }
         $testimonials->update([
             'name' =>$request->name,
             'location' =>$request->location,
             'description' =>$request->description,
             'rating' =>$request->rating,
-            'image' =>$path,
+            // 'image' =>$path,
         ]);
         return redirect()->back()->with('success','Testimonial Updated Successfully');
     }

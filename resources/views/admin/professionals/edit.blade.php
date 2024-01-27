@@ -79,12 +79,10 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-12 mb-3">
-                                    <label for="tag">Course Tag (use comma , for mutliple tags)</label>
-                                    <input id="tag" value="@php $tags = json_decode($professional->tag);
-                                    foreach ($tags as $tag) {
-                                        echo $tag . ',';
-                                    } @endphp" class="form-control" type="text" name="tags">
+                                    <label for="tag">Course Tag (use comma , for multiple tags)</label>
+                                    <input id="tag" value="{{ implode(',', array_filter(json_decode($professional->tag), 'strlen')) }}" class="form-control" type="text" name="tags">
                                 </div>
+                                
 
                                 <div class="form-group col-md-3 col-sm-12 mb-3">
                                     <label for="name">Featured Or Regular</label>

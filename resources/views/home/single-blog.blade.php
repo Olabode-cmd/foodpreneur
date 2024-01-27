@@ -7,16 +7,16 @@
     <section class="blog">
         <div class="container">
             <p class="text-uppercase text-primary bold mb-4">business idea</p>
-            <p class="text-grey">11 Oct, 2023 &bull; 20 min read</p>
+            <p class="text-grey">{{ $blog->created_at->format('d M, Y') }} &bull</p>
 
-            <h1 class="title">Plantain Chips Production: Important Tips and Production Process</h1>
+            <h1 class="title">{{ $blog->title }}</h1>
 
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('home/images/jane.png') }}" alt="jane" class="profile">
+                    <img src="{{ asset('storage/'.$blog->author_image) }}" alt="jane" class="profile">
                     <div>
-                        <p class="bold">Mary Vincent</p>
-                        <p class="text-grey">Food Entrepreneur</p>
+                        <p class="bold">{{ $blog->author }}</p>
+                        <p class="text-grey">{{ $blog->author_role }}</p>
                     </div>
                 </div>
 
@@ -26,106 +26,24 @@
                 </div>
             </div>
 
-            <img src="{{ asset('home/images/blog-img.png') }}" alt="blog" class="w-100 main">
+            <img src="{{ asset('storage/'.$blog->image) }}" alt="blog" class="w-100 main">
 
             <div class="blog-body">
-                <p>
-                    Plantain chips are not just a beloved snack; they represent a fusion of tradition, innovation,
-                    and entrepreneurship.
-                    These crunchy, addictive delights have a rich history and are enjoyed by people all around the
-                    world. If you've ever
-                    wondered about the art of plantain chips production, this article is your gateway to the world
-                    of creating this popular
-                    snack from scratch.
-                </p>
-
-                <h5>The Plantain: A Versatile Treasure</h5>
-
-                <p>
-                    Before we delve into the production process, let's take a moment to appreciate the star
-                    ingredient: the plantain.
-                    Plantains are starchy, banana-like fruits that are popular in many tropical regions. They can be
-                    enjoyed in various
-                    forms, from ripe and sweet to green and savory.
-                </p>
-
-                <h5>Ingredients You'll Need</h5>
-
-                <p>
-                    To produce delicious homemade plantain chips, gather the following ingredients:
-                </p>
-
-                <ul>
-                    <li>Green Plantains: Choose unripe, firm plantains as they are perfect for making chips.</li>
-                    <li>Vegetable Oil: Opt for a neutral oil like vegetable or canola.</li>
-                    <li>Salt: For seasoning.</li>
-                    <li>Spices (Optional): Get creative with your seasonings. Paprika, chili powder, or garlic
-                        powder can add an extra kick.</li>
-                </ul>
-
-                <h5>Step One: Peel and Slice</h5>
-
-                <p>
-                    Start by peeling the green plantains. A knife or a potato peeler can help with this. Slice the
-                    plantains thinly and
-                    uniformly. You can use a mandoline slicer for precision or do it by hand if you have the skills.
-                </p>
-
-                <h5>Step Two: Preparing the Oil</h5>
-                
-                <p>
-                    Pour your chosen vegetable oil into a deep frying pan or pot. Heat the oil to around 350°F (175°C). You can test the
-                    readiness of the oil by dropping a slice of plantain into it; it should sizzle and float to the top.
-                </p>
-
-                <h5>Step Three: Fry to Perfection</h5>
-                
-                <p>
-                    In small batches, carefully place the plantain slices into the hot oil. Avoid overcrowding the pot as it can lower the
-                    oil temperature. Fry until the chips turn a beautiful golden color, which should take around 2-3 minutes. Remove the
-                    chips with a slotted spoon and place them on paper towels to absorb excess oil.
-                </p>
-
-                <h5>Step Four: Season and Cool</h5>
-                
-                <p>
-                    While the plantain chips are still warm, sprinkle them with salt and any optional spices you prefer. Gently toss the
-                    chips to ensure even coating. Allow them to cool, and they will crisp up nicely.
-                </p>
-
-                <h5>The Foodpreneurial Angle</h5>
-
-                <p>
-                    Plantain chips offer an excellent opportunity for aspiring foodpreneurs. You can experiment with various flavors and
-                    packaging to create a unique brand. Consider different flavors such as spicy, BBQ, or even sweet plantain chips.
-                    Aesthetically pleasing packaging and creative marketing can set your product apart.
-                </p>
-                <p>
-                    Plantain chips production is a rewarding endeavor that allows you to tap into the rich flavors and traditions of
-                    tropical cuisines. Whether for personal indulgence or starting a food business, making your own plantain chips brings a
-                    slice of culinary delight to your kitchen.
-                </p>
-                <p>
-                    Remember, it's not just about the end product; it's about the journey and the entrepreneurial spirit that drives you to
-                    create something unique and wonderful. So, roll up your sleeves, get slicing, and savor the crispy delights of homemade
-                    plantain chips.
+                <p>{!! $blog->description !!}
                 </p>
 
                 <div class="d-flex align-items-center justify-content-between mt-4">
                     <div>
                         <p class="mb-0">Written by:</p>
-                        <h5>Mary Vincent</h5>
+                        <h5>{{ $blog->author }}</h5>
 
                         <div class="mt-4 d-flex align-items-center">
                             <div class="d-flex align-items-center me-3">
                                 <img src="{{ asset('home/images/heart.png') }}" alt="heart">
-                                <span>1.3K</span>
+                                <span>{{ $blog->views }}</span>
                             </div>
                         
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('home/images/comments.png') }}" alt="comments">
-                                <span>14</span>
-                            </div>
+                           
                         </div>
                     </div>
 

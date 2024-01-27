@@ -30,87 +30,41 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="events">
+                        @foreach ($events  as $event)
                         <div class="event">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ asset('home/images/20.png') }}" alt="event">
+                                    <img src="{{ asset('storage/'.$event->image) }}" alt="event">
                                 </div>
 
                                 <div class="col-9">
-                                    <p class="bold text-grey">Jan. 12 - Jan. 13, 2024 • Virtual</p>
+                                    <p class="bold text-grey">{{ $event->date }} • {{ $event->location }}</p>
 
-                                    <h1 class="title">Food Innovation Summit</h1>
+                                    <h1 class="title">{{ $event->title }}</h1>
                                     <p class="my-3">
-                                        The Food Innovation Summit will be a flagship annual gathering of industry experts, entrepreneurs, and enthusiasts in Africa’s 
-                                        food processing industry. This summit will serve as a platform for sharing innovative ideas, forging partnerships, and discovering 
-                                        cutting-edge solutions to address the challenges and opportunities Africa’s food technology, sustainability, and security landscape. 
-                                        Participants will engage in lecture, workshop, panel discussion and networking sessions, all aimed at shaping the future of the food 
-                                        industry.
+                                        {{ implode(' ', array_slice(explode(' ', strip_tags($event->description)), 0, 28)) }} ...
                                     </p>
 
                                     <div class="d-flex align-items-center">
-                                        <a href="{{route('home.event','how-are-you')}}" class="btn btn-primary me-3">View Details</a>
-                                        <a href="https://mailchi.mp/32707c1eaf2f/2024-food-innovation-summit-registration" class="btn btn-text">Register</a>
+                                        <a href="{{route('home.event', $event->slug)}}" class="btn btn-primary me-3">View Details</a>
+                                        <a href="{{route('home.event.register', $event->slug)}}" class="btn btn-text">Register</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="event">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{ asset('home/images/event2.png') }}" alt="event">
-                                </div>
-                        
-                                <div class="col-9">
-                                    <p class="bold text-grey">10am WAT Oct 28, 2023 • Abuja</p>
-                        
-                                    <h1 class="title">Taste of the World: Global Culinary Exploration</h1>
-                                    <p class="my-3">
-                                        Join us for a series of immersive workshops designed to empower aspiring foodpreneurs like you. Our
-                                        expert facilitators,
-                                        who have a wealth of experience in the food industry, will guide you through the essential ingredients
-                                        needed to start,
-                                        run, and grow a thriving food business.
-                                    </p>
-                        
-                                    <div class="d-flex align-items-center">
-                                        <a href="{{route('home.event','how-are-you')}}" class="btn btn-primary me-3">View Details</a>
-                                        <a href="#" class="btn btn-text">Register</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="event">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{ asset('home/images/event3.png') }}" alt="event">
-                                </div>
-                        
-                                <div class="col-9">
-                                    <p class="bold text-grey">10am WAT Oct 28, 2023 • Abuja</p>
-                        
-                                    <h1 class="title">The Role of Food Innovators in Africa’s Economy</h1>
-                                    <p class="my-3">
-                                        Join us for a series of immersive workshops designed to empower aspiring foodpreneurs like you. Our
-                                        expert facilitators,
-                                        who have a wealth of experience in the food industry, will guide you through the essential ingredients
-                                        needed to start,
-                                        run, and grow a thriving food business.
-                                    </p>
-                        
-                                    <div class="d-flex align-items-center">
-                                        <a href="{{route('home.event','how-are-you')}}" class="btn btn-primary me-3">View Details</a>
-                                        <a href="#" class="btn btn-text">Register</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="text-center mt-4">
-                        <a href="#" class="tag-primary btn">Load More</a>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-center">
+                                {{-- pagination links --}}
+                                {{ $events->links("pagination::bootstrap-4") }}
+        
+                            </div>
+                        </div>
+        
                     </div>
                 </div>
             </div>

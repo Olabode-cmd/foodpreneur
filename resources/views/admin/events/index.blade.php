@@ -25,6 +25,7 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Attendees</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                     </thead>

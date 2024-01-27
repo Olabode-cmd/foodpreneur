@@ -5,13 +5,24 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Community;
+use App\Models\Courses;
+use App\Models\EventCategories;
+use App\Models\Events;
+use App\Models\Nominees;
 use App\Models\Subscriber;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index(){
-        return view('home.index');
+        $blogs = Blog::latest('created_at')->with('category')->take(3)->get();
+        $testimonials = Testimonials::latest('created_at')->take(3)->get();
+        $courses = Courses::latest('created_at')->take(5)->get();
+        $events = Events::latest('created_at')->take(3)->get();
+        $eventCategories = EventCategories::all();
+        return view('home.index', compact('blogs', 'testimonials', 'courses', 'events', 'eventCategories'));
     }
 
     public function about(){
@@ -19,18 +30,24 @@ class IndexController extends Controller
     }
 
     public function blogs(){
-        $blogs = Blog::latest()->get();
+        $blogs = Blog::latest('created_at')->with('category')->paginate(9);
         $blogsCategories = BlogCategory::all();
-
-        return view('home.blogs', compact('blogs', 'blogsCategories'));
+        $trending = Blog::latest()->where('is_trending', 1)->with('category')->take(3)->get();
+        return view('home.blogs', compact('blogs', 'blogsCategories', 'trending'));
     }
 
     public function blog($slug){
-
         $blog = Blog::where('slug', $slug)->first();
-        $blogsCategories = BlogCategory::all();
 
-        return view('home.single-blog', compact('blog', 'blogsCategories'));
+        if (!$blog) {
+            abort(404); // or handle accordingly if the blog is not found
+        }
+        $relatedBlogs = Blog::where('category_id', $blog->category_id)
+                    ->where('id', '!=', $blog->id)
+                    ->inRandomOrder() // Order by random
+                    ->take(3)
+                    ->get();
+        return view('home.single-blog', compact('blog', 'relatedBlogs'));
     }
 
     public function newsletter(Request $request){
@@ -49,18 +66,27 @@ class IndexController extends Controller
     }
 
     public function community(Request $request){
-        $check = Subscriber::where('type','community')->where('email', $request->email)->first();
+        $request->validate([
+            'email' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'country' => 'required',
+            'work' => 'required',
+            'city' => 'required',
+        ]);
+        $check = Community::where('email', $request->email)->first();
+        
         if(!$check){
-            Subscriber::create([
-                'email' => $request->email,
-                'name' => null,
-                'type' => 'community'
-            ]);
+            Community::create($request->all());
 
             return back()->with('success', 'You have successfully subscribed to join our community!');
         }
 
         return back()->with('error', 'You have already subscribed to join our community!');
+    }
+
+    public function communityView(){
+        return view('home.community');
     }
 
     public function ebook(Request $request){
@@ -77,4 +103,41 @@ class IndexController extends Controller
 
         return back()->with('error', 'You have already subscribed for the ebook!');
     }
+
+    public function nominate(){
+        return view('home.nominate');
+    }
+
+    public function storeNominate(Request $request){
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'voter' => 'required',
+            'nominees_firstname' => 'required',
+            'nominees_lastname' => 'required',
+            'nominees_occupation' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'reason' => 'required',
+        ]);
+        
+        Nominees::create([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'voter' => $request->voter,
+            'nominees_firstname' => $request->nominees_firstname,
+            'nominees_lastname' => $request->nominees_lastname,
+            'nominees_occupation' => $request->nominees_occupation,
+            'country' => $request->country,
+            'city' => $request->city,
+            'reason' => $request->reason,
+            'business' => $request->business,
+            'personal' => $request->personal,
+            'linkedin' => $request->linkedin,
+            'ig' => $request->instagram,
+        ]);
+
+        return back()->with('success', 'You have successfully nominated for the month!');
+    }
+
 }

@@ -22,6 +22,8 @@ Route::get('/', [IndexController::class, 'index'])->name('welcome');
 Route::get('/about', [IndexController::class, 'about'])->name('home.about');
 Route::get('upcoming-events', [EventController::class, 'index'])->name('home.events');
 Route::get('events/{event}', [EventController::class, 'event'])->name('home.event');
+Route::get('events/{event}/register/', [EventController::class, 'register'])->name('home.event.register');
+Route::post('events/register', [EventController::class, 'store'])->name('home.event.store');
 Route::get('blogs', [IndexController::class, 'blogs'])->name('home.blogs');
 Route::get('blogs/{blog}', [IndexController::class, 'blog'])->name('home.blog');
 Route::get('courses', [CoursesController::class, 'index'])->name('home.courses');
@@ -30,9 +32,11 @@ Route::get('food-professionals', [FoodProfessionals::class, 'index'])->name('hom
 Route::get('food-professionals/{professional}', [FoodProfessionals::class, 'professional'])->name('home.professional');
 
 Route::post('newsletter', [IndexController::class, 'newsletter'])->name('home.newsletter');
+Route::get('community', [IndexController::class, 'communityView'])->name('home.communityView');
 Route::post('community', [IndexController::class, 'community'])->name('home.community');
 Route::post('ebook', [IndexController::class, 'ebook'])->name('home.ebook');
-
+Route::get('nominate-professional-for-the-month', [IndexController::class, 'nominate'])->name('home.nominate');
+Route::post('nominate', [IndexController::class, 'storeNominate'])->name('home.storeNominate');
 
 Route::prefix('admin' )->group(function () {
 

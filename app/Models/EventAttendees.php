@@ -11,7 +11,16 @@ class EventAttendees extends Model
 
     protected $table = 'events_attendees';
 
+    protected $fillable = [
+        'event_id',
+        'firstname',
+        'lastname',
+        'about',
+        'email',
+        'phone'
+    ];
+
     public function event(){
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Events::class);
     }
 }

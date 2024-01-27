@@ -19,6 +19,7 @@ class Blog extends Model
         'author_role',
         'author_image',
         'tag',
+        'is_trending',
         'views',
     ];
 

@@ -47,12 +47,10 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($subscribers as $key => $subscriber)
-                                                    @if ($subscriber->type =='newsletter')
-                                                        <tr>
-                                                            <td>{{ $key +1 }}</td>
-                                                            <td>{{ $subscriber->email }}</td>
-                                                        </tr>
-                                                    @endif
+                                                    <tr>
+                                                        <td>{{ $key +1 }}</td>
+                                                        <td>{{ $subscriber->email }}</td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -69,14 +67,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($subscribers as $keys => $subscriber)
-                                                    @if ($subscriber->type =='ebook')
-                                                        <tr>
-                                                            <td>{{ $keys +1 }}</td>
-                                                            <td>{{ $subscriber->email }}</td>
-                                                            <td>{{ $subscriber->name }}</td>
-                                                        </tr>
-                                                    @endif
+                                                @foreach ($ebooksubscribers as $keys => $ebook)
+                                                    <tr>
+                                                        <td>{{ $keys +1 }}</td>
+                                                        <td>{{ $ebook->email }}</td>
+                                                        <td>{{ $ebook->name }}</td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -84,22 +80,38 @@
                                 </div>
                                 <div class="tab-pane" id="community" role="tabpanel">
                                     <div class="table-responsive">
-                                        <table class="table datatable table-striped dt-responsive  w-100">
+                                        <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                                             <thead>
                                                 <tr>
                                                     <td>#</td>
                                                     <th>Email</th>
+                                                    <th>Firstname</th>
+                                                    <th>Lastname</th>
+                                                    <th>Work</th>
+                                                    <th>Country</th>
+                                                    <th>City</th>
+                                                    <th>Business Website URL</th>
+                                                    <th>Personal Website URL</th>
+                                                    <th>IG HANDLE</th>
+                                                    <th>LINKEDIN HANDLE</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($subscribers as $key2 => $subscriber)
-                                                @if ($subscriber->type =='community')
+                                                @foreach ($communities as $key2 => $community)
                                                     <tr>
                                                         <td>{{ $key2 +1 }}</td>
-                                                        <td>{{ $subscriber->email }}</td>
+                                                        <td>{{ $community->email }}</td>
+                                                        <td>{{ $community->firstname }}</td>
+                                                        <td>{{ $community->lastname }}</td>
+                                                        <td>{{ $community->work }}</td>
+                                                        <td>{{ $community->country }}</td>
+                                                        <td>{{ $community->city }}</td>
+                                                        <td>{{ $community->business }}</td>
+                                                        <td>{{ $community->personal }}</td>
+                                                        <td>{{ $community->ig }}</td>
+                                                        <td>{{ $community->linked }}</td>
                                                     </tr>
-                                                @endif
-                                            @endforeach
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -121,66 +133,3 @@
 </div>
 @endsection
 
-<div id="add-course-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-           <form action="{{ route('admin.blogsCategoryStore') }}" method="POST" id="add-course-category-form">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Add Blog</h5>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
-                        X
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="my-input">Blog Category</label>
-                        <input id="my-input" class="form-control" type="text" name="name">
-                    </div>
-    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Save </button>
-                </div>
-            </form>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-
-<div id="edit-blog-category" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-           <form  method="POST" id="edit-blog-category-form">
-                @csrf
-                @method('PATCH')
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Update Category</h5>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
-                        X
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="my-input">Course Category</label>
-                        <input id="my-input" class="form-control" type="text" name="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="my-input">Status</label>
-                        <select name="status" id="" class="form-control">
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
-                    </div>
-                    <input type="hidden" name="id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
-                </div>
-            </form>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>

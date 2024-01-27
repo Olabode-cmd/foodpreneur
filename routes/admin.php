@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CoursesCategoryController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventsCategoriesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FaqController;
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin' )->group(function () {
     
-    Route::get('/', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('admin.dashboard');
+    Route::get('/', DashboardController::class, 'index')->middleware(['auth', 'verified'])->name('admin.dashboard');
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,6 +46,7 @@ Route::prefix('admin' )->group(function () {
 
         Route::prefix('professionals')->group(function(){
             Route::get('',[ProfessionalsController::class,'index'])->name('admin.professionals');
+            Route::get('nominated-professionals',[ProfessionalsController::class,'nominatedProfessionals'])->name('admin.nominatedProfessionals');
             Route::get('create',[ProfessionalsController::class,'create'])->name('admin.professionalsCreate');
             Route::post('',[ProfessionalsController::class,'store'])->name('admin.professionalsStore');
             Route::get('edit/{professionals}',[ProfessionalsController::class,'edit'])->name('admin.professionalsEdit');

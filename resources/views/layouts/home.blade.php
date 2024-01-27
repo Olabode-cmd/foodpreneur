@@ -57,7 +57,7 @@
 
         $('.owl-two').owlCarousel({
             loop: true,
-            margin: 15,
+            margin: 10,
             nav: true,
             dots: false,
             responsive: {

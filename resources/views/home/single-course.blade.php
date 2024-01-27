@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
-@section('title', 'Course Title')
+@section('title')
+{{ $course->name }}
+@endsection
 
 @section('content')
 <style>
@@ -14,18 +16,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="title">Pounded Yam Flour Production: From Zero to Expert</h1>
-                    <p class="subtitle">Learn how to produce Pounded Yam Flour from the basics and go all the wall
-                        to starting your own pounded yam flour
-                        business
+                    <h1 class="title">{{ $course->name }}</h1>
+                    <p class="subtitle">{{ implode(' ', array_slice(explode(' ', strip_tags($course->description)), 0, 35)) }} ...
                     </p>
 
-                    <p>Created by <span class="text-primary text-underline">Jane Doe</span>, Entrepreneur, Chef.</p>
+                    <p>Created by <span class="text-primary text-underline">{{ $course->author_name }}</span>, {{ $course->author_role }}.</p>
 
                     <div class="d-flex mt-3 flex-wrap">
                         <div class="d-flex align-items-center me-4 mt-2">
                             <img src="{{ asset('home/images/users.png') }}" alt="users">
-                            <span class="ms-2 bold">104,542 students</span>
+                            <span class="ms-2 bold">{{ number_format($course->students) }} students</span>
                         </div>
 
                         <div class="d-flex mt-2">
@@ -38,7 +38,7 @@
                                 <img src="{{ asset('home/images/star.png') }}" alt="star">
                             </div>
 
-                            <p class="text-primary text-underline">(48,500 ratings)</p>
+                            <p class="text-primary text-underline">({{ number_format($course->ratings) }} ratings)</p>
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                         <div class="d-flex align-items-end justify-content-between w-100 flex-wrap">
                             <div>
                                 <h2 class="title">Course Content</h2>
-                                <p class="text-grey">41 sections • 490 lectures • 65h 33m total length</p>
+                                <p class="text-grey">{{ $course->course_sections }} sections • {{ $course->course_lectures }} lectures • {{ $course->course_hours }} total length</p>
                             </div>
 
                             <div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion mt-4" id="accordionExample">
+                    {{-- <div class="accordion mt-4" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="section-readmore">
                         <div class="container">
@@ -164,60 +164,28 @@
 
                             <div class="read-container closed" id="readContainer">
                                 <p>
-                                    Welcome to our comprehensive "Pounded Yam Flour Production" course, where you'll
-                                    dive deep into the art
-                                    and science of
-                                    transforming yam into a convenient and versatile flour used in various culinary
-                                    creations. Pounded yam
-                                    is a beloved West
-                                    African staple, and learning how to produce its high-quality flour is not only a
-                                    culinary skill but also
-                                    a business
-                                    opportunity.
-                                </p>
-                                <p>
-                                    Welcome to our comprehensive "Pounded Yam Flour Production" course, where you'll
-                                    dive deep into the art
-                                    and science of
-                                    transforming yam into a convenient and versatile flour used in various culinary
-                                    creations. Pounded yam
-                                    is a beloved West
-                                    African staple, and learning how to produce its high-quality flour is not only a
-                                    culinary skill but also
-                                    a business
-                                    opportunity.
+                                    {!! $course->description !!}
                                 </p>
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-center readmorebg">
+                    {{-- <div class="d-flex justify-content-center readmorebg">
                         <button class="btn-text d-flex align-items-center justify-content-center"
                             id="readMoreBtn">Read More
                             <img src="{{ asset('home/images/green-chevron.png') }}" alt="chevron">
                         </button>
-                    </div>
+                    </div> --}}
 
                     <hr class="my-4">
 
                     <div class="coursenote">
                         <div class="container">
                             <h1 class="title">Who should take this course?</h1>
-
-                            <ul>
-                                <li>
-                                    <p>Culinary enthusiasts interested in mastering the art of yam flour production.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>Entrepreneurs looking to start or expand a yam flour production business.</p>
-                                </li>
-                                <li>
-                                    <p>Food professionals and restaurant owners seeking to diversify their
-                                        offerings.</p>
-                                </li>
-                            </ul>
+                            <p>
+                                {!! $course->reason !!}
+                            </p>
                         </div>
                     </div>
 
@@ -227,9 +195,7 @@
                         <div class="container">
                             <h1 class="title">Course duration</h1>
 
-                            <p>The "Pounded Yam Flour Production" course is self-paced, allowing you to study at
-                                your convenience. On average, students
-                                complete the course within 4 to 6 weeks, depending on their individual progress.</p>
+                            <p>{{ $course->course_duration }}.</p>
                         </div>
                     </div>
 
@@ -243,48 +209,31 @@
                                 <div class="read-container closed" id="readContainer2">
                                     <div class="d-flex">
                                         <div class="photo me-3">
-                                            <img src="{{ asset('home/images/cherie.png') }}" alt="cherie">
+                                            <img src="{{ asset('storage/'.$course->author_image) }}" alt="cherie">
                                         </div>
 
                                         <div>
                                             <div class="d-flex align-items-center">
-                                                <h6 class="me-2 m-0 p-0">Jane Doe</h6>
+                                                <h6 class="me-2 m-0 p-0">{{ $course->author_name }}</h6>
                                                 <span class="tag-primary">Teacher</span>
                                             </div>
-                                            <p>Entrepreneur, Chef</p>
+                                            <p>{{ $course->author_role }}</p>
                                         </div>
                                     </div>
                                     <p>
-                                        Chef Jane Doe is a culinary maestro with over two decades of experience in
-                                        food production, culinary arts, and food
-                                        entrepreneurship. She has a deep-rooted passion for preserving and promoting
-                                        traditional West African cuisine, making
-                                        her the ideal instructor for our "Pounded Yam Flour Production" course.</p>
-
-                                    <p>Chef Amina's journey in the culinary world began in her grandmother's
-                                        kitchen, where she first developed a fascination
-                                        for traditional recipes and cooking techniques. Over the years, she honed
-                                        her skills in various restaurants, working
-                                        closely with seasoned chefs and expanding her knowledge of West African
-                                        culinary traditions.</p>
-
-                                    <p>Her expertise extends to the intricate process of producing pounded yam
-                                        flour. Chef Amina has not only mastered the art
-                                        of selecting the finest yam varieties but also the precise methods of
-                                        parboiling, drying, and milling that result in
-                                        top-quality yam flour.
+                                        {{ $course->author_description }}
                                     </p>
                                 </div>
 
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center readmorebg">
+                        {{-- <div class="d-flex justify-content-center readmorebg">
                             <button class="btn-text d-flex align-items-center justify-content-center"
                                 id="readMoreBtn2">Read More
                                 <img src="{{ asset('home/images/green-chevron.png') }}" alt="chevron">
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -292,16 +241,21 @@
                     <div class="info-card sticky-element">
                         <div class="video">
                             <img src="{{ asset('home/images/play.png') }}" alt="play" class="play">
-                            <img src="{{ asset('home/images/market2.png') }}" alt="food" class="fit">
+                            <img src="{{ asset('storage/'.$course->image) }}" alt="food" class="fit">
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="d-flex align-items-end">
-                                <h2 class="price">$75.00</h2>
-                                <h5 class="old-price">$175.00</h5>
+                                <h2 class="price">&#8358; {{ number_format($course->slashed_price, 2) }}</h2>
+                                <h5 class="old-price">&#8358; {{ number_format($course->price, 2) }}</h5>
                             </div>
 
-                            <p class="text-primary bold">43% off</p>
+                            <p class="text-primary bold">
+                                @php
+                                    $discount = 100 - ($course->slashed_price / $course->price) * 100
+                                @endphp
+                                {{ number_format($discount) }}% off
+                            </p>
                         </div>
 
                         <div class="d-flex mt-3">
@@ -320,7 +274,7 @@
                         <div class="mt-3">
                             <div class="d-flex align-items-center my-3">
                                 <img src="{{ asset('home/images/monitor.png') }}" alt="monitor" class="me-3">
-                                <p class="text-grey">22 hours on-demand video lessons</p>
+                                <p class="text-grey">{{ $course->course_hours }} on-demand video lessons</p>
                             </div>
 
                             <div class="d-flex align-items-center my-3">
@@ -353,117 +307,51 @@
     <section class="section-marketplace">
         <div class="container mb-4">
             <div data-aos="fade-up">
-                <h3>Related Classes</h3>
+                <h3>Related Courses</h3>
             </div>
         </div>
     
         <div class="course-slide" data-aos="fade-up">
             <div class="owl-carousel owl-theme owl-two">
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="{{ asset('home/images/market1.png') }}" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p>12,897 students</p>
-                            <p>1h 13m</p>
-                        </div>
-    
-                        <h1>Bakery Masterclass: Start a Profitable Business</h1>
-                        <p class="name">Jane Doe</p>
-    
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>$75.00</h1>
-                                <h4>$175.00</h4>
+                @if ($relatedCourses->count() > 0)
+                    @foreach ($relatedCourses as $course)
+                        <div class="course-card">
+                            <div class="course-img">
+                                <img src="{{ asset('storage/'.$course->image) }}" alt="market">
                             </div>
-    
-                            <div>
-                                <p><span class="tag">Bestseller</span> &nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star"
-                                        class="icon" /></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="{{ asset('home/images/market2.png') }}" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p>12,897 students</p>
-                            <p>1h 13m</p>
-                        </div>
-    
-                        <h1>Pounded Yam Flour Production: From Zero to Expert</h1>
-                        <p class="name">Jane Doe</p>
-    
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>$75.00</h1>
-                                <h4>$175.00</h4>
-                            </div>
-    
-                            <div>
-                                <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p>{{ number_format($course->students) }} students</p>
+                                    <p>{{ $course->course_hours }}</p>
+                                </div>
+            
+                                <h1>{{ $course->name }}</h1>
+                                <p class="name">{{ $course->author_name }}</p>
+            
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h1>&#8358; {{ number_format($course->slashed_price, 2) }}</h1>
+                                        <h4>&#8358; {{ number_format($course->price, 2) }}</h4>
+                                    </div>
+            
+                                    <div>
+                                        <p>
+                                            <span class="tag">
+                                                <a href="{{ route('home.course', $course->slug) }}">Read More</a>
+                                            </span> 
+                                            &nbsp; 4.8 
+                                            <img src="{{ asset('home/images/star.png') }}" alt="star"
+                                                class="icon" />
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-    
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="{{ asset('home/images/market3.png') }}" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p>12,897 students</p>
-                            <p>1h 13m</p>
-                        </div>
-    
-                        <h1>Oil Business 101: Start a Profitable Oil Business From Scratch</h1>
-                        <p class="name">Jane Doe</p>
-    
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>$75.00</h1>
-                                <h4>$175.00</h4>
-                            </div>
-    
-                            <div>
-                                <p><span class="tag">Popular</span> &nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star"
-                                        class="icon" /></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="{{ asset('home/images/bg-hero3') }}.png" alt="market">
-                    </div>
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p>12,897 students</p>
-                            <p>1h 13m</p>
-                        </div>
-    
-                        <h1>Pounded Yam Flour Production: From Zero to Expert</h1>
-                        <p class="name">Jane Doe</p>
-    
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h1>$75.00</h1>
-                                <h4>$175.00</h4>
-                            </div>
-    
-                            <div>
-                                <p>&nbsp; 4.8 <img src="{{ asset('home/images/star.png') }}" alt="star" class="icon" /></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+
+                @else
+                    <p>No courses found</p>
+                @endif
     
             </div>
     

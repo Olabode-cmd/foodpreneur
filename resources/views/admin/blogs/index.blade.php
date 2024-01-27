@@ -25,6 +25,7 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Views</th>
+                                        <th>Trending</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -36,6 +37,12 @@
                                                 <td>{{ $blog->title }}</td>
                                                 <td>{{ $blog->category->name }}</td>
                                                 <td>{{ $blog->views }}</td>
+                                                <td>@if ($blog->is_trending == 1)
+                                                    <span class="badge bg-success">Yes</span>
+                                                @else
+                                                    <span class="badge bg-danger">No</span>
+                                                    
+                                                @endif</td>
                                                 <td>
                                                     <a href="{{ route('admin.blogsEdit',$blog->id) }}" class="btn btn-primary btn-sm">
                                                         Edit

@@ -14,7 +14,7 @@
                     <li><a href="{{ route('home.about') }}">About</a></li>
                     <li><a href="#careers.html">Careers</a></li>
                     <li><a href="#team.html">Join Team</a></li>
-                    <li><a href="#volunteer.html">Volunteers</a></li>
+                    <li><a href="https://forms.gle/vcEUzcW5EuksAxcH9">Collaborators</a></li>
                     <li><a href="#privacy-policy.html">Privacy Policy</a></li>
                 </ul>
             </div>
